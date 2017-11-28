@@ -38,7 +38,6 @@ extension HomeViewController : UITextFieldDelegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField.text == ""
         {
-            textField.
             return false
         }
         startBtn()
