@@ -12,6 +12,10 @@
 		B79101E61FCD483E003772B3 /* CreateRoomController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79101E51FCD483E003772B3 /* CreateRoomController.swift */; };
 		B79101E81FCD485D003772B3 /* RoomListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79101E71FCD485D003772B3 /* RoomListController.swift */; };
 		B791020A1FCE87C7003772B3 /* MiscFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79102091FCE87C7003772B3 /* MiscFunctions.swift */; };
+		8EE487DF1FCD14A60091B825 /* CreateRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE487DE1FCD14A60091B825 /* CreateRoomViewController.swift */; };
+		8EE487E11FCDB4C10091B825 /* MyTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE487E01FCDB4C10091B825 /* MyTimer.swift */; };
+		8EE487E31FCDB5060091B825 /* BoardList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EE487E21FCDB5060091B825 /* BoardList.storyboard */; };
+		8EE487E51FCDB5A90091B825 /* BoardListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE487E41FCDB5A90091B825 /* BoardListViewController.swift */; };
 		B7B57DD01FC815DF008B4C9D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B57DCF1FC815DF008B4C9D /* AppDelegate.swift */; };
 		B7B57DD21FC815DF008B4C9D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B57DD11FC815DF008B4C9D /* ViewController.swift */; };
 		B7B57DD51FC815DF008B4C9D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7B57DD31FC815DF008B4C9D /* Main.storyboard */; };
@@ -30,6 +34,10 @@
 		B79101E51FCD483E003772B3 /* CreateRoomController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRoomController.swift; sourceTree = "<group>"; };
 		B79101E71FCD485D003772B3 /* RoomListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListController.swift; sourceTree = "<group>"; };
 		B79102091FCE87C7003772B3 /* MiscFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiscFunctions.swift; sourceTree = "<group>"; };
+		8EE487DE1FCD14A60091B825 /* CreateRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRoomViewController.swift; sourceTree = "<group>"; };
+		8EE487E01FCDB4C10091B825 /* MyTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTimer.swift; sourceTree = "<group>"; };
+		8EE487E21FCDB5060091B825 /* BoardList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BoardList.storyboard; sourceTree = "<group>"; };
+		8EE487E41FCDB5A90091B825 /* BoardListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardListViewController.swift; sourceTree = "<group>"; };
 		B7B57DCC1FC815DF008B4C9D /* Grouffee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Grouffee.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7B57DCF1FC815DF008B4C9D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B7B57DD11FC815DF008B4C9D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -87,6 +95,7 @@
 				B7F9FB951FCD0BFE0002C3C0 /* Storyboards */,
 				B7F9FB911FCCFC090002C3C0 /* Controllers */,
 				B7B57DCF1FC815DF008B4C9D /* AppDelegate.swift */,
+				8EE487E01FCDB4C10091B825 /* MyTimer.swift */,
 				B7B57DD11FC815DF008B4C9D /* ViewController.swift */,
 				B7B57DD31FC815DF008B4C9D /* Main.storyboard */,
 				B7B57DD61FC815DF008B4C9D /* Assets.xcassets */,
@@ -103,6 +112,8 @@
 				B79101E31FCD446D003772B3 /* InitialSelectionController.swift */,
 				B79101E51FCD483E003772B3 /* CreateRoomController.swift */,
 				B79101E71FCD485D003772B3 /* RoomListController.swift */,
+				8EE487DE1FCD14A60091B825 /* CreateRoomViewController.swift */,
+				8EE487E41FCDB5A90091B825 /* BoardListViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -110,6 +121,7 @@
 		B7F9FB951FCD0BFE0002C3C0 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				8EE487E21FCDB5060091B825 /* BoardList.storyboard */,
 				B7F9FB9B1FCD0C920002C3C0 /* RoomList.storyboard */,
 				B7F9FB981FCD0C680002C3C0 /* CreateRoom.storyboard */,
 				B7F9FB961FCD0C3C0002C3C0 /* InitialSelection.storyboard */,
@@ -184,6 +196,7 @@
 				B7F9FB9C1FCD0C920002C3C0 /* RoomList.storyboard in Resources */,
 				B7F9FB941FCD0A890002C3C0 /* Home.storyboard in Resources */,
 				B7F9FB971FCD0C3C0002C3C0 /* InitialSelection.storyboard in Resources */,
+				8EE487E31FCDB5060091B825 /* BoardList.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,8 +213,11 @@
 				B791020A1FCE87C7003772B3 /* MiscFunctions.swift in Sources */,
 				B7B57DD21FC815DF008B4C9D /* ViewController.swift in Sources */,
 				B79101DF1FCD3C88003772B3 /* ConnectionModel.swift in Sources */,
+				8EE487DF1FCD14A60091B825 /* CreateRoomViewController.swift in Sources */,
 				B7B57DD01FC815DF008B4C9D /* AppDelegate.swift in Sources */,
+				8EE487E11FCDB4C10091B825 /* MyTimer.swift in Sources */,
 				B7F9FB901FCCFBFF0002C3C0 /* HomeViewController.swift in Sources */,
+				8EE487E51FCDB5A90091B825 /* BoardListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

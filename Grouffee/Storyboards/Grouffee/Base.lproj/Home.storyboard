@@ -33,6 +33,7 @@
                                 </state>
                                 <connections>
                                     <action selector="startBtn" destination="BYZ-38-t0r" eventType="touchUpInside" id="vhQ-xe-m3v"/>
+                                    <segue destination="0Y8-Up-wUt" kind="show" id="3sM-e7-3wb"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dWC-ks-4TI">
@@ -50,6 +51,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
+        </scene>
+        <!--InitialSelection-->
+        <scene sceneID="UXr-6G-Y86">
+            <objects>
+                <viewControllerPlaceholder storyboardName="InitialSelection" id="0Y8-Up-wUt" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CdD-Lm-oCO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="690" y="133"/>
         </scene>
     </scenes>
 </document>
