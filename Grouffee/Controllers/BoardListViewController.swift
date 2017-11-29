@@ -16,6 +16,8 @@ class BoardListViewController: UIViewController {
     
     var timer = Timer()
     
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print(timeRemaining)
@@ -24,6 +26,8 @@ class BoardListViewController: UIViewController {
         timerLabel.text = timeString(time: TimeInterval(timeRemaining))
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
         //timer = Timer.scheduledTimer(timeInterval: 1, target: self,   selector: (#selector(BoardListViewController.updateTimer)), userInfo: nil, repeats: true)
+        
+        appDelegate.connection?.delegate = self
     }
     
     @objc
@@ -39,4 +43,20 @@ class BoardListViewController: UIViewController {
         return String(format:"%02i:%02i:%02i", hours, minutes, seconds)
     }
 
+}
+
+extension BoardListViewController : ConnectionModelDelegate
+{
+    func invitationWasReceived(fromPeer: String)
+    {
+        let popup = UIAlertController.createAcceptDeclinePopup(title: "Join Request", message: "Invitation from \(fromPeer). Do you want to accept this invitation?", handlerAccept:
+        { (UIAlertAction) in
+            self.appDelegate.connection?.invitationHandler(true, self.appDelegate.connection?.session)
+        }, handlerDecline:
+            { (UIAlertAction) in
+                self.appDelegate.connection?.invitationHandler(true, self.appDelegate.connection?.session)
+        })
+        
+        self.present(popup, animated: true, completion: nil)
+    }
 }

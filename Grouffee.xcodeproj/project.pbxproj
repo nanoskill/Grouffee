@@ -16,6 +16,7 @@
 		B79101E81FCD485D003772B3 /* RoomListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79101E71FCD485D003772B3 /* RoomListController.swift */; };
 		B791020A1FCE87C7003772B3 /* MiscFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79102091FCE87C7003772B3 /* MiscFunctions.swift */; };
 		B791020C1FCEA414003772B3 /* InitialSelection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B791020B1FCEA414003772B3 /* InitialSelection.storyboard */; };
+		B791020E1FCEACD4003772B3 /* GrouffeeTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B791020D1FCEACD4003772B3 /* GrouffeeTimer.swift */; };
 		B7B57DD01FC815DF008B4C9D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B57DCF1FC815DF008B4C9D /* AppDelegate.swift */; };
 		B7B57DD21FC815DF008B4C9D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B57DD11FC815DF008B4C9D /* ViewController.swift */; };
 		B7B57DD51FC815DF008B4C9D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7B57DD31FC815DF008B4C9D /* Main.storyboard */; };
@@ -37,6 +38,7 @@
 		B79101E71FCD485D003772B3 /* RoomListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListController.swift; sourceTree = "<group>"; };
 		B79102091FCE87C7003772B3 /* MiscFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiscFunctions.swift; sourceTree = "<group>"; };
 		B791020B1FCEA414003772B3 /* InitialSelection.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = InitialSelection.storyboard; sourceTree = "<group>"; };
+		B791020D1FCEACD4003772B3 /* GrouffeeTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrouffeeTimer.swift; sourceTree = "<group>"; };
 		B7B57DCC1FC815DF008B4C9D /* Grouffee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Grouffee.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7B57DCF1FC815DF008B4C9D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B7B57DD11FC815DF008B4C9D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 			children = (
 				B79101DE1FCD3C88003772B3 /* ConnectionModel.swift */,
 				B79102091FCE87C7003772B3 /* MiscFunctions.swift */,
+				B791020D1FCEACD4003772B3 /* GrouffeeTimer.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -210,6 +213,7 @@
 				B7B57DD21FC815DF008B4C9D /* ViewController.swift in Sources */,
 				B79101DF1FCD3C88003772B3 /* ConnectionModel.swift in Sources */,
 				8EE487DF1FCD14A60091B825 /* CreateRoomViewController.swift in Sources */,
+				B791020E1FCEACD4003772B3 /* GrouffeeTimer.swift in Sources */,
 				B7B57DD01FC815DF008B4C9D /* AppDelegate.swift in Sources */,
 				8EE487E11FCDB4C10091B825 /* MyTimer.swift in Sources */,
 				B7F9FB901FCCFBFF0002C3C0 /* HomeViewController.swift in Sources */,

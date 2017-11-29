@@ -73,7 +73,6 @@ class CreateRoomViewController: UIViewController, UIPickerViewDelegate, UIPicker
         appDelegate.myPeerId = MCPeerID(displayName: roomNameField.text!)
         appDelegate.connection = ConnectionModel(peerId: appDelegate.myPeerId)
         appDelegate.connection?.serviceAdvertiser.startAdvertisingPeer()
-        appDelegate.connection?.delegate = self
     }
     
     @objc
@@ -183,22 +182,6 @@ class CreateRoomViewController: UIViewController, UIPickerViewDelegate, UIPicker
 //    }
     
     
-}
-
-extension CreateRoomViewController : ConnectionModelDelegate
-{
-    func invitationWasReceived(fromPeer: String)
-    {
-        let popup = UIAlertController.createAcceptDeclinePopup(title: "Join Request", message: "Invitation from \(fromPeer). Do you want to accept this invitation?", handlerAccept:
-        { (UIAlertAction) in
-            self.appDelegate.connection?.invitationHandler(true, self.appDelegate.connection?.session)
-        }, handlerDecline:
-            { (UIAlertAction) in
-                self.appDelegate.connection?.invitationHandler(true, self.appDelegate.connection?.session)
-        })
-        
-        self.present(popup, animated: true, completion: nil)
-    }
 }
 
 
