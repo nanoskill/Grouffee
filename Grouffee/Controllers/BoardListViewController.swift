@@ -11,25 +11,37 @@ import UIKit
 class BoardListViewController: UIViewController {
 
     @IBOutlet weak var timerLabel: UILabel!
+    @IBOutlet var progressBar: UIProgressView!
     
     var timeRemaining = 0
+    var startTime = 0
+    
     
     var timer = Timer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print(timeRemaining)
+        startTime = timeRemaining
         // Do any additional setup after loading the view.
         
         timerLabel.text = timeString(time: TimeInterval(timeRemaining))
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+        progressBar.progress = 1
+        
         //timer = Timer.scheduledTimer(timeInterval: 1, target: self,   selector: (#selector(BoardListViewController.updateTimer)), userInfo: nil, repeats: true)
     }
     
     @objc
     func updateTimer() {
-        timeRemaining -= 1     //This will decrement(count down)the seconds.
-        timerLabel.text = timeString(time: TimeInterval(timeRemaining)) //This will update the label.
+        if timeRemaining != 0 {
+            timeRemaining -= 1     //This will decrement(count down)the seconds.
+            timerLabel.text = timeString(time: TimeInterval(timeRemaining)) //This will update the label.
+            progressBar.progress = Float(timeRemaining) / Float(startTime)
+        } else {
+            timerLabel.text = "Time's up!"
+        }
+        
     }
     
     func timeString(time:TimeInterval) -> String {

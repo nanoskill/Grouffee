@@ -13,8 +13,13 @@ class CreateRoomViewController: UIViewController, UIPickerViewDelegate, UIPicker
     
     @IBOutlet weak var durTxt: UITextField!
     @IBOutlet weak var durPickerView: UIView!
+    @IBOutlet weak var pickerContainer: UIView!
     @IBOutlet weak var durPicker: UIPickerView!
     @IBOutlet weak var startBtn: UIButton!
+    
+    @IBOutlet weak var hoursLabel: UILabel!
+    @IBOutlet weak var minuteLabel: UILabel!
+    
     
     var timer = Timer()
     
@@ -60,7 +65,7 @@ class CreateRoomViewController: UIViewController, UIPickerViewDelegate, UIPicker
         UIView.animate(withDuration: 0.2) {
             self.durPickerView.alpha = 1
             self.durPicker.alpha = 1
-            self.durPicker.frame = CGRect(x: 0, y: self.durPickerView.bounds.height - self.durPicker.bounds.height, width: self.durPicker.bounds.width, height: self.durPicker.bounds.height)
+            self.pickerContainer.frame = CGRect(x: 0, y: self.durPickerView.bounds.height - self.pickerContainer.bounds.height, width: self.pickerContainer.bounds.width, height: self.pickerContainer.bounds.height)
         }
         self.durPicker.selectRow(selectedHours, inComponent: 0, animated: false)
         self.durPicker.selectRow(selectedMinutes, inComponent: 1, animated: false)
@@ -77,21 +82,22 @@ class CreateRoomViewController: UIViewController, UIPickerViewDelegate, UIPicker
     func hideDurPicker(){
         selectedHours = durPicker.selectedRow(inComponent: 0)
         selectedMinutes = durPicker.selectedRow(inComponent: 1)
+        startBtn.isEnabled = true
         if hours[selectedHours] == 0 && minutes[selectedMinutes] == 0 {
             durTxt.text = ""
+            startBtn.isEnabled = false
         } else if hours[selectedHours] == 0 {
             durTxt.text = "\(String(minutes[selectedMinutes])) \("minutes")"
-            startBtn.isEnabled = true
+            
         } else if minutes[selectedMinutes] == 0{
-            durTxt.text = "\(String(hours[selectedHours])) \("hours")"
-            startBtn.isEnabled = true
+            durTxt.text = "\(String(hours[selectedHours])) \((hoursLabel.text)!)"
+            
         } else {
-            durTxt.text = "\(String(hours[selectedHours])) \("hours") \(String(minutes[selectedMinutes])) \("minutes")"
-            startBtn.isEnabled = true
+            durTxt.text = "\(String(hours[selectedHours])) \((hoursLabel.text)!) \(String(minutes[selectedMinutes])) \("minutes")"
         }
         UIView.animate(withDuration: 0.2) {
             self.durPickerView.alpha = 0
-            self.durPicker.frame = CGRect(x: 0, y: self.durPickerView.bounds.height, width: self.durPicker.bounds.width, height: self.durPicker.bounds.height)
+            self.pickerContainer.frame = CGRect(x: 0, y: self.durPickerView.bounds.height, width: self.pickerContainer.bounds.width, height: self.pickerContainer.bounds.height)
         }
         
     }
@@ -112,6 +118,11 @@ class CreateRoomViewController: UIViewController, UIPickerViewDelegate, UIPicker
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
         if component == 0 {
+            if hours[durPicker.selectedRow(inComponent: 0)] == 1{
+                hoursLabel.text = "hour"
+            } else {
+                hoursLabel.text = "hours"
+            }
             return String(hours[row])
         } else {
             return String(minutes[row])
@@ -121,7 +132,21 @@ class CreateRoomViewController: UIViewController, UIPickerViewDelegate, UIPicker
     func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
         return 150
     }
-    
+  /*
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        let pickerLabel = UILabel()
+        pickerLabel.textAlignment = .natural
+        pickerLabel.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        pickerLabel.font = UIFont(name: "System", size: 20)
+        
+        if component == 0 {
+            pickerLabel.text = String(hours[row])
+        } else {
+            pickerLabel.text = String(minutes[row])
+        }
+        return pickerLabel
+    }
+    */
     /*
     func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView?) -> UIView {
         let pickerLabel = UILabel()
