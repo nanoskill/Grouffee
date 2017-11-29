@@ -13,11 +13,11 @@ import MultipeerConnectivity
 import Foundation
 import MultipeerConnectivity
 
-public protocol ConnectionModelDelegate {
-    func foundPeer()
-    func lostPeer()
-    func invitationWasReceived(fromPeer: String)
-    func connectedWithPeer(peerID: MCPeerID, state: MCSessionState)
+@objc public protocol ConnectionModelDelegate {
+    @objc optional func foundPeer(peer: MCPeerID)
+    @objc optional func lostPeer(peer: MCPeerID)
+    @objc optional func invitationWasReceived(fromPeer: String)
+    @objc optional func connectedWithPeer(peerID: MCPeerID, state: MCSessionState)
 }
 
 class ConnectionModel : NSObject
@@ -64,7 +64,8 @@ extension ConnectionModel : MCNearbyServiceAdvertiserDelegate
 {
     func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didReceiveInvitationFromPeer peerID: MCPeerID, withContext context: Data?, invitationHandler: @escaping (Bool, MCSession?) -> Void) {
         self.invitationHandler = invitationHandler
-        delegate?.invitationWasReceived(fromPeer: peerID.displayName)
+        
+        delegate?.invitationWasReceived?(fromPeer: peerID.displayName)
     }
 }
 
@@ -79,14 +80,14 @@ extension ConnectionModel : MCNearbyServiceBrowserDelegate
         }
         print("Peer lost \(peerID.displayName)")
         print(foundPeers)
-        delegate?.lostPeer()
+        delegate?.lostPeer?(peer: peerID)
     }
     func browser(_ browser: MCNearbyServiceBrowser, foundPeer peerID: MCPeerID, withDiscoveryInfo info: [String : String]?) {
         foundPeers.append(peerID)
         
         print("Peer found \(peerID.displayName)")
         print(foundPeers)
-        delegate?.foundPeer()
+        delegate?.foundPeer?(peer: peerID)
     }
 }
 
@@ -94,7 +95,7 @@ extension ConnectionModel: MCSessionDelegate
 {
     public func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState)
     {
-        delegate?.connectedWithPeer(peerID: peerID, state: state)
+        delegate?.connectedWithPeer?(peerID: peerID, state: state)
     }
     
     public func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID)
