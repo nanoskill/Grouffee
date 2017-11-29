@@ -24,7 +24,6 @@
                                 <state key="normal" title="new plan"/>
                                 <connections>
                                     <action selector="newPlanDidTap:" destination="W3Q-g1-HXp" eventType="touchUpInside" id="Y56-uT-rsC"/>
-                                    <segue destination="wFw-G5-Q2B" kind="show" id="Ep0-0v-OoM"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Of9-el-84g">
@@ -33,8 +32,6 @@
                                 <state key="normal" title="join plan"/>
                                 <connections>
                                     <action selector="joinPlanDidTap:" destination="W3Q-g1-HXp" eventType="touchUpInside" id="kyc-hW-Sjp"/>
-                                    <segue destination="XiF-bc-Ubh" kind="show" identifier="RoomListSegue" id="ysx-LU-gYe"/>
-                                    <segue destination="j7T-2S-cHM" kind="show" id="NvB-DS-45r"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Py9-BA-quO">
@@ -47,6 +44,7 @@
                     </view>
                     <connections>
                         <segue destination="Fk4-aR-hMP" kind="show" identifier="CreateRoomSegue" id="5B3-vI-Atm"/>
+                        <segue destination="XiF-bc-Ubh" kind="show" identifier="RoomListSegue" id="fC5-VI-NSm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tbj-ZB-ctC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -59,7 +57,7 @@
                 <viewControllerPlaceholder storyboardIdentifier="RoomList" storyboardName="RoomList" id="XiF-bc-Ubh" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tAw-FQ-OtB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1602" y="7"/>
+            <point key="canvasLocation" x="1522" y="57"/>
         </scene>
         <!--CreateRoom-->
         <scene sceneID="2dr-2y-Wai">
@@ -67,22 +65,7 @@
                 <viewControllerPlaceholder storyboardName="CreateRoom" id="Fk4-aR-hMP" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iBU-kv-fWY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1560" y="223"/>
-        <!--CreateRoom-->
-        <scene sceneID="LAn-oF-l1d">
-            <objects>
-                <viewControllerPlaceholder storyboardName="CreateRoom" id="wFw-G5-Q2B" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pMv-cj-wEF" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1449" y="62"/>
-        </scene>
-        <!--RoomList-->
-        <scene sceneID="XaV-NG-pzG">
-            <objects>
-                <viewControllerPlaceholder storyboardName="RoomList" id="j7T-2S-cHM" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Efr-zr-rR7" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1434" y="210"/>
+            <point key="canvasLocation" x="1537" y="133"/>
         </scene>
     </scenes>
 </document>

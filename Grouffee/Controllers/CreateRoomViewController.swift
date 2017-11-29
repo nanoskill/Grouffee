@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MultipeerConnectivity
 
 class CreateRoomViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
@@ -16,6 +17,8 @@ class CreateRoomViewController: UIViewController, UIPickerViewDelegate, UIPicker
     @IBOutlet weak var durPicker: UIPickerView!
     @IBOutlet weak var startBtn: UIButton!
     
+    @IBOutlet weak var roomNameField: UITextField!
+    
     var timer = Timer()
     
     var hours: [Int] = Array(0...23)
@@ -23,6 +26,8 @@ class CreateRoomViewController: UIViewController, UIPickerViewDelegate, UIPicker
     
     var selectedHours = 0
     var selectedMinutes = 0
+    
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +45,7 @@ class CreateRoomViewController: UIViewController, UIPickerViewDelegate, UIPicker
         
         durPicker.dataSource = self
         durPicker.delegate = self
-
+        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(openDurPicker))
         durTxt.addGestureRecognizer(tapGesture)
         
@@ -53,6 +58,22 @@ class CreateRoomViewController: UIViewController, UIPickerViewDelegate, UIPicker
         startBtn.isEnabled = false
         
         //addPickerLabel(labelString: "hours", rightX: 123, top: 100, height: 100)
+    }
+    
+    override var canBecomeFirstResponder: Bool {
+        return true
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.becomeFirstResponder()
+    }
+    
+    @IBAction func newPlanDidTap(_ sender: Any)
+    {
+        appDelegate.myPeerId = MCPeerID(displayName: roomNameField.text!)
+        appDelegate.connection = ConnectionModel(peerId: appDelegate.myPeerId)
+        appDelegate.connection?.serviceAdvertiser.startAdvertisingPeer()
+        appDelegate.connection?.delegate = self
     }
     
     @objc
@@ -162,6 +183,22 @@ class CreateRoomViewController: UIViewController, UIPickerViewDelegate, UIPicker
 //    }
     
     
+}
+
+extension CreateRoomViewController : ConnectionModelDelegate
+{
+    func invitationWasReceived(fromPeer: String)
+    {
+        let popup = UIAlertController.createAcceptDeclinePopup(title: "Join Request", message: "Invitation from \(fromPeer). Do you want to accept this invitation?", handlerAccept:
+        { (UIAlertAction) in
+            self.appDelegate.connection?.invitationHandler(true, self.appDelegate.connection?.session)
+        }, handlerDecline:
+            { (UIAlertAction) in
+                self.appDelegate.connection?.invitationHandler(true, self.appDelegate.connection?.session)
+        })
+        
+        self.present(popup, animated: true, completion: nil)
+    }
 }
 
 
