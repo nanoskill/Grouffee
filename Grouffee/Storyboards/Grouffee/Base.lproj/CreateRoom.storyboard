@@ -43,7 +43,10 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                <connections>
+                                    <action selector="validateRoomName:" destination="jX3-Ml-lKn" eventType="editingChanged" id="jzy-gH-bRS"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="duration" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yXG-yn-kV9">
                                 <rect key="frame" x="65" y="350" width="244" height="30"/>
@@ -96,6 +99,7 @@
                         <outlet property="hoursLabel" destination="aJX-oa-Hb4" id="fhl-w7-gUG"/>
                         <outlet property="minuteLabel" destination="hV6-1P-van" id="SbD-70-0CD"/>
                         <outlet property="pickerContainer" destination="YYN-jm-GEf" id="KTD-GA-hcC"/>
+                        <outlet property="roomNameTxt" destination="ds0-AO-FMy" id="S1R-cV-6JY"/>
                         <outlet property="startBtn" destination="mD0-7D-xUJ" id="3TF-RU-VLL"/>
                     </connections>
                 </viewController>

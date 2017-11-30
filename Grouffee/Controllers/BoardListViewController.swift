@@ -12,10 +12,12 @@ class BoardListViewController: UIViewController {
 
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet var progressBar: UIProgressView!
+    @IBOutlet weak var roomName: UINavigationItem!
     
     var timeRemaining = 0
     var startTime = 0
     
+    var roomNameInput: String?
     
     var timer = Timer()
     
@@ -24,7 +26,7 @@ class BoardListViewController: UIViewController {
         print(timeRemaining)
         startTime = timeRemaining
         // Do any additional setup after loading the view.
-        
+        roomName.title = roomNameInput!
         timerLabel.text = timeString(time: TimeInterval(timeRemaining))
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
         progressBar.progress = 1
@@ -48,7 +50,7 @@ class BoardListViewController: UIViewController {
         let hours = Int(time) / 3600
         let minutes = Int(time) / 60 % 60
         let seconds = Int(time) % 60
-        return String(format:"%02i:%02i:%02i", hours, minutes, seconds)
+        return String(format:"%02i : %02i : %02i", hours, minutes, seconds)
     }
 
 }
