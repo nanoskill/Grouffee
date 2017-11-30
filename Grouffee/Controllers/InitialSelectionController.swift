@@ -16,7 +16,7 @@ class InitialSelectionController: UIViewController {
         performSegue(withIdentifier: "CreateRoomSegue", sender: sender)
     }
     @IBAction func joinPlanDidTap(_ sender: Any) {
-        appDelegate.myPeerId = MCPeerID(displayName: appDelegate.displayName)
+        appDelegate.myPeerId = MCPeerID(displayName: appDelegate.user.name)
         appDelegate.connection = ConnectionModel(peerId: appDelegate.myPeerId)
         appDelegate.connection?.serviceBrowser.startBrowsingForPeers()
         performSegue(withIdentifier: "RoomListSegue", sender: sender)

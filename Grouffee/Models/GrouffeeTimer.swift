@@ -17,14 +17,36 @@ import Foundation
 class GrouffeeTimer {
     var timeRemaining : Int
     var initTime : Int
-    
     var delegate : GrouffeeTimerDelegate?
     
     var timer = Timer()
     
+    
+    /**
+     Create a timer that will count down
+     */
     init(hour: Int, minute: Int, second: Int) {
         initTime = hour * 60 * 60 + minute * 60 + second
         timeRemaining = initTime
+    }
+    
+    /**
+     Create a stopwatch that will count up
+     */
+    init()
+    {
+        initTime = 0
+        timeRemaining = 0
+    }
+    
+    enum GTType {
+        case timer
+        case stopwatch
+    }
+    
+    func getType() -> GTType
+    {
+        return (initTime == 0 ? GTType.stopwatch : GTType.timer)
     }
     
     func startTimer()
@@ -45,9 +67,9 @@ class GrouffeeTimer {
     
     @objc func timerDidTick()
     {
-        timeRemaining -= 1
+        timeRemaining += (initTime == 0 ? 1 : -1)
         delegate?.timeIsTicking!()
-        if timeRemaining == 0
+        if initTime != 0 && timeRemaining == 0
         {
             delegate?.timeIsUp!()
         }

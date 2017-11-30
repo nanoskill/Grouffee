@@ -7,14 +7,12 @@
 //
 
 import UIKit
+import Dispatch
 
 class HomeViewController: UIViewController {
 
     @IBOutlet weak var nameField : UITextField!
-    @IBAction func startBtn()
-    {
-        
-    }
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.becomeFirstResponder()
@@ -24,12 +22,48 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         nameField.delegate = self
         
+        
+        checkNow()
         // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func checkNow()
+    {
+        if UIAccessibilityIsGuidedAccessEnabled() == false
+        {
+            /*
+            let rect = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+            let subv = UIView(frame: rect)
+            subv.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.3272447183)
+            self.view.addSubview(subv)
+            subv.becomeFirstResponder()*/
+            let popup = UIAlertController.createOkayPopup(title: "Guided Access Disabled", message: "Enabled it!", handler :
+            { (_) in
+                DispatchQueue.main.async {
+                    //subv.removeFromSuperview()
+                }
+                if UIAccessibilityIsGuidedAccessEnabled() == false
+                {
+                    self.checkNow()
+                }
+                else
+                {
+                    self.dismiss(animated: true, completion: nil)
+                }
+            })
+            DispatchQueue.main.async {
+                popup.presentExclusively(view: self)
+            }
+        }
+    }
+    
+    @IBAction func startBtn()
+    {
+        if nameField.text == ""
+        {
+            return //need optimization
+        }
+        appDelegate.user = User(name: nameField.text!)
     }
 }
 

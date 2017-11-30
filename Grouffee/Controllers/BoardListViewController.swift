@@ -53,8 +53,8 @@ extension BoardListViewController : ConnectionModelDelegate
         { (UIAlertAction) in
             self.appDelegate.connection?.invitationHandler(true, self.appDelegate.connection?.session)
         }, handlerDecline:
-            { (UIAlertAction) in
-                self.appDelegate.connection?.invitationHandler(true, self.appDelegate.connection?.session)
+        { (UIAlertAction) in
+            self.appDelegate.connection?.invitationHandler(true, self.appDelegate.connection?.session)
         })
         
         self.present(popup, animated: true, completion: nil)
