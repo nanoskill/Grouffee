@@ -11,6 +11,7 @@ import UIKit
 class HomeViewController: UIViewController {
 
     @IBOutlet weak var nameField : UITextField!
+    @IBOutlet weak var start : UIButton!
     @IBAction func startBtn()
     {
         
@@ -23,6 +24,9 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         nameField.delegate = self
+        start.layer.cornerRadius = 10
+        
+        
         
         // Do any additional setup after loading the view.
     }
@@ -38,7 +42,7 @@ extension HomeViewController : UITextFieldDelegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField.text == ""
         {
-            textField.
+//            textField
             return false
         }
         startBtn()
