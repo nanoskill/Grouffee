@@ -69,6 +69,14 @@
             </objects>
             <point key="canvasLocation" x="133.59999999999999" y="131.78410794602701"/>
         </scene>
+        <!--InitialSelection-->
+        <scene sceneID="UXr-6G-Y86">
+            <objects>
+                <viewControllerPlaceholder storyboardName="InitialSelection" id="0Y8-Up-wUt" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CdD-Lm-oCO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="690" y="133"/>
+        </scene>
     </scenes>
     <resources>
         <image name="logo" width="345" height="424"/>

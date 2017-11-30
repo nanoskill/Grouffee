@@ -17,10 +17,6 @@ class HomeViewController: UIViewController {
         
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.becomeFirstResponder()
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         nameField.delegate = self
