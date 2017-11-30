@@ -85,7 +85,7 @@
                                 </button>
                             </tableView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="eye" translatesAutoresizingMaskIntoConstraints="NO" id="C9d-Sw-t78">
-                                <rect key="frame" x="320" y="30" width="24" height="24"/>
+                                <rect key="frame" x="321" y="32" width="21" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
