@@ -44,9 +44,8 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="Py9-BA-quO">
                                 <rect key="frame" x="94" y="110" width="183" height="258"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Error message" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dDW-Ne-b3R">
-                                <rect key="frame" x="103" y="460" width="174" height="13"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Error message" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dDW-Ne-b3R">
+                                <rect key="frame" x="101" y="460" width="174" height="13"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="highlightedColor" red="0.91230600043708288" green="1" blue="0.96207294027557555" alpha="0.0" colorSpace="custom" customColorSpace="displayP3"/>
@@ -56,6 +55,7 @@
                         <constraints>
                             <constraint firstItem="DAr-MF-Z9R" firstAttribute="bottom" secondItem="Py9-BA-quO" secondAttribute="bottom" constant="322" id="2YY-uT-hzf"/>
                             <constraint firstItem="Of9-el-84g" firstAttribute="top" secondItem="mfa-un-Xg9" secondAttribute="bottom" constant="16.5" id="2lC-sX-NFh"/>
+                            <constraint firstItem="dDW-Ne-b3R" firstAttribute="centerX" secondItem="DAr-MF-Z9R" secondAttribute="centerX" id="38l-0M-rAv"/>
                             <constraint firstItem="DAr-MF-Z9R" firstAttribute="trailing" secondItem="fVF-Fu-rvk" secondAttribute="trailing" constant="55" id="7O0-1A-6hp"/>
                             <constraint firstItem="mfa-un-Xg9" firstAttribute="leading" secondItem="DAr-MF-Z9R" secondAttribute="leading" constant="56.5" id="9x9-Ny-DCG"/>
                             <constraint firstItem="DAr-MF-Z9R" firstAttribute="trailing" secondItem="Of9-el-84g" secondAttribute="trailing" constant="56" id="C19-pF-QMA"/>
@@ -65,6 +65,7 @@
                             <constraint firstItem="Of9-el-84g" firstAttribute="leading" secondItem="DAr-MF-Z9R" secondAttribute="leading" constant="56.5" id="Wc0-tj-hVs"/>
                             <constraint firstItem="fVF-Fu-rvk" firstAttribute="leading" secondItem="DAr-MF-Z9R" secondAttribute="leading" constant="57" id="aDO-RQ-4OO"/>
                             <constraint firstItem="DAr-MF-Z9R" firstAttribute="trailing" secondItem="Py9-BA-quO" secondAttribute="trailing" constant="98" id="bhn-bi-vnc"/>
+                            <constraint firstItem="dDW-Ne-b3R" firstAttribute="top" secondItem="fVF-Fu-rvk" secondAttribute="bottom" constant="8.5" id="iUB-qn-pYX"/>
                             <constraint firstItem="Py9-BA-quO" firstAttribute="top" secondItem="DAr-MF-Z9R" secondAttribute="top" constant="90" id="koM-o1-O8m"/>
                             <constraint firstItem="DAr-MF-Z9R" firstAttribute="bottom" secondItem="Of9-el-84g" secondAttribute="bottom" constant="48" id="w7f-Gp-M8h"/>
                         </constraints>
