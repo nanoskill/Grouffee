@@ -8,6 +8,7 @@
 
 import UIKit
 import Dispatch
+import UserNotifications
 
 class HomeViewController: UIViewController {
 
@@ -22,26 +23,28 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         nameField.delegate = self
         
-        
-        checkNow()
+        UNUserNotificationCenter.current().getNotificationSettings { (set) in
+            if set.authorizationStatus == .denied
+            {
+                let popup = UIAlertController.createOkayPopup(title: "Notification display", message: "We strongly recommend you to give us permission to display notifications in your notification center", handler: {(_) in self.checkNow()})
+                DispatchQueue.main.async {
+                    popup.presentExclusively(view: self)
+                }
+            }
+            else
+            {
+                self.checkNow()
+            }
+        }
         // Do any additional setup after loading the view.
     }
     
-    func checkNow()
+    @objc func checkNow()
     {
         if UIAccessibilityIsGuidedAccessEnabled() == false
         {
-            /*
-            let rect = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
-            let subv = UIView(frame: rect)
-            subv.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.3272447183)
-            self.view.addSubview(subv)
-            subv.becomeFirstResponder()*/
             let popup = UIAlertController.createOkayPopup(title: "Guided Access Disabled", message: "Enabled it!", handler :
             { (_) in
-                DispatchQueue.main.async {
-                    //subv.removeFromSuperview()
-                }
                 if UIAccessibilityIsGuidedAccessEnabled() == false
                 {
                     self.checkNow()
@@ -76,5 +79,30 @@ extension HomeViewController : UITextFieldDelegate
         }
         startBtn()
         return true
+    }
+}
+
+extension HomeViewController : UIGuidedAccessRestrictionDelegate
+{
+    var guidedAccessRestrictionIdentifiers: [String]? {
+        var a = [String]()
+        a.append("Ini")
+        a.append("Itu")
+        return a
+    }
+    
+    func textForGuidedAccessRestriction(withIdentifier restrictionIdentifier: String) -> String? {
+        for it in guidedAccessRestrictionIdentifiers! {
+            if it == restrictionIdentifier
+            {
+                return "text \(it)"
+            }
+        }
+        return ""
+    }
+    
+    func guidedAccessRestriction(withIdentifier restrictionIdentifier: String, didChange newRestrictionState: UIGuidedAccessRestrictionState)
+    {
+        print(restrictionIdentifier + " changed")
     }
 }
