@@ -6,16 +6,28 @@
 //  Copyright © 2017 Communication iOS Foundation Batch 4. All rights reserved.
 //
 
-import Foundation
+import UIKit
+import UserNotifications
 
 class Room
 {
+    var name : String
     var boards = [Board]()
+    var leader : User
     var connectedMembers = [User]()
     var timer : GrouffeeTimer?
+    
+    init(name : String, leader : User) {
+        self.name = name
+        self.leader = leader
+    }
+    
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     func assignTimer(timer: GrouffeeTimer)
     {
         self.timer = timer
     }
+    
+    
 }

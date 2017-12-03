@@ -10,16 +10,16 @@ import Foundation
 
 class Board {
     var members = [User]()
-    var leader : User
-    var name : String
-    var timer : Timer?
+    var title : String
+    var desc : String
+    var timer : GrouffeeTimer?
     
-    init(name: String, leader: User) {
-        self.name = name
-        self.leader = leader
+    init(title: String, desc : String) {
+        self.title = title
+        self.desc = desc
     }
     
-    func assignTimer(timer: Timer)
+    func assignTimer(timer: GrouffeeTimer)
     {
         self.timer = timer
     }
