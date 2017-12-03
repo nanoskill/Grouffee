@@ -32,7 +32,7 @@
                                     <color key="titleShadowColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="startBtn" destination="BYZ-38-t0r" eventType="touchUpInside" id="vhQ-xe-m3v"/>
+                                    <action selector="startBtn" destination="BYZ-38-t0r" eventType="touchUpInside" id="5AM-vr-aSj"/>
                                     <segue destination="0Y8-Up-wUt" kind="show" id="3sM-e7-3wb"/>
                                 </connections>
                             </button>

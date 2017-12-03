@@ -12,8 +12,11 @@ class User {
     var name : String
     var timer : GrouffeeTimer?
     
-    init(name: String) {
+    init(name: String)
+    {
         self.name = name
+        self.timer = GrouffeeTimer()
+        //NotificationCenter.default.addObserver(self, selector: #selector(self.saveTimer(notif:)), name: nil, object: nil)
     }
     
     func assignTimer(timer: GrouffeeTimer)

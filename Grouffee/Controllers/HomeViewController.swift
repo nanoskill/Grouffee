@@ -19,11 +19,13 @@ class HomeViewController: UIViewController {
         self.becomeFirstResponder()
     }
     
+    let user = User(name: "Ravian")
     override func viewDidLoad() {
         super.viewDidLoad()
         nameField.delegate = self
-        
-        UNUserNotificationCenter.current().getNotificationSettings { (set) in
+        /*
+        UNUserNotificationCenter.current().getNotificationSettings
+        { (set) in
             if set.authorizationStatus == .denied
             {
                 let popup = UIAlertController.createOkayPopup(title: "Notification display", message: "We strongly recommend you to give us permission to display notifications in your notification center", handler: {(_) in self.checkNow()})
@@ -36,7 +38,14 @@ class HomeViewController: UIViewController {
                 self.checkNow()
             }
         }
-        // Do any additional setup after loading the view.
+        */
+        NotificationCenter.default.addObserver(self, selector: #selector(user.timer.restoreTimer), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
+        user.timer.snapTimer()
+      //  NotificationCenter.default.addObserver(self, selector: #selector(user.timer.snapTimer), name: NSNotification.Name.UIApplicationWillResignActive, object: nil)
+    }
+    
+    @objc func restoreTimer() {
+        print("Resign Active")
     }
     
     @objc func checkNow()
@@ -62,6 +71,8 @@ class HomeViewController: UIViewController {
     
     @IBAction func startBtn()
     {
+        
+        user.timer.restoreTimer()
         if nameField.text == ""
         {
             return //need optimization

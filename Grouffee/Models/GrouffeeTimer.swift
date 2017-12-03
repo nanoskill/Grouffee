@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import NotificationCenter
 
 @objc public protocol GrouffeeTimerDelegate
 {
@@ -20,6 +21,8 @@ class GrouffeeTimer {
     var delegate : GrouffeeTimerDelegate?
     
     var timer = Timer()
+    
+    var savedTime = Date()
     
     
     /**
@@ -37,6 +40,7 @@ class GrouffeeTimer {
     {
         initTime = 0
         timeRemaining = 0
+        print("Timer invoked")
     }
     
     enum GTType {
@@ -93,5 +97,19 @@ class GrouffeeTimer {
     func getTime() -> (hour:Int, minute:Int, second:Int)
     {
         return (getHour(), getMinute(), getSecond())
+    }
+    
+    @objc func snapTimer()
+    {
+        savedTime = Date.init()
+    }
+    
+    @objc func restoreTimer()
+    {
+        print(Date().timeIntervalSince(savedTime))
+        var diff = Int(Date().timeIntervalSince(savedTime))
+        diff *= (initTime == 0 ? 1 : -1)
+        timeRemaining += diff
+        if timeRemaining < 0 {delegate?.timeIsUp! ()}
     }
 }
