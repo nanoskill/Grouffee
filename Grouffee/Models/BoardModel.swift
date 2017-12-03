@@ -13,6 +13,7 @@ class Board {
     var title : String
     var desc : String
     var timer : GrouffeeTimer?
+    var goals = [(String, Bool)]()
     
     init(title: String, desc : String) {
         self.title = title

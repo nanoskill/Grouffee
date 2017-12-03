@@ -8,9 +8,16 @@
 
 import Foundation
 
+enum UserStatus
+{
+    case idle
+    case working
+}
+
 class User {
     var name : String
     var timer : GrouffeeTimer?
+    var status = UserStatus.idle
     
     init(name: String)
     {
