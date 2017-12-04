@@ -1,14 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Nk3-WV-GfW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13770" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Nk3-WV-GfW">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13770"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Lato-Black.ttf">
+            <string>Lato-Black</string>
+        </array>
+        <array key="Lato-Regular.ttf">
+            <string>Lato-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Board List View Controller-->
         <scene sceneID="75x-dD-PNE">
@@ -18,18 +27,100 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wdv-6l-TWa">
-                                <rect key="frame" x="33" y="33" width="308" height="77"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="60"/>
-                                <nil key="textColor"/>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TKk-wi-sV2">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <items>
+                                    <navigationItem title="Room Name" id="b6h-V5-cmW">
+                                        <barButtonItem key="rightBarButtonItem" title="2" id="nXf-r6-8yh">
+                                            <color key="tintColor" red="0.45022886989999999" green="0.75266075129999999" blue="0.76471978429999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="07 : 00 : 00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wdv-6l-TWa">
+                                <rect key="frame" x="33" y="73" width="309" height="77"/>
+                                <fontDescription key="fontDescription" name="Lato-Black" family="Lato" pointSize="51"/>
+                                <color key="textColor" red="0.84478455779999995" green="0.52694404130000005" blue="0.45091509819999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="49T-fB-itX">
+                                <rect key="frame" x="41" y="168.5" width="293" height="2.5"/>
+                                <color key="progressTintColor" red="0.84478455781936646" green="0.52694404125213623" blue="0.45091509819030762" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="trackTintColor" red="0.45405429601669312" green="0.75666767358779907" blue="0.76471894979476929" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </progressView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="minutes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Ee-1Z-KMi">
+                                <rect key="frame" x="159" y="134" width="60" height="21"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
+                                <color key="textColor" red="0.84478455779999995" green="0.52694404130000005" blue="0.45091509819999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="second" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GZa-hL-D8r">
+                                <rect key="frame" x="264" y="134" width="53" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="53" id="d5C-Gn-ETp"/>
+                                    <constraint firstAttribute="width" constant="53" id="tXm-ut-aJ0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
+                                <color key="textColor" red="0.84478455779999995" green="0.52694404130000005" blue="0.45091509819999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="hours" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lby-ck-TCW">
+                                <rect key="frame" x="71" y="134" width="38" height="21"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
+                                <color key="textColor" red="0.84478455779999995" green="0.52694404130000005" blue="0.45091509819999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="E56-o7-THn">
+                                <rect key="frame" x="16" y="211" width="343" height="399"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="nCT-X7-bUY">
+                                    <rect key="frame" x="0.0" y="0.0" width="343" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
+                                    <state key="normal" title="Add new board">
+                                        <color key="titleColor" red="0.84478455779999995" green="0.52694404130000005" blue="0.45091509819999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </state>
+                                </button>
+                            </tableView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="eye" translatesAutoresizingMaskIntoConstraints="NO" id="C9d-Sw-t78">
+                                <rect key="frame" x="320" y="30" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="24" id="GWx-cJ-H4i"/>
+                                    <constraint firstAttribute="height" constant="24" id="Tlm-BV-fvD"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="TKk-wi-sV2" firstAttribute="trailing" secondItem="iq4-6K-nOp" secondAttribute="trailing" id="0X0-Al-IyI"/>
+                            <constraint firstItem="Lby-ck-TCW" firstAttribute="top" secondItem="iq4-6K-nOp" secondAttribute="top" constant="114" id="2FN-PM-lwR"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="49T-fB-itX" secondAttribute="trailing" constant="25" id="3sE-j8-0iA"/>
+                            <constraint firstItem="E56-o7-THn" firstAttribute="centerX" secondItem="iq4-6K-nOp" secondAttribute="centerX" id="4b8-YU-cGR"/>
+                            <constraint firstItem="iq4-6K-nOp" firstAttribute="bottom" secondItem="E56-o7-THn" secondAttribute="bottom" constant="13" id="5FY-jo-qhB"/>
+                            <constraint firstItem="49T-fB-itX" firstAttribute="top" secondItem="iq4-6K-nOp" secondAttribute="top" constant="148.5" id="8Z5-3S-qsW"/>
+                            <constraint firstItem="iq4-6K-nOp" firstAttribute="trailing" secondItem="C9d-Sw-t78" secondAttribute="trailing" constant="31" id="9gu-yC-xSb"/>
+                            <constraint firstItem="E56-o7-THn" firstAttribute="leading" secondItem="iq4-6K-nOp" secondAttribute="leading" constant="16" id="DBP-fh-B4F"/>
+                            <constraint firstItem="TKk-wi-sV2" firstAttribute="leading" secondItem="iq4-6K-nOp" secondAttribute="leading" id="Hkv-HN-ZJd"/>
+                            <constraint firstItem="6Ee-1Z-KMi" firstAttribute="leading" secondItem="Lby-ck-TCW" secondAttribute="trailing" constant="50" id="Ifu-DV-TcF"/>
+                            <constraint firstItem="6Ee-1Z-KMi" firstAttribute="centerX" secondItem="iq4-6K-nOp" secondAttribute="centerX" id="RyO-OS-POZ"/>
+                            <constraint firstItem="E56-o7-THn" firstAttribute="top" secondItem="iq4-6K-nOp" secondAttribute="top" constant="191" id="VNG-Wk-HJy"/>
+                            <constraint firstItem="wdv-6l-TWa" firstAttribute="centerX" secondItem="iq4-6K-nOp" secondAttribute="centerX" id="ax3-fJ-83y"/>
+                            <constraint firstItem="C9d-Sw-t78" firstAttribute="top" secondItem="iq4-6K-nOp" secondAttribute="top" constant="10" id="eUG-SJ-w4l"/>
+                            <constraint firstItem="TKk-wi-sV2" firstAttribute="top" secondItem="iq4-6K-nOp" secondAttribute="top" id="fjD-tP-9xq"/>
+                            <constraint firstItem="iq4-6K-nOp" firstAttribute="trailing" secondItem="E56-o7-THn" secondAttribute="trailing" constant="16" id="jc7-zj-wcA"/>
+                            <constraint firstItem="wdv-6l-TWa" firstAttribute="top" secondItem="iq4-6K-nOp" secondAttribute="top" constant="53" id="jyO-9T-fvp"/>
+                            <constraint firstItem="GZa-hL-D8r" firstAttribute="top" secondItem="iq4-6K-nOp" secondAttribute="top" constant="114" id="lCK-p6-WYr"/>
+                            <constraint firstItem="GZa-hL-D8r" firstAttribute="leading" secondItem="6Ee-1Z-KMi" secondAttribute="trailing" constant="42" id="qSX-5P-HXD"/>
+                            <constraint firstItem="6Ee-1Z-KMi" firstAttribute="top" secondItem="iq4-6K-nOp" secondAttribute="top" constant="114" id="tdo-6G-xow"/>
+                            <constraint firstItem="49T-fB-itX" firstAttribute="leading" secondItem="Qvg-L2-N2G" secondAttribute="leadingMargin" constant="25" id="vSZ-id-2r3"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="iq4-6K-nOp"/>
                     </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="progressBar" destination="49T-fB-itX" id="nE7-V7-G7V"/>
+                        <outlet property="roomName" destination="b6h-V5-cmW" id="W96-6I-lvK"/>
                         <outlet property="timerLabel" destination="wdv-6l-TWa" id="mkr-zM-KXE"/>
                     </connections>
                 </viewController>
@@ -38,4 +129,7 @@
             <point key="canvasLocation" x="106.40000000000001" y="71.514242878560722"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="eye" width="3600" height="3600"/>
+    </resources>
 </document>

@@ -14,6 +14,11 @@ class HomeViewController: UIViewController {
 
     @IBOutlet weak var nameField : UITextField!
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    @IBOutlet weak var start : UIButton!
+    @IBAction func startBtn()
+    {
+        
+    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.becomeFirstResponder()
@@ -23,6 +28,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         nameField.delegate = self
+        start.layer.cornerRadius = 10
         /*
         UNUserNotificationCenter.current().getNotificationSettings
         { (set) in
@@ -86,6 +92,7 @@ extension HomeViewController : UITextFieldDelegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField.text == ""
         {
+//            textField
             return false
         }
         startBtn()

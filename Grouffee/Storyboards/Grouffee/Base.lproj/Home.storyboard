@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13770" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13770"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,13 +18,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="your name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wHu-OW-TeX">
-                                <rect key="frame" x="128" y="318" width="119" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="people" translatesAutoresizingMaskIntoConstraints="NO" id="CVS-wN-N6q">
+                                <rect key="frame" x="40" y="447" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="4Le-s3-JbY"/>
+                                    <constraint firstAttribute="height" constant="40" id="jgs-ib-T8U"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FiG-hX-J5E">
+                                <rect key="frame" x="40" y="517" width="295" height="40"/>
+                                <color key="backgroundColor" red="0.45109817385673523" green="0.75678539276123047" blue="0.7647550106048584" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <state key="normal" title="start your project">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="your name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wHu-OW-TeX">
+                                <rect key="frame" x="88" y="457" width="247" height="30"/>
                                 <color key="textColor" red="0.99418604649999998" green="0.98837209299999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+<<<<<<< HEAD
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GP9-vJ-hAB">
                                 <rect key="frame" x="144" y="382" width="87" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -39,18 +54,37 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dWC-ks-4TI">
                                 <rect key="frame" x="80" y="61" width="214" height="193"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+=======
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="UvE-Sb-1uw">
+                                <rect key="frame" x="86" y="109" width="202" height="269"/>
+>>>>>>> DesignByWennie
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="FiG-hX-J5E" secondAttribute="bottom" constant="110" id="7t3-1E-SO7"/>
+                            <constraint firstItem="FiG-hX-J5E" firstAttribute="top" secondItem="CVS-wN-N6q" secondAttribute="bottom" constant="30" id="Fdh-xT-rBf"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="FiG-hX-J5E" secondAttribute="trailing" constant="40" id="Fv1-ca-f2H"/>
+                            <constraint firstItem="wHu-OW-TeX" firstAttribute="leading" secondItem="CVS-wN-N6q" secondAttribute="trailing" constant="8" id="KZH-H3-s4W"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wHu-OW-TeX" secondAttribute="trailing" constant="40" id="SPU-SO-G1Q"/>
+                            <constraint firstItem="UvE-Sb-1uw" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="89" id="Uxn-hb-anz"/>
+                            <constraint firstItem="CVS-wN-N6q" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="aal-b8-sne"/>
+                            <constraint firstItem="FiG-hX-J5E" firstAttribute="top" secondItem="wHu-OW-TeX" secondAttribute="bottom" constant="30" id="guE-NQ-PK4"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="UvE-Sb-1uw" secondAttribute="trailing" constant="87" id="nmp-7i-QxH"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="UvE-Sb-1uw" secondAttribute="bottom" constant="289" id="ujS-e7-gPS"/>
+                            <constraint firstItem="FiG-hX-J5E" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="xXo-Tn-tEy"/>
+                            <constraint firstItem="UvE-Sb-1uw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="86" id="ytI-tl-nyb"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="nameField" destination="wHu-OW-TeX" id="IT2-He-MZJ"/>
+                        <outlet property="start" destination="FiG-hX-J5E" id="hUN-ml-4OF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
+            <point key="canvasLocation" x="133.59999999999999" y="131.78410794602701"/>
         </scene>
         <!--InitialSelection-->
         <scene sceneID="UXr-6G-Y86">
@@ -61,4 +95,8 @@
             <point key="canvasLocation" x="690" y="133"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="logo" width="345" height="424"/>
+        <image name="people" width="565" height="568"/>
+    </resources>
 </document>
