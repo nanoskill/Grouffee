@@ -10,18 +10,19 @@ import UIKit
 
 class MyTimer {
     var timeRemaining: Int?
-    
-    init(time: Int) {
-        timeRemaining = time
-    }
+   // var startTime: Int?
     
     @objc
-    func updateTimer(timerLabel: UILabel) {
+    func updateTimer(timerLabel: UILabel!, progress: UIProgressView!) {
+        //print(timeRemaining)
+        let startTime = timeRemaining
+        
         timeRemaining! -= 1     //This will decrement(count down)the seconds.
         timerLabel.text = timeString(time: TimeInterval(timeRemaining!)) //This will update the label.
+        progress.progress = Float(timeRemaining!) / Float(startTime!)
     }
     
-    func timeString(time:TimeInterval) -> String {
+    func timeString(time: TimeInterval) -> String {
         let hours = Int(time) / 3600
         let minutes = Int(time) / 60 % 60
         let seconds = Int(time) % 60
