@@ -27,14 +27,6 @@
                                     <segue destination="4Cj-uH-icO" kind="show" identifier="createNewPlan" id="mY5-bd-Tda"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8dU-PN-pIU">
-                                <rect key="frame" x="170" y="567" width="34" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="back"/>
-                                <connections>
-                                    <segue destination="t2G-j8-k2Z" kind="show" id="PHX-Ra-p9a"/>
-                                </connections>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tS6-Qq-kyY">
                                 <rect key="frame" x="94" y="76" width="187" height="166"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -115,14 +107,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Off-3z-Jzj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2188" y="112"/>
-        </scene>
-        <!--InitialSelection-->
-        <scene sceneID="NWI-iC-A6h">
-            <objects>
-                <viewControllerPlaceholder storyboardName="InitialSelection" id="t2G-j8-k2Z" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mEP-ue-x0Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2214" y="158"/>
         </scene>
     </scenes>
 </document>

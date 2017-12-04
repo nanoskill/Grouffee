@@ -1,52 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13770" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="W3Q-g1-HXp">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13770"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Initial Selection Controller-->
+        <!--Initial Selection View Controller-->
         <scene sceneID="BAY-Q9-2KP">
             <objects>
-                <viewController id="W3Q-g1-HXp" customClass="InitialSelectionController" customModule="Grouffee" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InitialSelection" id="W3Q-g1-HXp" customClass="InitialSelectionViewController" customModule="Grouffee" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pCP-9c-pc3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mfa-un-Xg9">
-                                <rect key="frame" x="156" y="394" width="62" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="new plan"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mfa-un-Xg9">
+                                <rect key="frame" x="57" y="493" width="263" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="hWo-QT-sjT"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="new-room-button"/>
                                 <connections>
                                     <action selector="newPlanDidTap:" destination="W3Q-g1-HXp" eventType="touchUpInside" id="Y56-uT-rsC"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Of9-el-84g">
-                                <rect key="frame" x="57" y="564" width="263" height="55"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Of9-el-84g">
+                                <rect key="frame" x="57" y="564" width="262" height="55"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="5hi-Zk-UzH"/>
                                 </constraints>
                                 <state key="normal" backgroundImage="join-room-button"/>
+                                <connections>
+                                    <action selector="joinPlanDidTap:" destination="W3Q-g1-HXp" eventType="touchUpInside" id="Gdt-9Z-p9V"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fVF-Fu-rvk">
-                                <rect key="frame" x="57" y="421.5" width="263" height="30"/>
+                                <rect key="frame" x="57" y="372" width="263" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="joinPlanDidTap:" destination="W3Q-g1-HXp" eventType="touchUpInside" id="kyc-hW-Sjp"/>
-                                </connections>
                             </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="Py9-BA-quO">
-                                <rect key="frame" x="94" y="110" width="183" height="258"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="Py9-BA-quO">
+                                <rect key="frame" x="94" y="110" width="183" height="235"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Error message" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dDW-Ne-b3R">
-                                <rect key="frame" x="101" y="460" width="174" height="13"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error message" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dDW-Ne-b3R">
+                                <rect key="frame" x="57" y="410" width="262" height="26"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="26" id="VNb-pf-heT"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="highlightedColor" red="0.91230600043708288" green="1" blue="0.96207294027557555" alpha="0.0" colorSpace="custom" customColorSpace="displayP3"/>
@@ -60,8 +65,8 @@
                             <constraint firstItem="DAr-MF-Z9R" firstAttribute="trailing" secondItem="fVF-Fu-rvk" secondAttribute="trailing" constant="55" id="7O0-1A-6hp"/>
                             <constraint firstItem="mfa-un-Xg9" firstAttribute="leading" secondItem="DAr-MF-Z9R" secondAttribute="leading" constant="56.5" id="9x9-Ny-DCG"/>
                             <constraint firstItem="DAr-MF-Z9R" firstAttribute="trailing" secondItem="Of9-el-84g" secondAttribute="trailing" constant="56" id="C19-pF-QMA"/>
-                            <constraint firstItem="mfa-un-Xg9" firstAttribute="top" secondItem="fVF-Fu-rvk" secondAttribute="bottom" constant="43" id="MSZ-EQ-3f8"/>
                             <constraint firstItem="Py9-BA-quO" firstAttribute="leading" secondItem="DAr-MF-Z9R" secondAttribute="leading" constant="94" id="NfR-2e-cGD"/>
+                            <constraint firstItem="fVF-Fu-rvk" firstAttribute="top" secondItem="Py9-BA-quO" secondAttribute="bottom" constant="27" id="Oj1-RV-x6j"/>
                             <constraint firstItem="DAr-MF-Z9R" firstAttribute="trailing" secondItem="mfa-un-Xg9" secondAttribute="trailing" constant="55" id="Ppt-aG-u41"/>
                             <constraint firstItem="Of9-el-84g" firstAttribute="leading" secondItem="DAr-MF-Z9R" secondAttribute="leading" constant="56.5" id="Wc0-tj-hVs"/>
                             <constraint firstItem="fVF-Fu-rvk" firstAttribute="leading" secondItem="DAr-MF-Z9R" secondAttribute="leading" constant="57" id="aDO-RQ-4OO"/>
@@ -69,15 +74,16 @@
                             <constraint firstItem="dDW-Ne-b3R" firstAttribute="top" secondItem="fVF-Fu-rvk" secondAttribute="bottom" constant="8.5" id="iUB-qn-pYX"/>
                             <constraint firstItem="Py9-BA-quO" firstAttribute="top" secondItem="DAr-MF-Z9R" secondAttribute="top" constant="90" id="koM-o1-O8m"/>
                             <constraint firstItem="DAr-MF-Z9R" firstAttribute="bottom" secondItem="Of9-el-84g" secondAttribute="bottom" constant="48" id="w7f-Gp-M8h"/>
+                            <constraint firstItem="fVF-Fu-rvk" firstAttribute="leading" secondItem="dDW-Ne-b3R" secondAttribute="leading" id="xQQ-IQ-cua"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="DAr-MF-Z9R"/>
                     </view>
                     <connections>
+                        <outlet property="errorMessage" destination="dDW-Ne-b3R" id="DIU-lk-JNJ"/>
+                        <outlet property="nameTxt" destination="fVF-Fu-rvk" id="412-ea-eyE"/>
+                        <outlet property="newPlanBtn" destination="mfa-un-Xg9" id="SyZ-CI-dsw"/>
                         <segue destination="Fk4-aR-hMP" kind="show" identifier="CreateRoomSegue" id="5B3-vI-Atm"/>
                         <segue destination="XiF-bc-Ubh" kind="show" identifier="RoomListSegue" id="fC5-VI-NSm"/>
-                        <outlet property="errorMessage" destination="dDW-Ne-b3R" id="DIU-lk-JNJ"/>
-                        <outlet property="newPlanBtn" destination="mfa-un-Xg9" id="vOs-g5-Qu2"/>
-                        <outlet property="view" destination="fVF-Fu-rvk" id="kfN-2w-xSh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tbj-ZB-ctC" userLabel="First Responder" sceneMemberID="firstResponder"/>

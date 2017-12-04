@@ -15,16 +15,13 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var nameField : UITextField!
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     @IBOutlet weak var start : UIButton!
-    @IBAction func startBtn()
-    {
-        
-    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.becomeFirstResponder()
     }
     
     let user = User(name: "Ravian")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         nameField.delegate = self
@@ -46,7 +43,6 @@ class HomeViewController: UIViewController {
         }
         */
         NotificationCenter.default.addObserver(self, selector: #selector(user.timer.restoreTimer), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
-        user.timer.snapTimer()
       //  NotificationCenter.default.addObserver(self, selector: #selector(user.timer.snapTimer), name: NSNotification.Name.UIApplicationWillResignActive, object: nil)
     }
     
@@ -77,12 +73,11 @@ class HomeViewController: UIViewController {
     
     @IBAction func startBtn()
     {
-        
-        user.timer.restoreTimer()
         if nameField.text == ""
         {
             return //need optimization
         }
+        performSegue(withIdentifier: "InitialSelectionSegue", sender: nil)
         appDelegate.user = User(name: nameField.text!)
     }
 }
@@ -97,30 +92,5 @@ extension HomeViewController : UITextFieldDelegate
         }
         startBtn()
         return true
-    }
-}
-
-extension HomeViewController : UIGuidedAccessRestrictionDelegate
-{
-    var guidedAccessRestrictionIdentifiers: [String]? {
-        var a = [String]()
-        a.append("Ini")
-        a.append("Itu")
-        return a
-    }
-    
-    func textForGuidedAccessRestriction(withIdentifier restrictionIdentifier: String) -> String? {
-        for it in guidedAccessRestrictionIdentifiers! {
-            if it == restrictionIdentifier
-            {
-                return "text \(it)"
-            }
-        }
-        return ""
-    }
-    
-    func guidedAccessRestriction(withIdentifier restrictionIdentifier: String, didChange newRestrictionState: UIGuidedAccessRestrictionState)
-    {
-        print(restrictionIdentifier + " changed")
     }
 }

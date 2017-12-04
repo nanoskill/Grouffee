@@ -50,17 +50,9 @@ class CreateRoomViewController: UIViewController, UIPickerViewDelegate, UIPicker
         startBtn.isEnabled = false
     }
     
-    override var canBecomeFirstResponder: Bool {
-        return true
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.becomeFirstResponder()
-    }
-    
     @IBAction func newPlanDidTap(_ sender: Any)
     {
-        appDelegate.myPeerId = MCPeerID(displayName: roomNameField.text!)
+        appDelegate.myPeerId = MCPeerID(displayName: roomNameTxt.text!)
         appDelegate.connection = ConnectionModel(peerId: appDelegate.myPeerId)
         appDelegate.connection?.serviceAdvertiser.startAdvertisingPeer()
     }

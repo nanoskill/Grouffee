@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import MultipeerConnectivity
 
 class InitialSelectionViewController: UIViewController {
     
     @IBOutlet weak var nameTxt: UITextField!
     @IBOutlet weak var newPlanBtn: UIButton!
     @IBOutlet weak var errorMessage: UILabel!
+    
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,22 +25,46 @@ class InitialSelectionViewController: UIViewController {
         errorMessage.text = ""
         nameTxt.delegate = self
     }
+    
+    @IBAction func newPlanDidTap(_ sender: Any) {
+        if validateName()
+        {
+            performSegue(withIdentifier: "CreateRoomSegue", sender: sender)
+        }
+    }
+    @IBAction func joinPlanDidTap(_ sender: Any) {
+        if validateName()
+        {
+            appDelegate.myPeerId = MCPeerID(displayName: appDelegate.user.name)
+            appDelegate.connection = ConnectionModel(peerId: appDelegate.myPeerId)
+            appDelegate.connection?.serviceBrowser.startBrowsingForPeers()
+            performSegue(withIdentifier: "RoomListSegue", sender: sender)
+        }
+    }
 
-    @IBAction func vaidateName(_ sender: Any) {
-        if nameTxt.text != ""{
-            do {
+    func validateName() -> Bool {
+        if nameTxt.text != ""
+        {
+            do
+            {
                 let regex = try NSRegularExpression(pattern: ".*[^A-Za-z ].*", options: [])
-                if regex.firstMatch(in: nameTxt.text!, options: [], range: NSMakeRange(0, (nameTxt.text?.count)!)) != nil{
+                if regex.firstMatch(in: nameTxt.text!, options: [], range: NSMakeRange(0, (nameTxt.text?.count)!)) != nil
+                {
                     errorMessage.text = "Name must be alphabet only"
                     newPlanBtn.isEnabled = false
-                } else {
+                    return false
+                }
+                else
+                {
                     errorMessage.text = ""
                     newPlanBtn.isEnabled = true
+                    return true
                 }
             } catch {
                 
             }
         }
+        return false
     }
     override var canBecomeFirstResponder: Bool{
         return true

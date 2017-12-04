@@ -16,7 +16,7 @@ enum UserStatus
 
 class User {
     var name : String
-    var timer : GrouffeeTimer?
+    var timer : GrouffeeTimer
     var status = UserStatus.idle
     
     init(name: String)
