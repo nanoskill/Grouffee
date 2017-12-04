@@ -48,6 +48,8 @@ class CreateRoomViewController: UIViewController, UIPickerViewDelegate, UIPicker
         
         durPickerView.alpha = 0.0
         startBtn.isEnabled = false
+        
+        addKeyboardViewAdjustment()
     }
     
     @IBAction func newPlanDidTap(_ sender: Any)
@@ -71,9 +73,10 @@ class CreateRoomViewController: UIViewController, UIPickerViewDelegate, UIPicker
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "createNewPlan" {
-            let dest = segue.destination as! BoardListViewController
+            let dest = segue.destination.childViewControllers[0] as! BoardListViewController
             dest.timeRemaining = (selectedHours * 3600) + (selectedMinutes * 60)
             dest.roomNameInput = roomNameTxt.text
+            dest.viewOrigin = self
         }
     }
     

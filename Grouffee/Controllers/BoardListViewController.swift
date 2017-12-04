@@ -14,6 +14,8 @@ class BoardListViewController: UIViewController {
     @IBOutlet var progressBar: UIProgressView!
     @IBOutlet weak var roomName: UINavigationItem!
     
+    var viewOrigin : UIViewController!
+    
     var timeRemaining = 0
     var startTime = 0
     
@@ -36,6 +38,7 @@ class BoardListViewController: UIViewController {
         //timer = Timer.scheduledTimer(timeInterval: 1, target: self,   selector: (#selector(BoardListViewController.updateTimer)), userInfo: nil, repeats: true)
         
         appDelegate.connection?.delegate = self
+        //navigationController?.popToViewController(viewOrigin, animated: true)
     }
     
     @objc

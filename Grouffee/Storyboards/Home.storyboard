@@ -33,14 +33,17 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="startBtn" destination="BYZ-38-t0r" eventType="touchUpInside" id="bfx-rf-1EG"/>
+                                    <action selector="startButtonDidTap" destination="BYZ-38-t0r" eventType="touchUpInside" id="VLD-Ye-frj"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="your name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wHu-OW-TeX">
                                 <rect key="frame" x="88" y="457" width="247" height="30"/>
-                                <color key="textColor" red="0.99418604649999998" green="0.98837209299999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textFieldChanged" destination="BYZ-38-t0r" eventType="editingChanged" id="u1x-Xl-set"/>
+                                </connections>
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="UvE-Sb-1uw">
                                 <rect key="frame" x="86" y="109" width="202" height="269"/>
@@ -65,7 +68,7 @@
                     </view>
                     <connections>
                         <outlet property="nameField" destination="wHu-OW-TeX" id="IT2-He-MZJ"/>
-                        <outlet property="start" destination="FiG-hX-J5E" id="hUN-ml-4OF"/>
+                        <outlet property="startBtn" destination="FiG-hX-J5E" id="vWY-Kg-9bV"/>
                         <segue destination="00d-Of-IBm" kind="show" identifier="InitialSelectionSegue" id="eqo-rH-Fjr"/>
                     </connections>
                 </viewController>

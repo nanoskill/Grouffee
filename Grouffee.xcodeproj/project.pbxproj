@@ -110,9 +110,9 @@
 				B7B57DCF1FC815DF008B4C9D /* AppDelegate.swift */,
 				8EE487E01FCDB4C10091B825 /* MyTimer.swift */,
 				B7B57DD11FC815DF008B4C9D /* ViewController.swift */,
+				B7B57DD81FC815DF008B4C9D /* LaunchScreen.storyboard */,
 				B7B57DD31FC815DF008B4C9D /* Main.storyboard */,
 				B7B57DD61FC815DF008B4C9D /* Assets.xcassets */,
-				B7B57DD81FC815DF008B4C9D /* LaunchScreen.storyboard */,
 				B7B57DDB1FC815DF008B4C9D /* Info.plist */,
 			);
 			path = Grouffee;

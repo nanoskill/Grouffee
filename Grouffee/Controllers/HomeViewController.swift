@@ -14,7 +14,7 @@ class HomeViewController: UIViewController {
 
     @IBOutlet weak var nameField : UITextField!
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    @IBOutlet weak var start : UIButton!
+    @IBOutlet weak var startBtn : UIButton!
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.becomeFirstResponder()
@@ -25,7 +25,8 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         nameField.delegate = self
-        start.layer.cornerRadius = 10
+        startBtn.layer.cornerRadius = 10
+        startBtn.isEnabled = false
         /*
         UNUserNotificationCenter.current().getNotificationSettings
         { (set) in
@@ -42,13 +43,14 @@ class HomeViewController: UIViewController {
             }
         }
         */
-        NotificationCenter.default.addObserver(self, selector: #selector(user.timer.restoreTimer), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
+        //NotificationCenter.default.addObserver(self, selector: #selector(user.timer.restoreTimer), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
+        addKeyboardViewAdjustment()
       //  NotificationCenter.default.addObserver(self, selector: #selector(user.timer.snapTimer), name: NSNotification.Name.UIApplicationWillResignActive, object: nil)
     }
     
-    @objc func restoreTimer() {
-        print("Resign Active")
-    }
+//    @objc func restoreTimer() {
+//        print("Resign Active")
+//    }
     
     @objc func checkNow()
     {
@@ -71,26 +73,29 @@ class HomeViewController: UIViewController {
         }
     }
     
-    @IBAction func startBtn()
+    @IBAction func startButtonDidTap()
     {
-        if nameField.text == ""
-        {
-            return //need optimization
-        }
         performSegue(withIdentifier: "InitialSelectionSegue", sender: nil)
         appDelegate.user = User(name: nameField.text!)
     }
+    
+    @IBAction func textFieldChanged()
+    {
+        if nameField.text == ""
+        {
+            startBtn.isEnabled = false
+            return
+        }
+        startBtn.isEnabled = true
+    }
 }
+
+
 
 extension HomeViewController : UITextFieldDelegate
 {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField.text == ""
-        {
-//            textField
-            return false
-        }
-        startBtn()
+        startButtonDidTap()
         return true
     }
 }

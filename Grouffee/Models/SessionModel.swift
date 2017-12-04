@@ -13,5 +13,4 @@ struct GrouffeeSession
     var user : User
     var startTime : Date
     var endTime : Date?
-    
 }

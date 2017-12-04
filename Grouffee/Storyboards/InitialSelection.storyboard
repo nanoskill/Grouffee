@@ -39,16 +39,19 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fVF-Fu-rvk">
-                                <rect key="frame" x="57" y="372" width="263" height="30"/>
+                                <rect key="frame" x="57" y="372" width="263" height="45"/>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textFieldChanged" destination="W3Q-g1-HXp" eventType="editingChanged" id="OWJ-rS-1Hn"/>
+                                </connections>
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="Py9-BA-quO">
                                 <rect key="frame" x="94" y="110" width="183" height="235"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error message" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dDW-Ne-b3R">
-                                <rect key="frame" x="57" y="410" width="262" height="26"/>
+                                <rect key="frame" x="0.0" y="447" width="375" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="26" id="VNb-pf-heT"/>
                                 </constraints>
@@ -62,25 +65,27 @@
                             <constraint firstItem="DAr-MF-Z9R" firstAttribute="bottom" secondItem="Py9-BA-quO" secondAttribute="bottom" constant="322" id="2YY-uT-hzf"/>
                             <constraint firstItem="Of9-el-84g" firstAttribute="top" secondItem="mfa-un-Xg9" secondAttribute="bottom" constant="16.5" id="2lC-sX-NFh"/>
                             <constraint firstItem="dDW-Ne-b3R" firstAttribute="centerX" secondItem="DAr-MF-Z9R" secondAttribute="centerX" id="38l-0M-rAv"/>
+                            <constraint firstItem="mfa-un-Xg9" firstAttribute="top" secondItem="dDW-Ne-b3R" secondAttribute="bottom" constant="20" id="6GH-tw-kKh"/>
                             <constraint firstItem="DAr-MF-Z9R" firstAttribute="trailing" secondItem="fVF-Fu-rvk" secondAttribute="trailing" constant="55" id="7O0-1A-6hp"/>
                             <constraint firstItem="mfa-un-Xg9" firstAttribute="leading" secondItem="DAr-MF-Z9R" secondAttribute="leading" constant="56.5" id="9x9-Ny-DCG"/>
                             <constraint firstItem="DAr-MF-Z9R" firstAttribute="trailing" secondItem="Of9-el-84g" secondAttribute="trailing" constant="56" id="C19-pF-QMA"/>
+                            <constraint firstItem="dDW-Ne-b3R" firstAttribute="top" secondItem="fVF-Fu-rvk" secondAttribute="bottom" constant="30" id="HuG-ZR-XlM"/>
                             <constraint firstItem="Py9-BA-quO" firstAttribute="leading" secondItem="DAr-MF-Z9R" secondAttribute="leading" constant="94" id="NfR-2e-cGD"/>
                             <constraint firstItem="fVF-Fu-rvk" firstAttribute="top" secondItem="Py9-BA-quO" secondAttribute="bottom" constant="27" id="Oj1-RV-x6j"/>
                             <constraint firstItem="DAr-MF-Z9R" firstAttribute="trailing" secondItem="mfa-un-Xg9" secondAttribute="trailing" constant="55" id="Ppt-aG-u41"/>
                             <constraint firstItem="Of9-el-84g" firstAttribute="leading" secondItem="DAr-MF-Z9R" secondAttribute="leading" constant="56.5" id="Wc0-tj-hVs"/>
                             <constraint firstItem="fVF-Fu-rvk" firstAttribute="leading" secondItem="DAr-MF-Z9R" secondAttribute="leading" constant="57" id="aDO-RQ-4OO"/>
                             <constraint firstItem="DAr-MF-Z9R" firstAttribute="trailing" secondItem="Py9-BA-quO" secondAttribute="trailing" constant="98" id="bhn-bi-vnc"/>
-                            <constraint firstItem="dDW-Ne-b3R" firstAttribute="top" secondItem="fVF-Fu-rvk" secondAttribute="bottom" constant="8.5" id="iUB-qn-pYX"/>
+                            <constraint firstItem="dDW-Ne-b3R" firstAttribute="leading" secondItem="DAr-MF-Z9R" secondAttribute="leading" id="eFo-c8-pj4"/>
                             <constraint firstItem="Py9-BA-quO" firstAttribute="top" secondItem="DAr-MF-Z9R" secondAttribute="top" constant="90" id="koM-o1-O8m"/>
                             <constraint firstItem="DAr-MF-Z9R" firstAttribute="bottom" secondItem="Of9-el-84g" secondAttribute="bottom" constant="48" id="w7f-Gp-M8h"/>
-                            <constraint firstItem="fVF-Fu-rvk" firstAttribute="leading" secondItem="dDW-Ne-b3R" secondAttribute="leading" id="xQQ-IQ-cua"/>
+                            <constraint firstItem="dDW-Ne-b3R" firstAttribute="trailing" secondItem="DAr-MF-Z9R" secondAttribute="trailing" id="z2m-1k-1hm"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="DAr-MF-Z9R"/>
                     </view>
                     <connections>
                         <outlet property="errorMessage" destination="dDW-Ne-b3R" id="DIU-lk-JNJ"/>
-                        <outlet property="nameTxt" destination="fVF-Fu-rvk" id="412-ea-eyE"/>
+                        <outlet property="nameField" destination="fVF-Fu-rvk" id="qAm-AH-XlR"/>
                         <outlet property="newPlanBtn" destination="mfa-un-Xg9" id="SyZ-CI-dsw"/>
                         <segue destination="Fk4-aR-hMP" kind="show" identifier="CreateRoomSegue" id="5B3-vI-Atm"/>
                         <segue destination="XiF-bc-Ubh" kind="show" identifier="RoomListSegue" id="fC5-VI-NSm"/>

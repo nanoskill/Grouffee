@@ -11,7 +11,7 @@ import MultipeerConnectivity
 
 class InitialSelectionViewController: UIViewController {
     
-    @IBOutlet weak var nameTxt: UITextField!
+    @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var newPlanBtn: UIButton!
     @IBOutlet weak var errorMessage: UILabel!
     
@@ -23,7 +23,8 @@ class InitialSelectionViewController: UIViewController {
         // Do any additional setup after loading the view.
         newPlanBtn.isEnabled = false
         errorMessage.text = ""
-        nameTxt.delegate = self
+        nameField.delegate = self
+        addKeyboardViewAdjustment()
     }
     
     @IBAction func newPlanDidTap(_ sender: Any) {
@@ -43,12 +44,12 @@ class InitialSelectionViewController: UIViewController {
     }
 
     func validateName() -> Bool {
-        if nameTxt.text != ""
+        if nameField.text != ""
         {
             do
             {
                 let regex = try NSRegularExpression(pattern: ".*[^A-Za-z ].*", options: [])
-                if regex.firstMatch(in: nameTxt.text!, options: [], range: NSMakeRange(0, (nameTxt.text?.count)!)) != nil
+                if regex.firstMatch(in: nameField.text!, options: [], range: NSMakeRange(0, (nameField.text?.count)!)) != nil
                 {
                     errorMessage.text = "Name must be alphabet only"
                     newPlanBtn.isEnabled = false
@@ -72,6 +73,16 @@ class InitialSelectionViewController: UIViewController {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.becomeFirstResponder()
+    }
+    
+    @IBAction func textFieldChanged()
+    {
+        if nameField.text == ""
+        {
+            newPlanBtn.isEnabled = false
+            return
+        }
+        newPlanBtn.isEnabled = true
     }
 }
 
