@@ -13,6 +13,7 @@ class BoardListViewController: UIViewController {
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet var progressBar: UIProgressView!
     @IBOutlet weak var roomName: UINavigationItem!
+    @IBOutlet weak var theTable : UITableView!
     
     var viewOrigin : UIViewController!
     

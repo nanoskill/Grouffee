@@ -59,6 +59,7 @@ class InitialSelectionViewController: UIViewController {
                 {
                     errorMessage.text = ""
                     newPlanBtn.isEnabled = true
+                    appDelegate.user = User(name: nameField.text!)
                     return true
                 }
             } catch {

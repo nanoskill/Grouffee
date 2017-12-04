@@ -57,6 +57,7 @@ class CreateRoomViewController: UIViewController, UIPickerViewDelegate, UIPicker
         appDelegate.myPeerId = MCPeerID(displayName: roomNameTxt.text!)
         appDelegate.connection = ConnectionModel(peerId: appDelegate.myPeerId)
         appDelegate.connection?.serviceAdvertiser.startAdvertisingPeer()
+        appDelegate.room = Room(name: roomNameTxt.text!, leader: appDelegate.user!)
     }
     
     @objc
