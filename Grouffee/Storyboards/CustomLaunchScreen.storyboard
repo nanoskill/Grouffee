@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hcX-1e-fDD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13770" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hcX-1e-fDD">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13770"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -41,14 +41,17 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="VnR-D4-Jp9">
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="VnR-D4-Jp9">
                                 <rect key="frame" x="177" y="548" width="20" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="VnR-D4-Jp9" firstAttribute="top" secondItem="WiH-q0-z74" secondAttribute="top" constant="528" id="0RZ-oT-FJK"/>
                             <constraint firstItem="Aci-dc-nsR" firstAttribute="top" secondItem="Byp-WC-2fF" secondAttribute="bottom" constant="20" id="DJu-rn-vs8"/>
+                            <constraint firstItem="WiH-q0-z74" firstAttribute="bottom" secondItem="VnR-D4-Jp9" secondAttribute="bottom" constant="99" id="EFP-Rp-iut"/>
+                            <constraint firstItem="WiH-q0-z74" firstAttribute="trailing" secondItem="VnR-D4-Jp9" secondAttribute="trailing" constant="178" id="X7j-kP-1I3"/>
+                            <constraint firstItem="VnR-D4-Jp9" firstAttribute="leading" secondItem="WiH-q0-z74" secondAttribute="leading" constant="177" id="ceA-0S-X2j"/>
                             <constraint firstItem="Byp-WC-2fF" firstAttribute="centerY" secondItem="WiH-q0-z74" secondAttribute="centerY" id="elP-sb-XRY"/>
                             <constraint firstItem="Aci-dc-nsR" firstAttribute="centerX" secondItem="WiH-q0-z74" secondAttribute="centerX" id="huY-Iz-5Gd"/>
                             <constraint firstItem="Byp-WC-2fF" firstAttribute="centerX" secondItem="WiH-q0-z74" secondAttribute="centerX" id="s0z-EV-YBb"/>
