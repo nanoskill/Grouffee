@@ -15,11 +15,12 @@ class Room
     var boards = [Board]()
     var leader : User
     var connectedMembers = [User]()
-    var timer : GrouffeeTimer?
+    var timer : GrouffeeTimer!
     
-    init(name : String, leader : User) {
+    init(name : String, leader : User, duration: Int) {
         self.name = name
         self.leader = leader
+        self.timer = GrouffeeTimer(seconds: duration)
     }
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate

@@ -34,13 +34,20 @@ class GrouffeeTimer {
     }
     
     /**
+     Create a timer that will count down
+     */
+    init(seconds: Int) {
+        initTime = seconds
+        timeRemaining = initTime
+    }
+    
+    /**
      Create a stopwatch that will count up
      */
     init()
     {
         initTime = 0
         timeRemaining = 0
-        print("Timer invoked")
     }
     
     enum GTType {
@@ -77,6 +84,7 @@ class GrouffeeTimer {
         {
             delegate?.timeIsUp!()
         }
+        //print("Timer is ticking at \(timeRemaining)")
     }
     
     func getHour() -> Int
@@ -97,6 +105,10 @@ class GrouffeeTimer {
     func getTime() -> (hour:Int, minute:Int, second:Int)
     {
         return (getHour(), getMinute(), getSecond())
+    }
+    
+    func getTimeString() -> String {
+        return String(format:"%02i : %02i : %02i", getHour(), getMinute(), getSecond())
     }
     
     @objc func snapTimer()

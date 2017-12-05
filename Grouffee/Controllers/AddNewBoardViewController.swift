@@ -21,6 +21,8 @@ class AddNewBoardViewController: UIViewController, UIPickerViewDelegate, UIPicke
     @IBOutlet weak var hoursLabel: UILabel!
     @IBOutlet weak var minuteLabel: UILabel!
     
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
     let pickerDataSize = 100000
     var selectedHours = 0
     var selectedMinutes = 0
@@ -65,7 +67,7 @@ class AddNewBoardViewController: UIViewController, UIPickerViewDelegate, UIPicke
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "createBoard" {
-            BoardListViewController.boards.append(Board.init(boardName: boardName.text!, duration: (selectedHours * 3600) + (selectedMinutes * 60)))
+            appDelegate.room.boards.append(Board.init(boardName: boardName.text!, duration: (selectedHours * 3600) + (selectedMinutes * 60)))
         }
     }
 

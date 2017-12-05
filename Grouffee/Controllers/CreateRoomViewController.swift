@@ -56,7 +56,6 @@ class CreateRoomViewController: UIViewController, UIPickerViewDelegate, UIPicker
         appDelegate.myPeerId = MCPeerID(displayName: roomNameTxt.text!)
         appDelegate.connection = ConnectionModel(peerId: appDelegate.myPeerId)
         appDelegate.connection?.serviceAdvertiser.startAdvertisingPeer()
-        appDelegate.room = Room(name: roomNameTxt.text!, leader: appDelegate.user!)
     }
     
     @objc
@@ -71,12 +70,12 @@ class CreateRoomViewController: UIViewController, UIPickerViewDelegate, UIPicker
         self.durPicker.selectRow((pickerDataSize / 2) - 20 + selectedMinutes, inComponent: 1, animated: false)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "createNewPlan" {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if segue.identifier == "createNewPlan"
+        {
             let dest = segue.destination.childViewControllers[0] as! BoardListViewController
-     //       dest.timeRemaining = (selectedHours * 3600) + (selectedMinutes * 60)
-     //       dest.roomNameInput = roomNameTxt.text
-     //       dest.viewOrigin = self
+            dest.room = Room(name: roomNameTxt.text!, leader: appDelegate.user, duration: (selectedHours*3600 + selectedMinutes*60))
         }
     }
     
