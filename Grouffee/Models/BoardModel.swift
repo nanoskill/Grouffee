@@ -5,7 +5,7 @@
 //  Created by Christhopher Ravian Hartono on 30/11/17.
 //  Copyright © 2017 Communication iOS Foundation Batch 4. All rights reserved.
 //
-
+/*
 import Foundation
 
 class Board {
@@ -25,3 +25,4 @@ class Board {
         self.timer = timer
     }
 }
+*/

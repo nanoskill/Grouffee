@@ -8,15 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		8E2C06651FCFAA18006143FB /* InitialSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2C06641FCFAA18006143FB /* InitialSelectionViewController.swift */; };
-		8E447AB71FD15DBA00DFCF8C /* AddNewBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E447AB61FD15DBA00DFCF8C /* AddNewBoard.storyboard */; };
 		8E447AB91FD17E6600DFCF8C /* BoardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E447AB81FD17E6600DFCF8C /* BoardTableViewCell.swift */; };
 		8E447ABB1FD1926900DFCF8C /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E447ABA1FD1926900DFCF8C /* Board.swift */; };
 		8E447ABD1FD1A87D00DFCF8C /* AddNewBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E447ABC1FD1A87D00DFCF8C /* AddNewBoardViewController.swift */; };
 		8EE487DF1FCD14A60091B825 /* CreateRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE487DE1FCD14A60091B825 /* CreateRoomViewController.swift */; };
 		8EE487E11FCDB4C10091B825 /* MyTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE487E01FCDB4C10091B825 /* MyTimer.swift */; };
 		8EE487E51FCDB5A90091B825 /* BoardListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE487E41FCDB5A90091B825 /* BoardListViewController.swift */; };
-		B743377B1FD532EF006C64EC /* CreateRoom.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B74337791FD532EE006C64EC /* CreateRoom.storyboard */; };
-		B743377C1FD532EF006C64EC /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B743377A1FD532EF006C64EC /* Home.storyboard */; };
 		B79101DF1FCD3C88003772B3 /* ConnectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79101DE1FCD3C88003772B3 /* ConnectionModel.swift */; };
 		B79101E81FCD485D003772B3 /* RoomListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79101E71FCD485D003772B3 /* RoomListController.swift */; };
 		B791020A1FCE87C7003772B3 /* MiscFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79102091FCE87C7003772B3 /* MiscFunctions.swift */; };
@@ -25,33 +22,14 @@
 		B79102121FCF9562003772B3 /* BoardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79102111FCF9562003772B3 /* BoardModel.swift */; };
 		B79102141FCF956F003772B3 /* RoomModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79102131FCF956F003772B3 /* RoomModel.swift */; };
 		B79102341FD453C3003772B3 /* SessionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79102331FD453C3003772B3 /* SessionModel.swift */; };
-		B76017171FD5F492003CFC93 /* Lato-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B76017041FD5F48F003CFC93 /* Lato-ThinItalic.ttf */; };
-		B76017181FD5F492003CFC93 /* Lato-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B76017051FD5F48F003CFC93 /* Lato-Italic.ttf */; };
-		B76017191FD5F492003CFC93 /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B76017061FD5F490003CFC93 /* Lato-Light.ttf */; };
-		B760171A1FD5F492003CFC93 /* Lato-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B76017071FD5F490003CFC93 /* Lato-LightItalic.ttf */; };
-		B760171B1FD5F492003CFC93 /* Lato-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B76017081FD5F490003CFC93 /* Lato-Thin.ttf */; };
-		B760171C1FD5F492003CFC93 /* Lato-Hairline.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B76017091FD5F490003CFC93 /* Lato-Hairline.ttf */; };
-		B760171D1FD5F492003CFC93 /* Lato-HeavyItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B760170A1FD5F490003CFC93 /* Lato-HeavyItalic.ttf */; };
-		B760171E1FD5F492003CFC93 /* Lato-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B760170B1FD5F490003CFC93 /* Lato-SemiboldItalic.ttf */; };
-		B760171F1FD5F492003CFC93 /* Lato-HairlineItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B760170C1FD5F490003CFC93 /* Lato-HairlineItalic.ttf */; };
-		B76017201FD5F492003CFC93 /* Lato-Heavy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B760170D1FD5F491003CFC93 /* Lato-Heavy.ttf */; };
-		B76017211FD5F492003CFC93 /* Lato-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B760170E1FD5F491003CFC93 /* Lato-Semibold.ttf */; };
-		B76017221FD5F492003CFC93 /* Lato-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B760170F1FD5F491003CFC93 /* Lato-Medium.ttf */; };
-		B76017231FD5F492003CFC93 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B76017101FD5F491003CFC93 /* Lato-Bold.ttf */; };
-		B76017241FD5F492003CFC93 /* Lato-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B76017111FD5F491003CFC93 /* Lato-BlackItalic.ttf */; };
-		B76017251FD5F492003CFC93 /* Lato-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B76017121FD5F491003CFC93 /* Lato-MediumItalic.ttf */; };
-		B76017261FD5F492003CFC93 /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B76017131FD5F491003CFC93 /* Lato-Black.ttf */; };
-		B76017271FD5F492003CFC93 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B76017141FD5F492003CFC93 /* Lato-Regular.ttf */; };
-		B76017281FD5F492003CFC93 /* Lato-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B76017151FD5F492003CFC93 /* Lato-BoldItalic.ttf */; };
-		B760172E1FD5F65B003CFC93 /* BoardList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B760172D1FD5F65B003CFC93 /* BoardList.storyboard */; };
-		B76017311FD5F6FF003CFC93 /* CreateRoom.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B760172F1FD5F6FF003CFC93 /* CreateRoom.storyboard */; };
-		B76017321FD5F6FF003CFC93 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B76017301FD5F6FF003CFC93 /* Home.storyboard */; };
 		B7B57DD01FC815DF008B4C9D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B57DCF1FC815DF008B4C9D /* AppDelegate.swift */; };
 		B7B57DD21FC815DF008B4C9D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B57DD11FC815DF008B4C9D /* ViewController.swift */; };
 		B7B57DD71FC815DF008B4C9D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7B57DD61FC815DF008B4C9D /* Assets.xcassets */; };
-		B7F8F9111FD535FD005C2453 /* InitialSelection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B791020B1FCEA414003772B3 /* InitialSelection.storyboard */; };
-		B7F8F9121FD5360A005C2453 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7B57DD31FC815DF008B4C9D /* Main.storyboard */; };
-		B7F8F9131FD53611005C2453 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7B57DD81FC815DF008B4C9D /* LaunchScreen.storyboard */; };
+		B7C988891FD62D3E00091158 /* BoardList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7C988831FD62D3D00091158 /* BoardList.storyboard */; };
+		B7C9888A1FD62D3E00091158 /* CreateRoom.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7C988841FD62D3E00091158 /* CreateRoom.storyboard */; };
+		B7C9888B1FD62D3E00091158 /* AddNewBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7C988851FD62D3E00091158 /* AddNewBoard.storyboard */; };
+		B7C9888C1FD62D3E00091158 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7C988861FD62D3E00091158 /* Home.storyboard */; };
+		B7C9888D1FD62D3E00091158 /* InitialSelection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7C988871FD62D3E00091158 /* InitialSelection.storyboard */; };
 		B7F9FB901FCCFBFF0002C3C0 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F9FB8F1FCCFBFF0002C3C0 /* HomeViewController.swift */; };
 		B7F9FB9C1FCD0C920002C3C0 /* RoomList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7F9FB9B1FCD0C920002C3C0 /* RoomList.storyboard */; };
 /* End PBXBuildFile section */
@@ -65,12 +43,9 @@
 		8EE487DE1FCD14A60091B825 /* CreateRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRoomViewController.swift; sourceTree = "<group>"; };
 		8EE487E01FCDB4C10091B825 /* MyTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTimer.swift; sourceTree = "<group>"; };
 		8EE487E41FCDB5A90091B825 /* BoardListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardListViewController.swift; sourceTree = "<group>"; };
-		B74337791FD532EE006C64EC /* CreateRoom.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CreateRoom.storyboard; sourceTree = "<group>"; };
-		B743377A1FD532EF006C64EC /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		B79101DE1FCD3C88003772B3 /* ConnectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionModel.swift; sourceTree = "<group>"; };
 		B79101E71FCD485D003772B3 /* RoomListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListController.swift; sourceTree = "<group>"; };
 		B79102091FCE87C7003772B3 /* MiscFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiscFunctions.swift; sourceTree = "<group>"; };
-		B791020B1FCEA414003772B3 /* InitialSelection.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = InitialSelection.storyboard; sourceTree = "<group>"; };
 		B791020D1FCEACD4003772B3 /* GrouffeeTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrouffeeTimer.swift; sourceTree = "<group>"; };
 		B791020F1FCF9525003772B3 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		B79102111FCF9562003772B3 /* BoardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardModel.swift; sourceTree = "<group>"; };
@@ -83,6 +58,11 @@
 		B7B57DD61FC815DF008B4C9D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B7B57DD91FC815DF008B4C9D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B7B57DDB1FC815DF008B4C9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B7C988831FD62D3D00091158 /* BoardList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BoardList.storyboard; sourceTree = "<group>"; };
+		B7C988841FD62D3E00091158 /* CreateRoom.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateRoom.storyboard; sourceTree = "<group>"; };
+		B7C988851FD62D3E00091158 /* AddNewBoard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddNewBoard.storyboard; sourceTree = "<group>"; };
+		B7C988861FD62D3E00091158 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		B7C988871FD62D3E00091158 /* InitialSelection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InitialSelection.storyboard; sourceTree = "<group>"; };
 		B7F9FB8F1FCCFBFF0002C3C0 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B7F9FB9B1FCD0C920002C3C0 /* RoomList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RoomList.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -101,26 +81,22 @@
 		B760172A1FD5F4A2003CFC93 /* Lato */ = {
 			isa = PBXGroup;
 			children = (
-				B76017131FD5F491003CFC93 /* Lato-Black.ttf */,
-				B76017111FD5F491003CFC93 /* Lato-BlackItalic.ttf */,
-				B76017101FD5F491003CFC93 /* Lato-Bold.ttf */,
-				B76017151FD5F492003CFC93 /* Lato-BoldItalic.ttf */,
-				B76017091FD5F490003CFC93 /* Lato-Hairline.ttf */,
-				B760170C1FD5F490003CFC93 /* Lato-HairlineItalic.ttf */,
-				B760170D1FD5F491003CFC93 /* Lato-Heavy.ttf */,
-				B760170A1FD5F490003CFC93 /* Lato-HeavyItalic.ttf */,
-				B76017051FD5F48F003CFC93 /* Lato-Italic.ttf */,
-				B76017061FD5F490003CFC93 /* Lato-Light.ttf */,
-				B76017071FD5F490003CFC93 /* Lato-LightItalic.ttf */,
-				B760170F1FD5F491003CFC93 /* Lato-Medium.ttf */,
-				B76017121FD5F491003CFC93 /* Lato-MediumItalic.ttf */,
-				B76017141FD5F492003CFC93 /* Lato-Regular.ttf */,
-				B760170E1FD5F491003CFC93 /* Lato-Semibold.ttf */,
-				B760170B1FD5F490003CFC93 /* Lato-SemiboldItalic.ttf */,
-				B76017081FD5F490003CFC93 /* Lato-Thin.ttf */,
-				B76017041FD5F48F003CFC93 /* Lato-ThinItalic.ttf */,
 			);
 			path = Lato;
+			sourceTree = "<group>";
+		};
+		B79101DD1FCD3C68003772B3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B79101DE1FCD3C88003772B3 /* ConnectionModel.swift */,
+				B79102091FCE87C7003772B3 /* MiscFunctions.swift */,
+				B791020D1FCEACD4003772B3 /* GrouffeeTimer.swift */,
+				B791020F1FCF9525003772B3 /* UserModel.swift */,
+				B79102111FCF9562003772B3 /* BoardModel.swift */,
+				B79102131FCF956F003772B3 /* RoomModel.swift */,
+				B79102331FD453C3003772B3 /* SessionModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		B7B57DC31FC815DF008B4C9D = {
@@ -150,7 +126,6 @@
 				8EE487E01FCDB4C10091B825 /* MyTimer.swift */,
 				8E447AB81FD17E6600DFCF8C /* BoardTableViewCell.swift */,
 				B7B57DD11FC815DF008B4C9D /* ViewController.swift */,
-				B7B57DD81FC815DF008B4C9D /* LaunchScreen.storyboard */,
 				B7B57DD31FC815DF008B4C9D /* Main.storyboard */,
 				B7B57DD61FC815DF008B4C9D /* Assets.xcassets */,
 				B7B57DD81FC815DF008B4C9D /* LaunchScreen.storyboard */,
@@ -176,11 +151,12 @@
 		B7F9FB951FCD0BFE0002C3C0 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				B760172F1FD5F6FF003CFC93 /* CreateRoom.storyboard */,
-				B76017301FD5F6FF003CFC93 /* Home.storyboard */,
-				B760172D1FD5F65B003CFC93 /* BoardList.storyboard */,
+				B7C988851FD62D3E00091158 /* AddNewBoard.storyboard */,
+				B7C988831FD62D3D00091158 /* BoardList.storyboard */,
+				B7C988841FD62D3E00091158 /* CreateRoom.storyboard */,
+				B7C988861FD62D3E00091158 /* Home.storyboard */,
+				B7C988871FD62D3E00091158 /* InitialSelection.storyboard */,
 				B7F9FB9B1FCD0C920002C3C0 /* RoomList.storyboard */,
-				B7F9FB961FCD0C3C0002C3C0 /* InitialSelection.storyboard */,
 				8E447AB61FD15DBA00DFCF8C /* AddNewBoard.storyboard */,
 			);
 			path = Storyboards;
@@ -250,36 +226,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B76017311FD5F6FF003CFC93 /* CreateRoom.storyboard in Resources */,
-				B76017321FD5F6FF003CFC93 /* Home.storyboard in Resources */,
-				B760172E1FD5F65B003CFC93 /* BoardList.storyboard in Resources */,
-				B76017171FD5F492003CFC93 /* Lato-ThinItalic.ttf in Resources */,
-				B76017181FD5F492003CFC93 /* Lato-Italic.ttf in Resources */,
-				B76017191FD5F492003CFC93 /* Lato-Light.ttf in Resources */,
-				B760171A1FD5F492003CFC93 /* Lato-LightItalic.ttf in Resources */,
-				B760171B1FD5F492003CFC93 /* Lato-Thin.ttf in Resources */,
-				B760171C1FD5F492003CFC93 /* Lato-Hairline.ttf in Resources */,
-				B760171D1FD5F492003CFC93 /* Lato-HeavyItalic.ttf in Resources */,
-				B760171E1FD5F492003CFC93 /* Lato-SemiboldItalic.ttf in Resources */,
-				B760171F1FD5F492003CFC93 /* Lato-HairlineItalic.ttf in Resources */,
-				B76017201FD5F492003CFC93 /* Lato-Heavy.ttf in Resources */,
-				B76017211FD5F492003CFC93 /* Lato-Semibold.ttf in Resources */,
-				B76017221FD5F492003CFC93 /* Lato-Medium.ttf in Resources */,
-				B76017231FD5F492003CFC93 /* Lato-Bold.ttf in Resources */,
-				B76017241FD5F492003CFC93 /* Lato-BlackItalic.ttf in Resources */,
-				B76017251FD5F492003CFC93 /* Lato-MediumItalic.ttf in Resources */,
-				B76017261FD5F492003CFC93 /* Lato-Black.ttf in Resources */,
-				B76017271FD5F492003CFC93 /* Lato-Regular.ttf in Resources */,
-				B76017281FD5F492003CFC93 /* Lato-BoldItalic.ttf in Resources */,
-				B7B57DDA1FC815DF008B4C9D /* LaunchScreen.storyboard in Resources */,
-				B7F8F9131FD53611005C2453 /* LaunchScreen.storyboard in Resources */,
-				B7F8F9121FD5360A005C2453 /* Main.storyboard in Resources */,
-				B7F8F9111FD535FD005C2453 /* InitialSelection.storyboard in Resources */,
-				B7B57DD71FC815DF008B4C9D /* Assets.xcassets in Resources */,
-				B743377C1FD532EF006C64EC /* Home.storyboard in Resources */,
+				B7C988891FD62D3E00091158 /* BoardList.storyboard in Resources */,
+				B7C9888A1FD62D3E00091158 /* CreateRoom.storyboard in Resources */,
+				B7C9888B1FD62D3E00091158 /* AddNewBoard.storyboard in Resources */,
+				B7C9888C1FD62D3E00091158 /* Home.storyboard in Resources */,
+				B7C9888D1FD62D3E00091158 /* InitialSelection.storyboard in Resources */,
 				B7F9FB9C1FCD0C920002C3C0 /* RoomList.storyboard in Resources */,
-				B743377B1FD532EF006C64EC /* CreateRoom.storyboard in Resources */,
-				8EE487E31FCDB5060091B825 /* BoardList.storyboard in Resources */,
+				B7B57DD71FC815DF008B4C9D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

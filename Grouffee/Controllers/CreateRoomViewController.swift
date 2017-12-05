@@ -74,9 +74,9 @@ class CreateRoomViewController: UIViewController, UIPickerViewDelegate, UIPicker
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "createNewPlan" {
             let dest = segue.destination.childViewControllers[0] as! BoardListViewController
-            dest.timeRemaining = (selectedHours * 3600) + (selectedMinutes * 60)
-            dest.roomNameInput = roomNameTxt.text
-            dest.viewOrigin = self
+     //       dest.timeRemaining = (selectedHours * 3600) + (selectedMinutes * 60)
+     //       dest.roomNameInput = roomNameTxt.text
+     //       dest.viewOrigin = self
         }
     }
     

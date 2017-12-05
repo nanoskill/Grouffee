@@ -123,9 +123,9 @@
                     <navigationItem key="navigationItem" title="Room Name" id="feU-vY-8eE"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="boardTable" destination="E56-o7-THn" id="diF-og-ztJ"/>
                         <outlet property="progressBar" destination="49T-fB-itX" id="nE7-V7-G7V"/>
                         <outlet property="roomName" destination="feU-vY-8eE" id="kOl-Qt-q3d"/>
-                        <outlet property="theTable" destination="E56-o7-THn" id="VHY-Xe-cda"/>
                         <outlet property="timerLabel" destination="wdv-6l-TWa" id="mkr-zM-KXE"/>
                     </connections>
                 </viewController>

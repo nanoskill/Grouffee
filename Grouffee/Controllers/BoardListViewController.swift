@@ -13,7 +13,6 @@ class BoardListViewController: UIViewController, UITableViewDelegate {
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet var progressBar: UIProgressView!
     @IBOutlet weak var roomName: UINavigationItem!
-    @IBOutlet weak var theTable : UITableView!
     
     @IBOutlet weak var boardTable: UITableView!
     static var boards: [Board] = []
