@@ -115,6 +115,7 @@ class GrouffeeTimer {
     @objc func snapTimer()
     {
         savedTime = Date.init()
+        print("SNAPPED: \(savedTime)")
     }
     
     @objc func restoreTimer()
@@ -124,5 +125,7 @@ class GrouffeeTimer {
         diff *= (initTime == 0 ? 1 : -1)
         timeRemaining += diff
         if timeRemaining < 0 {delegate?.timeIsUp! ()}
+        
+        print("RESTORED, diff: \(diff)")
     }
 }

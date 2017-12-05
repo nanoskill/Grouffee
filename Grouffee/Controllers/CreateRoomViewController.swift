@@ -21,8 +21,6 @@ class CreateRoomViewController: UIViewController, UIPickerViewDelegate, UIPicker
     @IBOutlet weak var hoursLabel: UILabel!
     @IBOutlet weak var minuteLabel: UILabel!
     
-    var timer = Timer()
-    
     let pickerDataSize = 100000
     
     var selectedHours = 0
@@ -57,6 +55,16 @@ class CreateRoomViewController: UIViewController, UIPickerViewDelegate, UIPicker
         appDelegate.connection = ConnectionModel(peerId: appDelegate.myPeerId)
         appDelegate.connection?.serviceAdvertiser.startAdvertisingPeer()
         appDelegate.room = Room(name: roomNameTxt.text!, leader: appDelegate.user, duration: (selectedHours*3600 + selectedMinutes*60))
+    }
+    
+    @IBAction func doneBtnDidTap(_ sender: Any) {
+        hideDurPicker()
+    }
+    
+    @IBAction func removeBtnDidTap(_ sender: Any) {
+        durPicker.selectRow(pickerDataSize / 2 - 8, inComponent: 0, animated: true)
+        durPicker.selectRow(pickerDataSize / 2 - 20, inComponent: 1, animated: true)
+        showSelectedDataToTextField()
     }
     
     @objc

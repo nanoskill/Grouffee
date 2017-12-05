@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -27,41 +26,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="07 : 00 : 00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wdv-6l-TWa">
-                                <rect key="frame" x="60" y="73" width="255.5" height="59.5"/>
-                                <fontDescription key="fontDescription" name="Lato-Black" family="Lato" pointSize="51"/>
-                                <color key="textColor" red="0.84478455779999995" green="0.52694404130000005" blue="0.45091509819999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="49T-fB-itX">
-                                <rect key="frame" x="41" y="168.5" width="293" height="2.5"/>
-                                <color key="progressTintColor" red="0.84478455781936646" green="0.52694404125213623" blue="0.45091509819030762" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <color key="trackTintColor" red="0.45405429601669312" green="0.75666767358779907" blue="0.76471894979476929" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            </progressView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="minutes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Ee-1Z-KMi">
-                                <rect key="frame" x="161" y="134" width="53.5" height="17.5"/>
-                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
-                                <color key="textColor" red="0.84478455779999995" green="0.52694404130000005" blue="0.45091509819999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="second" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GZa-hL-D8r">
-                                <rect key="frame" x="256.5" y="134" width="53" height="17.5"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xKy-4R-itv">
+                                <rect key="frame" x="0.0" y="70" width="375" height="100"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00 : 00 : 00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wdv-6l-TWa">
+                                        <rect key="frame" x="52.5" y="5" width="270" height="61.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="61.5" id="ovb-aM-0Ux"/>
+                                            <constraint firstAttribute="width" constant="270" id="wsn-Iw-4SP"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Lato-Black" family="Lato" pointSize="51"/>
+                                        <color key="textColor" red="0.84478455779999995" green="0.52694404130000005" blue="0.45091509819999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="49T-fB-itX">
+                                        <rect key="frame" x="52" y="72" width="270" height="2.5"/>
+                                        <color key="progressTintColor" red="0.84478455781936646" green="0.52694404125213623" blue="0.45091509819030762" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="trackTintColor" red="0.45405429601669312" green="0.75666767358779907" blue="0.76471894979476929" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </progressView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="53" id="d5C-Gn-ETp"/>
-                                    <constraint firstAttribute="width" constant="53" id="tXm-ut-aJ0"/>
+                                    <constraint firstItem="wdv-6l-TWa" firstAttribute="centerX" secondItem="xKy-4R-itv" secondAttribute="centerX" id="15S-jA-NhY"/>
+                                    <constraint firstAttribute="height" constant="100" id="1kF-lI-j1y"/>
+                                    <constraint firstItem="49T-fB-itX" firstAttribute="width" secondItem="wdv-6l-TWa" secondAttribute="width" id="S9e-Fn-aCx"/>
+                                    <constraint firstItem="wdv-6l-TWa" firstAttribute="top" secondItem="xKy-4R-itv" secondAttribute="top" constant="5" id="mzn-6X-W9W"/>
+                                    <constraint firstItem="49T-fB-itX" firstAttribute="top" secondItem="wdv-6l-TWa" secondAttribute="bottom" constant="5" id="phg-Na-DvI"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
-                                <color key="textColor" red="0.84478455779999995" green="0.52694404130000005" blue="0.45091509819999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="hours" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lby-ck-TCW">
-                                <rect key="frame" x="73" y="134" width="38" height="17.5"/>
-                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
-                                <color key="textColor" red="0.84478455779999995" green="0.52694404130000005" blue="0.45091509819999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="E56-o7-THn">
-                                <rect key="frame" x="16" y="211" width="343" height="399"/>
+                                <rect key="frame" x="16" y="170" width="343" height="440"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="nCT-X7-bUY">
                                     <rect key="frame" x="0.0" y="128" width="343" height="30"/>
@@ -113,9 +107,11 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hqe-CH-Vod">
-                                <rect key="frame" x="0.0" y="6" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hqe-CH-Vod">
+                                <rect key="frame" x="0.0" y="20" width="375" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="I5L-XV-H4Q"/>
+                                </constraints>
                                 <items>
                                     <navigationItem title="Room Name" id="XKm-ke-nuC">
                                         <barButtonItem key="rightBarButtonItem" title="Item" id="Bcx-JL-aa6"/>
@@ -125,22 +121,18 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Lby-ck-TCW" firstAttribute="top" secondItem="iq4-6K-nOp" secondAttribute="top" constant="114" id="2FN-PM-lwR"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="49T-fB-itX" secondAttribute="trailing" constant="25" id="3sE-j8-0iA"/>
+                            <constraint firstItem="xKy-4R-itv" firstAttribute="leading" secondItem="Qvg-L2-N2G" secondAttribute="leading" id="33x-UJ-znS"/>
                             <constraint firstItem="E56-o7-THn" firstAttribute="centerX" secondItem="iq4-6K-nOp" secondAttribute="centerX" id="4b8-YU-cGR"/>
                             <constraint firstItem="iq4-6K-nOp" firstAttribute="bottom" secondItem="E56-o7-THn" secondAttribute="bottom" constant="13" id="5FY-jo-qhB"/>
-                            <constraint firstItem="49T-fB-itX" firstAttribute="top" secondItem="iq4-6K-nOp" secondAttribute="top" constant="148.5" id="8Z5-3S-qsW"/>
+                            <constraint firstItem="Hqe-CH-Vod" firstAttribute="top" secondItem="iq4-6K-nOp" secondAttribute="top" id="B3B-k5-LDa"/>
                             <constraint firstItem="E56-o7-THn" firstAttribute="leading" secondItem="iq4-6K-nOp" secondAttribute="leading" constant="16" id="DBP-fh-B4F"/>
-                            <constraint firstItem="6Ee-1Z-KMi" firstAttribute="leading" secondItem="Lby-ck-TCW" secondAttribute="trailing" constant="50" id="Ifu-DV-TcF"/>
-                            <constraint firstItem="6Ee-1Z-KMi" firstAttribute="centerX" secondItem="iq4-6K-nOp" secondAttribute="centerX" id="RyO-OS-POZ"/>
-                            <constraint firstItem="E56-o7-THn" firstAttribute="top" secondItem="iq4-6K-nOp" secondAttribute="top" constant="191" id="VNG-Wk-HJy"/>
-                            <constraint firstItem="wdv-6l-TWa" firstAttribute="centerX" secondItem="iq4-6K-nOp" secondAttribute="centerX" id="ax3-fJ-83y"/>
+                            <constraint firstItem="49T-fB-itX" firstAttribute="centerX" secondItem="iq4-6K-nOp" secondAttribute="centerX" id="El3-gM-JbP"/>
+                            <constraint firstItem="Hqe-CH-Vod" firstAttribute="trailing" secondItem="iq4-6K-nOp" secondAttribute="trailing" id="MLj-DJ-WyM"/>
+                            <constraint firstItem="E56-o7-THn" firstAttribute="top" secondItem="xKy-4R-itv" secondAttribute="bottom" id="cjJ-hy-flq"/>
+                            <constraint firstItem="iq4-6K-nOp" firstAttribute="trailing" secondItem="xKy-4R-itv" secondAttribute="trailing" id="dTo-7d-WNL"/>
                             <constraint firstItem="iq4-6K-nOp" firstAttribute="trailing" secondItem="E56-o7-THn" secondAttribute="trailing" constant="16" id="jc7-zj-wcA"/>
-                            <constraint firstItem="wdv-6l-TWa" firstAttribute="top" secondItem="iq4-6K-nOp" secondAttribute="top" constant="53" id="jyO-9T-fvp"/>
-                            <constraint firstItem="GZa-hL-D8r" firstAttribute="top" secondItem="iq4-6K-nOp" secondAttribute="top" constant="114" id="lCK-p6-WYr"/>
-                            <constraint firstItem="GZa-hL-D8r" firstAttribute="leading" secondItem="6Ee-1Z-KMi" secondAttribute="trailing" constant="42" id="qSX-5P-HXD"/>
-                            <constraint firstItem="6Ee-1Z-KMi" firstAttribute="top" secondItem="iq4-6K-nOp" secondAttribute="top" constant="114" id="tdo-6G-xow"/>
-                            <constraint firstItem="49T-fB-itX" firstAttribute="leading" secondItem="Qvg-L2-N2G" secondAttribute="leadingMargin" constant="25" id="vSZ-id-2r3"/>
+                            <constraint firstItem="xKy-4R-itv" firstAttribute="top" secondItem="Hqe-CH-Vod" secondAttribute="bottom" id="nzX-h6-Ebt"/>
+                            <constraint firstItem="Hqe-CH-Vod" firstAttribute="leading" secondItem="iq4-6K-nOp" secondAttribute="leading" id="ryN-wS-LuL"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="iq4-6K-nOp"/>
                     </view>
@@ -152,6 +144,7 @@
                         <outlet property="peopleListButton" destination="Bcx-JL-aa6" id="8RE-F8-rJf"/>
                         <outlet property="progressBar" destination="49T-fB-itX" id="nE7-V7-G7V"/>
                         <outlet property="roomName" destination="feU-vY-8eE" id="kOl-Qt-q3d"/>
+                        <outlet property="timerContainer" destination="xKy-4R-itv" id="Wap-F6-cDC"/>
                         <outlet property="timerLabel" destination="wdv-6l-TWa" id="mkr-zM-KXE"/>
                         <segue destination="bDI-qG-69t" kind="show" identifier="addBoardSegue" id="8JA-Hh-LSh"/>
                     </connections>

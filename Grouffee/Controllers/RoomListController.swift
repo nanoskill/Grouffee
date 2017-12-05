@@ -20,7 +20,6 @@ class RoomListController: UIViewController {
         theTable.dataSource = self
         theTable.delegate = self
         appDelegate.connection?.delegate = self
-        // Do any additional setup after loading the view.
     }
 }
 
@@ -113,5 +112,6 @@ extension RoomListController : UITableViewDelegate
         DispatchQueue.main.async {
             popup.presentExclusively(view: self)
         }
+        
     }
 }

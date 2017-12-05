@@ -35,7 +35,7 @@
                                 </constraints>
                                 <state key="normal" backgroundImage="join-room-button"/>
                                 <connections>
-                                    <action selector="joinPlanDidTap:" destination="W3Q-g1-HXp" eventType="touchUpInside" id="Gdt-9Z-p9V"/>
+                                    <action selector="joinPlanDidTap:" destination="W3Q-g1-HXp" eventType="touchUpInside" id="31l-gH-zHS"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fVF-Fu-rvk">
@@ -85,6 +85,7 @@
                     </view>
                     <connections>
                         <outlet property="errorMessage" destination="dDW-Ne-b3R" id="DIU-lk-JNJ"/>
+                        <outlet property="joinPlanBtn" destination="Of9-el-84g" id="uIl-9m-ZKa"/>
                         <outlet property="nameField" destination="fVF-Fu-rvk" id="qAm-AH-XlR"/>
                         <outlet property="newPlanBtn" destination="mfa-un-Xg9" id="SyZ-CI-dsw"/>
                         <segue destination="Fk4-aR-hMP" kind="show" identifier="CreateRoomSegue" id="5B3-vI-Atm"/>

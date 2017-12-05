@@ -15,11 +15,14 @@ class BoardListViewController: UIViewController, UITableViewDelegate {
     @IBOutlet weak var roomName: UINavigationItem!
     @IBOutlet weak var peopleListButton : UIBarButtonItem!
     
+    @IBOutlet weak var timerContainer : UIView!
+    
     @IBOutlet weak var boardTable: UITableView!
     var room : Room! = (UIApplication.shared.delegate as! AppDelegate).room
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
+    let dragGesture = UIPanGestureRecognizer()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,6 +37,42 @@ class BoardListViewController: UIViewController, UITableViewDelegate {
         progressBar.progress = 1
         
         appDelegate.connection?.delegate = self
+        dragGesture.addTarget(self, action: #selector(timerBeingDragged(_:)))
+        timerContainer.addGestureRecognizer(dragGesture)
+        
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(freezeTimer), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(unfreezeTimer), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
+    }
+    
+    @objc func freezeTimer()
+    {
+        room.timer.snapTimer()
+    }
+    
+    @objc func unfreezeTimer()
+    {
+        room.timer.restoreTimer()
+    }
+    
+    @objc func timerBeingDragged(_ sender : UIPanGestureRecognizer) {
+        print("Being Dragged : \(dragGesture.translation(in: self.view)) \(dragGesture.velocity(in: self.view))")
+        if self.timerContainer.center.x + sender.translation(in: self.view).x >= self.view.center.x - 50
+        {
+            if self.timerContainer.center.x + sender.translation(in: self.view).x < self.view.center.x
+            {
+                self.timerContainer.center.x += sender.translation(in: self.view).x
+            }
+            else
+            {
+                self.timerContainer.center.x = self.view.center.x
+            }
+        }
+        else
+        {
+            self.timerContainer.center.x = self.view.center.x - 50
+        }
+        //masih ngebug
     }
     
     @IBAction func addBoardBtnDidTap(_ sender: Any) {
@@ -43,6 +82,9 @@ class BoardListViewController: UIViewController, UITableViewDelegate {
         performSegue(withIdentifier: "addBoardSegue", sender: sender)
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 70
+    }
 }
 
 extension BoardListViewController: UITableViewDataSource {
@@ -63,6 +105,20 @@ extension BoardListViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
+    {
+        var actions = [UIContextualAction]()
+        let theHandler : UIContextualActionHandler =
+        {
+            (theAction, theView, boolHandler) in
+            print("JOINED")
+        }
+        let theButton = UIContextualAction(style: .normal, title: "JOIN", handler: theHandler)
+        theButton.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+        actions.append(theButton)
+        return UISwipeActionsConfiguration(actions: actions)
     }
 }
 
@@ -88,7 +144,7 @@ extension BoardListViewController : GrouffeeTimerDelegate
         DispatchQueue.main.async {
             self.timerLabel.text! = self.room.timer.getTimeString()
             self.progressBar.progress = Float(self.room.timer.timeRemaining) / Float(self.room.timer.initTime)
-            self.boardTable.reloadData()
+       //     self.boardTable.reloadData()
             self.peopleListButton.title = "\(self.room.connectedMembers.count)"
         }
     }

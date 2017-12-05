@@ -49,6 +49,7 @@ class LoadingIndicator {
         activityIndicator.activityIndicatorViewStyle = .gray
         activityIndicator.center = view.center
         activityIndicator.hidesWhenStopped = true
+        activityIndicator.frame = CGRect(x: 0, y: 0, width: 50.0, height: 50.0)
         self.view.addSubview(activityIndicator)
     }
     
@@ -92,8 +93,6 @@ extension UIViewController
     }
 }
 
-
-
 extension UIApplication {
     class func topViewController(base: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
         if let nav = base as? UINavigationController {
@@ -110,3 +109,4 @@ extension UIApplication {
         return base
     }
 }
+

@@ -13,6 +13,7 @@ class InitialSelectionViewController: UIViewController {
     
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var newPlanBtn: UIButton!
+    @IBOutlet weak var joinPlanBtn: UIButton!
     @IBOutlet weak var errorMessage: UILabel!
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -22,6 +23,7 @@ class InitialSelectionViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         newPlanBtn.isEnabled = false
+        joinPlanBtn.isEnabled = false
         errorMessage.text = ""
         nameField.delegate = self
         addKeyboardViewAdjustment()
@@ -53,12 +55,14 @@ class InitialSelectionViewController: UIViewController {
                 {
                     errorMessage.text = "Name must be alphabet only"
                     newPlanBtn.isEnabled = false
+                    joinPlanBtn.isEnabled = false
                     return false
                 }
                 else
                 {
                     errorMessage.text = ""
                     newPlanBtn.isEnabled = true
+                    joinPlanBtn.isEnabled = true
                     appDelegate.user = User(name: nameField.text!)
                     return true
                 }
@@ -81,9 +85,11 @@ class InitialSelectionViewController: UIViewController {
         if nameField.text == ""
         {
             newPlanBtn.isEnabled = false
+            joinPlanBtn.isEnabled = false
             return
         }
         newPlanBtn.isEnabled = true
+        joinPlanBtn.isEnabled = true
     }
 }
 

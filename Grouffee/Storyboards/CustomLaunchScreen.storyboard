@@ -1,7 +1,70 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13142" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hcX-1e-fDD">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12042"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <scenes/>
+    <customFonts key="customFonts">
+        <array key="AvenirNext.ttc">
+            <string>AvenirNext-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Launch Screen View Controller-->
+        <scene sceneID="FSy-E5-OXJ">
+            <objects>
+                <viewController id="hcX-1e-fDD" customClass="LaunchScreenViewController" customModule="Grouffee" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="AxE-Fp-gYy">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="Byp-WC-2fF">
+                                <rect key="frame" x="87" y="220.5" width="200" height="246"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Byp-WC-2fF" secondAttribute="height" multiplier="13:16" id="c20-07-fQ8"/>
+                                    <constraint firstAttribute="width" constant="200" id="tl1-Pb-Ztb"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grouffee" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aci-dc-nsR">
+                                <rect key="frame" x="113" y="486.5" width="149" height="54"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="54" id="Uz0-32-3Mv"/>
+                                    <constraint firstAttribute="width" secondItem="Aci-dc-nsR" secondAttribute="height" multiplier="149:54" id="dMi-lf-Fgw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="VnR-D4-Jp9">
+                                <rect key="frame" x="177" y="548" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Aci-dc-nsR" firstAttribute="top" secondItem="Byp-WC-2fF" secondAttribute="bottom" constant="20" id="DJu-rn-vs8"/>
+                            <constraint firstItem="Byp-WC-2fF" firstAttribute="centerY" secondItem="WiH-q0-z74" secondAttribute="centerY" id="elP-sb-XRY"/>
+                            <constraint firstItem="Aci-dc-nsR" firstAttribute="centerX" secondItem="WiH-q0-z74" secondAttribute="centerX" id="huY-Iz-5Gd"/>
+                            <constraint firstItem="Byp-WC-2fF" firstAttribute="centerX" secondItem="WiH-q0-z74" secondAttribute="centerX" id="s0z-EV-YBb"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="WiH-q0-z74"/>
+                    </view>
+                    <connections>
+                        <outlet property="activityInd" destination="VnR-D4-Jp9" id="Jnd-Yw-yp6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rTb-RI-9UL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-105" y="53"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="logo" width="345" height="424"/>
+    </resources>
 </document>
