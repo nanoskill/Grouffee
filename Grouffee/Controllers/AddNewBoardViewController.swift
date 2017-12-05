@@ -64,12 +64,6 @@ class AddNewBoardViewController: UIViewController, UIPickerViewDelegate, UIPicke
             self.pickerContainer.frame = CGRect(x: 0, y: self.durPickerView.bounds.height, width: self.pickerContainer.bounds.width, height: self.pickerContainer.bounds.height)
         }
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "createBoard" {
-            appDelegate.room.boards.append(Board.init(boardName: boardName.text!, duration: (selectedHours * 3600) + (selectedMinutes * 60)))
-        }
-    }
 
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 2
@@ -86,6 +80,17 @@ class AddNewBoardViewController: UIViewController, UIPickerViewDelegate, UIPicke
             return String(row % 60)
         }
         
+    }
+    
+    @IBAction func cancelDidTap(_ sender: Any)
+    {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func createBoardDidTap(_ sender: Any)
+    {
+        appDelegate.room.boards.append(Board(boardName: boardName.text!, duration: selectedHours*3600 + selectedMinutes*60))
+        dismiss(animated: true, completion: nil)
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {

@@ -18,6 +18,7 @@ class User {
     var name : String
     var timer : GrouffeeTimer
     var status = UserStatus.idle
+    var sessions = [GrouffeeSession]()
     
     init(name: String)
     {

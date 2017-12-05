@@ -82,6 +82,7 @@ class GrouffeeTimer {
         delegate?.timeIsTicking!()
         if initTime != 0 && timeRemaining == 0
         {
+            stopTimer()
             delegate?.timeIsUp!()
         }
         //print("Timer is ticking at \(timeRemaining)")

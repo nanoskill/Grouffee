@@ -51,7 +51,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Create new board"/>
                                 <connections>
-                                    <segue destination="2eJ-zc-lH3" kind="show" identifier="createBoard" id="Q9W-Bh-UVJ"/>
+                                    <action selector="createBoardDidTap:" destination="NOC-mm-486" eventType="touchUpInside" id="ADf-n9-DC8"/>
                                 </connections>
                             </button>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="65T-hB-6bm">
@@ -61,7 +61,7 @@
                                     <navigationItem title="Room Name" id="tug-iJ-Fcb">
                                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="9DY-Ov-VTK">
                                             <connections>
-                                                <segue destination="2eJ-zc-lH3" kind="show" id="Fxr-7R-0jQ"/>
+                                                <action selector="cancelDidTap:" destination="NOC-mm-486" id="mvU-Oz-Aki"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -121,16 +121,5 @@
             </objects>
             <point key="canvasLocation" x="133.59999999999999" y="211.84407796101951"/>
         </scene>
-        <!--BoardList-->
-        <scene sceneID="hyI-RG-ju6">
-            <objects>
-                <viewControllerPlaceholder storyboardName="BoardList" id="2eJ-zc-lH3" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="uJm-2p-K5o" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="658" y="211"/>
-        </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="Q9W-Bh-UVJ"/>
-    </inferredMetricsTieBreakers>
 </document>

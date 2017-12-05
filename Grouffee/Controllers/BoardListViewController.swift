@@ -13,9 +13,10 @@ class BoardListViewController: UIViewController, UITableViewDelegate {
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet var progressBar: UIProgressView!
     @IBOutlet weak var roomName: UINavigationItem!
+    @IBOutlet weak var peopleListButton : UIBarButtonItem!
     
     @IBOutlet weak var boardTable: UITableView!
-    var room : Room!
+    var room : Room! = (UIApplication.shared.delegate as! AppDelegate).room
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
@@ -37,8 +38,9 @@ class BoardListViewController: UIViewController, UITableViewDelegate {
     
     @IBAction func addBoardBtnDidTap(_ sender: Any) {
         //BoardListViewController.boards.append(BoardList(boardName: "hehe", duration: "20", people: "4"))
-        room.boards.append(Board(boardName: "Testing", duration: 50))
-        boardTable.reloadData()
+        //room.boards.append(Board(boardName: "Testing", duration: 50))
+        //boardTable.reloadData()
+        performSegue(withIdentifier: "addBoardSegue", sender: sender)
     }
     
 }
@@ -87,6 +89,7 @@ extension BoardListViewController : GrouffeeTimerDelegate
             self.timerLabel.text! = self.room.timer.getTimeString()
             self.progressBar.progress = Float(self.room.timer.timeRemaining) / Float(self.room.timer.initTime)
             self.boardTable.reloadData()
+            self.peopleListButton.title = "\(self.room.connectedMembers.count)"
         }
     }
     func timeIsUp() {

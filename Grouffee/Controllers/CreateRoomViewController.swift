@@ -56,6 +56,7 @@ class CreateRoomViewController: UIViewController, UIPickerViewDelegate, UIPicker
         appDelegate.myPeerId = MCPeerID(displayName: roomNameTxt.text!)
         appDelegate.connection = ConnectionModel(peerId: appDelegate.myPeerId)
         appDelegate.connection?.serviceAdvertiser.startAdvertisingPeer()
+        appDelegate.room = Room(name: roomNameTxt.text!, leader: appDelegate.user, duration: (selectedHours*3600 + selectedMinutes*60))
     }
     
     @objc
@@ -70,18 +71,8 @@ class CreateRoomViewController: UIViewController, UIPickerViewDelegate, UIPicker
         self.durPicker.selectRow((pickerDataSize / 2) - 20 + selectedMinutes, inComponent: 1, animated: false)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-    {
-        if segue.identifier == "createNewPlan"
-        {
-            let dest = segue.destination.childViewControllers[0] as! BoardListViewController
-            dest.room = Room(name: roomNameTxt.text!, leader: appDelegate.user, duration: (selectedHours*3600 + selectedMinutes*60))
-        }
-    }
-    
     @objc
     func hideDurPicker(){
-        
         UIView.animate(withDuration: 0.2) {
             self.durPickerView.alpha = 0
             self.pickerContainer.frame = CGRect(x: 0, y: self.durPickerView.bounds.height, width: self.pickerContainer.bounds.width, height: self.pickerContainer.bounds.height)
