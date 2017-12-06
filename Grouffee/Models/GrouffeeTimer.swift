@@ -16,9 +16,12 @@ import NotificationCenter
 }
 
 class GrouffeeTimer : Codable {
-    var timeRemaining : Int
-    var initTime : Int
+    var timeRemaining : TimeInterval
+    var initTime : TimeInterval
+    var isRunning = false
     var delegate : GrouffeeTimerDelegate?
+    
+    var milisecTicks = 0
     
     var timer = Timer()
     
@@ -28,7 +31,7 @@ class GrouffeeTimer : Codable {
      Create a timer that will count down
      */
     init(hour: Int, minute: Int, second: Int) {
-        initTime = hour * 60 * 60 + minute * 60 + second
+        initTime = TimeInterval(hour * 60 * 60 + minute * 60 + second)
         timeRemaining = initTime
     }
     
@@ -36,7 +39,7 @@ class GrouffeeTimer : Codable {
      Create a timer that will count down
      */
     init(seconds: Int) {
-        initTime = seconds
+        initTime = TimeInterval(seconds)
         timeRemaining = initTime
     }
     
@@ -52,8 +55,13 @@ class GrouffeeTimer : Codable {
     required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         
-        timeRemaining = try values.decode(Int.self, forKey: .timeRemaining)
-        initTime = try values.decode(Int.self, forKey: .initTime)
+        timeRemaining = try values.decode(TimeInterval.self, forKey: .timeRemaining)
+        initTime = try values.decode(TimeInterval.self, forKey: .initTime)
+        isRunning = try values.decode(Bool.self, forKey: .isRunning)
+        if isRunning
+        {
+            startTimer()
+        }
     }
     
     enum GTType {
@@ -64,6 +72,7 @@ class GrouffeeTimer : Codable {
     private enum CodingKeys : String, CodingKey {
         case timeRemaining = "time_left"
         case initTime = "init_time"
+        case isRunning
     }
     
     func getType() -> GTType
@@ -73,12 +82,14 @@ class GrouffeeTimer : Codable {
     
     func startTimer()
     {
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerDidTick), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 0.001, target: self, selector: #selector(timerDidTick), userInfo: nil, repeats: true)
+        isRunning = true
     }
     
     func stopTimer()
     {
         timer.invalidate()
+        isRunning = false
     }
     
     func resetTimer()
@@ -89,9 +100,14 @@ class GrouffeeTimer : Codable {
     
     @objc func timerDidTick()
     {
-        timeRemaining += (initTime == 0 ? 1 : -1)
+        timeRemaining += (initTime == 0 ? 0.001 : -0.001)
+        milisecTicks += 1
         delegate?.timeIsTicking!()
-        if initTime != 0 && timeRemaining == 0
+        if milisecTicks == 1000
+        {
+            milisecTicks = 0
+        }
+        if initTime != 0 && timeRemaining <= 0
         {
             stopTimer()
             delegate?.timeIsUp!()
@@ -119,6 +135,11 @@ class GrouffeeTimer : Codable {
         return (getHour(), getMinute(), getSecond())
     }
     
+    func getMilisecond() -> Int
+    {
+        return Int(timeRemaining*100) % 100
+    }
+    
     func getTimeString() -> String {
         return String(format:"%02i : %02i : %02i", getHour(), getMinute(), getSecond())
     }
@@ -132,10 +153,10 @@ class GrouffeeTimer : Codable {
     @objc func restoreTimer()
     {
         print(Date().timeIntervalSince(savedTime))
-        var diff = Int(Date().timeIntervalSince(savedTime))
+        var diff = Date().timeIntervalSince(savedTime)
         diff *= (initTime == 0 ? 1 : -1)
         timeRemaining += diff
-        if timeRemaining < 0 {delegate?.timeIsUp! ()}
+        if timeRemaining <= 0 {delegate?.timeIsUp! ()}
         
         print("RESTORED, diff: \(diff)")
     }
