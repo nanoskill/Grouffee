@@ -43,6 +43,7 @@ extension RoomListController : ConnectionModelDelegate
 {
     func foundPeer(peer: MCPeerID)
     {
+        
         theTable.reloadData()
     }
     func lostPeer(peer: MCPeerID)
@@ -60,7 +61,11 @@ extension RoomListController : ConnectionModelDelegate
     {
         if state == .connected
         {
-            let popup = UIAlertController.createOkayPopup(title: "Connected", message: "You are now connected with \(peerID.displayName)", handler: nil)
+            let popup = UIAlertController.createOkayPopup(title: "Connected", message: "You are now connected with \(peerID.displayName)", handler: {
+                (_) in
+                self.appDelegate.room = Room(name: "Not Sync Yet", leader: self.appDelegate.user, duration: 3600)
+                self.performSegue(withIdentifier: "enterBoardSegue", sender: nil)
+            })
             DispatchQueue.main.async {
                 popup.presentExclusively(view: self)
             }

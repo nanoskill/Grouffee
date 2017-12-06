@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Board {
+class Board : Codable{
     var boardName: String
     var duration: Int
     var people: Int

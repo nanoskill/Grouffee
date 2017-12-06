@@ -16,7 +16,7 @@ import MultipeerConnectivity
 @objc public protocol ConnectionModelDelegate {
     @objc optional func foundPeer(peer: MCPeerID)
     @objc optional func lostPeer(peer: MCPeerID)
-    @objc optional func invitationWasReceived(fromPeer: String)
+    @objc optional func invitationWasReceived(fromPeer: MCPeerID)
     @objc optional func connectedWithPeer(peerID: MCPeerID, state: MCSessionState)
 }
 
@@ -65,7 +65,7 @@ extension ConnectionModel : MCNearbyServiceAdvertiserDelegate
     func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didReceiveInvitationFromPeer peerID: MCPeerID, withContext context: Data?, invitationHandler: @escaping (Bool, MCSession?) -> Void) {
         self.invitationHandler = invitationHandler
         
-        delegate?.invitationWasReceived?(fromPeer: peerID.displayName)
+        delegate?.invitationWasReceived?(fromPeer: peerID)
     }
 }
 

@@ -15,7 +15,7 @@ import NotificationCenter
     @objc optional func timeIsTicking()
 }
 
-class GrouffeeTimer {
+class GrouffeeTimer : Codable {
     var timeRemaining : Int
     var initTime : Int
     var delegate : GrouffeeTimerDelegate?
@@ -23,7 +23,6 @@ class GrouffeeTimer {
     var timer = Timer()
     
     var savedTime = Date()
-    
     
     /**
      Create a timer that will count down
@@ -50,9 +49,21 @@ class GrouffeeTimer {
         timeRemaining = 0
     }
     
+    required init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        
+        timeRemaining = try values.decode(Int.self, forKey: .timeRemaining)
+        initTime = try values.decode(Int.self, forKey: .initTime)
+    }
+    
     enum GTType {
         case timer
         case stopwatch
+    }
+    
+    private enum CodingKeys : String, CodingKey {
+        case timeRemaining = "time_left"
+        case initTime = "init_time"
     }
     
     func getType() -> GTType

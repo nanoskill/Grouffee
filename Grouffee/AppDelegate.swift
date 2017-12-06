@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     var connection : ConnectionModel?
-    var myPeerId: MCPeerID!
+    //var myPeerId: MCPeerID!
     var user : User!
     var room : Room!
 

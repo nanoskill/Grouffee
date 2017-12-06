@@ -51,10 +51,11 @@ class CreateRoomViewController: UIViewController, UIPickerViewDelegate, UIPicker
     
     @IBAction func newPlanDidTap(_ sender: Any)
     {
-        appDelegate.myPeerId = MCPeerID(displayName: roomNameTxt.text!)
-        appDelegate.connection = ConnectionModel(peerId: appDelegate.myPeerId)
+        appDelegate.user.peerId = MCPeerID(displayName: roomNameTxt.text!)
+        appDelegate.connection = ConnectionModel(peerId: appDelegate.user.peerId)
         appDelegate.connection?.serviceAdvertiser.startAdvertisingPeer()
         appDelegate.room = Room(name: roomNameTxt.text!, leader: appDelegate.user, duration: (selectedHours*3600 + selectedMinutes*60))
+        appDelegate.user.type = .leader
     }
     
     @IBAction func doneBtnDidTap(_ sender: Any) {

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MultipeerConnectivity
 
 class BoardListViewController: UIViewController, UITableViewDelegate {
 
@@ -41,17 +42,18 @@ class BoardListViewController: UIViewController, UITableViewDelegate {
         timerContainer.addGestureRecognizer(dragGesture)
         
         
-        NotificationCenter.default.addObserver(self, selector: #selector(freezeTimer), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(unfreezeTimer), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(enteredBackground), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(enteredForeground), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
     }
     
-    @objc func freezeTimer()
+    @objc func enteredBackground()
     {
         room.timer.snapTimer()
     }
     
-    @objc func unfreezeTimer()
+    @objc func enteredForeground()
     {
+        appDelegate.connection?.serviceBrowser.startBrowsingForPeers()
         room.timer.restoreTimer()
     }
     
@@ -124,18 +126,56 @@ extension BoardListViewController: UITableViewDataSource {
 
 extension BoardListViewController : ConnectionModelDelegate
 {
-    func invitationWasReceived(fromPeer: String)
-    {
-        let popup = UIAlertController.createAcceptDeclinePopup(title: "Join Request", message: "Invitation from \(fromPeer). Do you want to accept this invitation?", handlerAccept:
-        { (UIAlertAction) in
-            self.appDelegate.connection?.invitationHandler(true, self.appDelegate.connection?.session)
-        }, handlerDecline:
-        { (UIAlertAction) in
-            self.appDelegate.connection?.invitationHandler(true, self.appDelegate.connection?.session)
-        })
-        
-        self.present(popup, animated: true, completion: nil)
+    func foundPeer(peer: MCPeerID) {
+        if appDelegate.user.type == .leader { return }
+        appDelegate.connection?.serviceBrowser.invitePeer(peer, to: (appDelegate.connection?.session)!, withContext: nil, timeout: 10)
+        print("Auto connected by member")
     }
+    func connectedWithPeer(peerID: MCPeerID, state: MCSessionState) {
+        if appDelegate.user.type == .leader { return }
+        appDelegate.connection?.serviceBrowser.stopBrowsingForPeers()
+    }
+    func invitationWasReceived(fromPeer: MCPeerID)
+    {
+        if appDelegate.user.type == .member { return }
+        
+        print("Current connPeer : \((appDelegate.connection?.session.connectedPeers)!)")
+        if appDelegate.room.connectedMembers.contains(where: { (user) -> Bool in
+            return user.peerId == fromPeer
+        })
+        {
+            print("Auto connected by leader")
+            self.appDelegate.connection?.invitationHandler(true, self.appDelegate.connection?.session)
+        }
+        else
+        {
+            let popup = UIAlertController.createAcceptDeclinePopup(title: "Join Request", message: "\(fromPeer.displayName) has requested to join \(room.name)", handlerAccept:
+            { (UIAlertAction) in
+                self.appDelegate.connection?.invitationHandler(true, self.appDelegate.connection?.session)
+                self.appDelegate.room.connectedMembers.append(User(peerId: fromPeer))
+                var theData = Data()
+                let enc = JSONEncoder()
+                do
+                {
+                    theData = try enc.encode(self.appDelegate.room)
+                }
+                catch let error
+                {
+                    print(error)
+                }
+                
+                print(String(bytes: theData, encoding: .utf8)!)
+                
+            }, handlerDecline:
+            { (UIAlertAction) in
+                self.appDelegate.connection?.invitationHandler(false, self.appDelegate.connection?.session)
+            })
+            
+            self.present(popup, animated: true, completion: nil)
+        }
+    }
+    
+    
 }
 
 extension BoardListViewController : GrouffeeTimerDelegate
@@ -144,7 +184,7 @@ extension BoardListViewController : GrouffeeTimerDelegate
         DispatchQueue.main.async {
             self.timerLabel.text! = self.room.timer.getTimeString()
             self.progressBar.progress = Float(self.room.timer.timeRemaining) / Float(self.room.timer.initTime)
-       //     self.boardTable.reloadData()
+            self.boardTable.reloadData() //need optimization
             self.peopleListButton.title = "\(self.room.connectedMembers.count)"
         }
     }
