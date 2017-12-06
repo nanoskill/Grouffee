@@ -75,6 +75,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UNUserNotificationCenter.current().removeAllDeliveredNotifications()
         UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
     }
+    
+    func broadcastRoom()
+    {
+        var theData = Data()
+        let enc = JSONEncoder()
+        do
+        {
+            theData = try enc.encode(room)
+            try connection?.session.send(theData, toPeers: (connection?.session.connectedPeers)!, with: MCSessionSendDataMode.reliable)
+        }
+        catch let error
+        {
+            print(error)
+        }
+    }
     /*
     lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "LocalData")

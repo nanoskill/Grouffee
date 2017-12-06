@@ -42,7 +42,6 @@ class BoardListViewController: UIViewController, UITableViewDelegate {
         dragGesture.addTarget(self, action: #selector(timerBeingDragged(_:)))
         timerContainer.addGestureRecognizer(dragGesture)
         
-        
         NotificationCenter.default.addObserver(self, selector: #selector(enteredBackground), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(enteredForeground), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
     }
@@ -190,6 +189,8 @@ extension BoardListViewController : MCSessionDelegate
     {
         if state == .connected
         {
+            appDelegate.broadcastRoom()
+            /*
             var theData = Data()
             let enc = JSONEncoder()
             do
@@ -204,14 +205,26 @@ extension BoardListViewController : MCSessionDelegate
             {
                 print(error)
             }
+             */
         }
     }
     
     
     func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID)
     {
-        
-        
+        let decoder = JSONDecoder()
+        DispatchQueue.main.async {
+            do
+            {
+                self.appDelegate.room = try decoder.decode(Room.self, from: data)
+                self.room = self.appDelegate.room
+            }
+            catch let error
+            {
+                print(error)
+            }
+            self.boardTable.reloadData()
+        }
     }
     
     

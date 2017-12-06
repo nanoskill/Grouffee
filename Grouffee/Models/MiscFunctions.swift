@@ -20,7 +20,7 @@ extension UIAlertController
     
     static func createAcceptDeclinePopup(title: String, message: String, handlerAccept: ((UIAlertAction) -> Void)?, handlerDecline: ((UIAlertAction) -> Void)?) -> UIAlertController
      {
-        let popup = UIAlertController(title: "title", message: message, preferredStyle: .alert)
+        let popup = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let popupYes = UIAlertAction(title: "Accept", style: .default, handler: handlerAccept)
         let popupNo = UIAlertAction(title: "Decline", style: .destructive, handler: handlerDecline)
         
