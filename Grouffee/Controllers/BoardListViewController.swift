@@ -38,6 +38,7 @@ class BoardListViewController: UIViewController, UITableViewDelegate {
         progressBar.progress = 1
         
         appDelegate.connection?.delegate = self
+        appDelegate.connection?.session.delegate = self
         dragGesture.addTarget(self, action: #selector(timerBeingDragged(_:)))
         timerContainer.addGestureRecognizer(dragGesture)
         
@@ -153,18 +154,6 @@ extension BoardListViewController : ConnectionModelDelegate
             { (UIAlertAction) in
                 self.appDelegate.connection?.invitationHandler(true, self.appDelegate.connection?.session)
                 self.appDelegate.room.connectedMembers.append(User(peerId: fromPeer))
-                var theData = Data()
-                let enc = JSONEncoder()
-                do
-                {
-                    theData = try enc.encode(self.appDelegate.room)
-                }
-                catch let error
-                {
-                    print(error)
-                }
-                
-                print(String(bytes: theData, encoding: .utf8)!)
                 
             }, handlerDecline:
             { (UIAlertAction) in
@@ -192,5 +181,54 @@ extension BoardListViewController : GrouffeeTimerDelegate
         DispatchQueue.main.async {
             self.timerLabel.text! = "Time is Up!"
         }
+    }
+}
+
+extension BoardListViewController : MCSessionDelegate
+{
+    func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState)
+    {
+        if state == .connected
+        {
+            var theData = Data()
+            let enc = JSONEncoder()
+            do
+            {
+                theData = try enc.encode(self.appDelegate.room)
+                
+                var tempArray = [MCPeerID]()
+                tempArray.append(peerID)
+                try self.appDelegate.connection?.session.send(theData, toPeers: tempArray, with: MCSessionSendDataMode.reliable)
+            }
+            catch let error
+            {
+                print(error)
+            }
+        }
+    }
+    
+    
+    func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID)
+    {
+        
+        
+    }
+    
+    
+    func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID)
+    {
+        
+    }
+    
+    
+    func session(_ session: MCSession, didStartReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, with progress: Progress)
+    {
+        
+    }
+    
+    
+    func session(_ session: MCSession, didFinishReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, at localURL: URL?, withError error: Error?)
+    {
+        
     }
 }

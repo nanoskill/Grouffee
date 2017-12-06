@@ -20,6 +20,7 @@ class RoomListController: UIViewController {
         theTable.dataSource = self
         theTable.delegate = self
         appDelegate.connection?.delegate = self
+        appDelegate.connection?.session.delegate = self
     }
 }
 
@@ -61,11 +62,11 @@ extension RoomListController : ConnectionModelDelegate
     {
         if state == .connected
         {
-            let popup = UIAlertController.createOkayPopup(title: "Connected", message: "You are now connected with \(peerID.displayName)", handler: {
+            let popup = UIAlertController.createOkayPopup(title: "Connected", message: "You are now connected with \(peerID.displayName)", handler: nil/*{
                 (_) in
                 self.appDelegate.room = Room(name: "Not Sync Yet", leader: self.appDelegate.user, duration: 3600)
                 self.performSegue(withIdentifier: "enterBoardSegue", sender: nil)
-            })
+            }*/)
             DispatchQueue.main.async {
                 popup.presentExclusively(view: self)
             }
@@ -119,4 +120,48 @@ extension RoomListController : UITableViewDelegate
         }
         
     }
+}
+
+extension RoomListController : MCSessionDelegate
+{
+    func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState)
+    {
+        
+    }
+    
+    
+    func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID)
+    {
+        let decoder = JSONDecoder()
+        DispatchQueue.main.async {
+            do
+            {
+                self.appDelegate.room = try decoder.decode(Room.self, from: data)
+                self.performSegue(withIdentifier: "enterBoardSegue", sender: nil)
+            }
+            catch let error
+            {
+                print(error)
+            }
+        }
+    }
+    
+    
+    func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID)
+    {
+        
+    }
+    
+    
+    func session(_ session: MCSession, didStartReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, with progress: Progress)
+    {
+        
+    }
+    
+    
+    func session(_ session: MCSession, didFinishReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, at localURL: URL?, withError error: Error?)
+    {
+    
+    }
+    
 }
