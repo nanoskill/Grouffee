@@ -47,6 +47,38 @@ class CreateRoomViewController: UIViewController, UIPickerViewDelegate, UIPicker
         startBtn.isEnabled = false
         
         addKeyboardViewAdjustment()
+        
+        
+    }
+    
+    // to set status bar text to white
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
+    override func viewDidLayoutSubviews() {
+        customizeTextField(textField: roomNameTxt, placeHolder: "Room name")
+        customizeTextField(textField: durTxt, placeHolder: "Duration")
+    }
+    
+    func customizeTextField(textField: UITextField, placeHolder: String){
+        let border = CALayer()
+        let width = CGFloat(3.0)
+        border.borderColor = #colorLiteral(red: 0.3330789208, green: 0.7621915936, blue: 0.7701457143, alpha: 1)
+        border.frame = CGRect(x: 0, y: textField.frame.size.height - width, width:  textField.frame.size.width, height: textField.frame.size.height)
+        
+        border.borderWidth = width
+        textField.layer.addSublayer(border)
+        textField.layer.masksToBounds = true
+        
+        textField.attributedPlaceholder = NSAttributedString(string: placeHolder, attributes: [NSAttributedStringKey.foregroundColor: #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)])
+        
+        let leftView: UILabel = UILabel(frame: CGRect(x: 10, y: 0, width: 35, height: 26))
+        leftView.backgroundColor = UIColor.clear
+        
+        textField.leftView = leftView
+        textField.leftViewMode = .always
+        textField.contentVerticalAlignment = .center
     }
     
     @IBAction func newPlanDidTap(_ sender: Any)

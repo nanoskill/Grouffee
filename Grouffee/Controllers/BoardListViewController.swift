@@ -58,6 +58,7 @@ class BoardListViewController: UIViewController, UITableViewDelegate {
     }
     
     @objc func timerBeingDragged(_ sender : UIPanGestureRecognizer) {
+    
         print("Being Dragged : \(dragGesture.translation(in: self.view)) \(dragGesture.velocity(in: self.view))")
         if self.timerContainer.center.x + sender.translation(in: self.view).x >= self.view.center.x - 50
         {

@@ -11,6 +11,7 @@
 		8E447AB91FD17E6600DFCF8C /* BoardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E447AB81FD17E6600DFCF8C /* BoardTableViewCell.swift */; };
 		8E447ABB1FD1926900DFCF8C /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E447ABA1FD1926900DFCF8C /* Board.swift */; };
 		8E447ABD1FD1A87D00DFCF8C /* AddNewBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E447ABC1FD1A87D00DFCF8C /* AddNewBoardViewController.swift */; };
+		8E7163C91FD7C08D003088DC /* MemberList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E7163C81FD7C08D003088DC /* MemberList.storyboard */; };
 		8EE487DF1FCD14A60091B825 /* CreateRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE487DE1FCD14A60091B825 /* CreateRoomViewController.swift */; };
 		8EE487E11FCDB4C10091B825 /* MyTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE487E01FCDB4C10091B825 /* MyTimer.swift */; };
 		8EE487E51FCDB5A90091B825 /* BoardListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE487E41FCDB5A90091B825 /* BoardListViewController.swift */; };
@@ -39,6 +40,7 @@
 		8E447AB81FD17E6600DFCF8C /* BoardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardTableViewCell.swift; sourceTree = "<group>"; };
 		8E447ABA1FD1926900DFCF8C /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		8E447ABC1FD1A87D00DFCF8C /* AddNewBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewBoardViewController.swift; sourceTree = "<group>"; };
+		8E7163C81FD7C08D003088DC /* MemberList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MemberList.storyboard; sourceTree = "<group>"; };
 		8EE487DE1FCD14A60091B825 /* CreateRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRoomViewController.swift; sourceTree = "<group>"; };
 		8EE487E01FCDB4C10091B825 /* MyTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTimer.swift; sourceTree = "<group>"; };
 		8EE487E41FCDB5A90091B825 /* BoardListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardListViewController.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 				B7C988871FD62D3E00091158 /* InitialSelection.storyboard */,
 				B7F9FB9B1FCD0C920002C3C0 /* RoomList.storyboard */,
 				B713E50E1FD67F4D005759E5 /* CustomLaunchScreen.storyboard */,
+				8E7163C81FD7C08D003088DC /* MemberList.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -221,6 +224,7 @@
 				B7C9888B1FD62D3E00091158 /* AddNewBoard.storyboard in Resources */,
 				B7C9888D1FD62D3E00091158 /* InitialSelection.storyboard in Resources */,
 				B7F9FB9C1FCD0C920002C3C0 /* RoomList.storyboard in Resources */,
+				8E7163C91FD7C08D003088DC /* MemberList.storyboard in Resources */,
 				B7B57DD71FC815DF008B4C9D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
