@@ -112,8 +112,7 @@ extension BoardListViewController : UITableViewDelegate
         let theHandler : UIContextualActionHandler =
         {   [weak self]
             (theAction, theView, boolHandler) in
-            //self?.appDelegate.room.boards[indexPath.row].joinBoard(user: self?.appDelegate.user)
-            print("joined")
+            self?.appDelegate.room.boards[indexPath.row].joinBoard(user: (self?.appDelegate.user)!)
         }
         
         let theButton = UIContextualAction(style: .normal, title: "JOIN", handler: theHandler)
@@ -126,13 +125,8 @@ extension BoardListViewController : UITableViewDelegate
         return true
     }
     
-    
-    
-    
-    
     //debug
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.appDelegate.room.boards[indexPath.row].joinBoard(user: self.appDelegate.user)
     }
 }
 

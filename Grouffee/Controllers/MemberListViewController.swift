@@ -25,12 +25,12 @@ class MemberListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         memberTable.dataSource = self
-        refreshPerOneSec = Timer(timeInterval: 1, repeats: true, block: { (_) in
-            DispatchQueue.main.async {
-                self.memberTable.reloadData()
+        refreshPerOneSec = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) {[weak self] (_) in
+            print("jalan")
+            DispatchQueue.main.async { [weak self] in
+                self?.memberTable.reloadData()
             }
-        })
-    }
+        }    }
     
     @IBAction func backButtonDidTap(_ sender: Any)
     {
