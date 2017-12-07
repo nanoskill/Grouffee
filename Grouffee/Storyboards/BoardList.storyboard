@@ -53,6 +53,16 @@
                                 <rect key="frame" x="16" y="208" width="343" height="434"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="wUb-2D-J6n">
+                                    <rect key="frame" x="0.0" y="128" width="343" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" title="Add New Board">
+                                        <color key="titleColor" red="0.83457285169999995" green="0.52269953489999998" blue="0.44308012720000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="addBoardBtnDidTap:" destination="Nk3-WV-GfW" eventType="touchUpInside" id="eb1-eT-vKa"/>
+                                    </connections>
+                                </button>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="boardCell" rowHeight="100" id="FZb-Gn-Bts" customClass="BoardListViewCell" customModule="Grouffee" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="343" height="100"/>
@@ -107,6 +117,9 @@
                                     <navigationItem title="Room Name" id="XKm-ke-nuC">
                                         <barButtonItem key="rightBarButtonItem" title="5" id="Bcx-JL-aa6">
                                             <color key="tintColor" red="0.84478455779999995" green="0.52694404130000005" blue="0.45091509819999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <connections>
+                                                <action selector="peopleListButtonDidTap:" destination="Nk3-WV-GfW" id="oPT-hw-vOX"/>
+                                            </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
@@ -120,10 +133,14 @@
                                 <rect key="frame" x="316" y="29" width="25" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="add" translatesAutoresizingMaskIntoConstraints="NO" id="a1K-fP-OYR">
-                                <rect key="frame" x="318" y="165" width="30" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k3T-SY-xdF">
+                                <rect key="frame" x="316" y="165" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
+                                <state key="normal" backgroundImage="add"/>
+                                <connections>
+                                    <action selector="addBoardBtnDidTap:" destination="Nk3-WV-GfW" eventType="touchUpInside" id="Iaf-ky-Sad"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="iq4-6K-nOp"/>
@@ -132,18 +149,29 @@
                     <navigationItem key="navigationItem" title="Room Name" id="feU-vY-8eE"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="addBoardButton" destination="wUb-2D-J6n" id="vHt-OV-4HY"/>
                         <outlet property="boardTable" destination="E56-o7-THn" id="diF-og-ztJ"/>
                         <outlet property="peopleListButton" destination="Bcx-JL-aa6" id="8RE-F8-rJf"/>
+                        <outlet property="plusButton" destination="k3T-SY-xdF" id="7Dp-Tj-xew"/>
                         <outlet property="progressBar" destination="49T-fB-itX" id="nE7-V7-G7V"/>
                         <outlet property="roomName" destination="feU-vY-8eE" id="kOl-Qt-q3d"/>
                         <outlet property="timerContainer" destination="xKy-4R-itv" id="Wap-F6-cDC"/>
                         <outlet property="timerLabel" destination="wdv-6l-TWa" id="mkr-zM-KXE"/>
                         <segue destination="bDI-qG-69t" kind="show" identifier="addBoardSegue" id="8JA-Hh-LSh"/>
+                        <segue destination="VLS-Xr-YUS" kind="show" identifier="showMembersSegue" id="ZRs-TW-uka"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZoF-8F-j5J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="106.40000000000001" y="71.514242878560722"/>
+        </scene>
+        <!--MemberList-->
+        <scene sceneID="l2h-JL-crh">
+            <objects>
+                <viewControllerPlaceholder storyboardName="MemberList" id="VLS-Xr-YUS" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cFd-Wx-ncO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="800" y="-46"/>
         </scene>
         <!--AddNewBoard-->
         <scene sceneID="8Pw-XA-mMB">

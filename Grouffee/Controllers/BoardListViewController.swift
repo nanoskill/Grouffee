@@ -18,8 +18,10 @@ class BoardListViewController: UIViewController, UITableViewDelegate {
     
     @IBOutlet weak var timerContainer : UIView!
     
+    @IBOutlet weak var plusButton: UIButton!
+    @IBOutlet weak var addBoardButton: UIButton!
+    
     @IBOutlet weak var boardTable: UITableView!
-    var room : Room! = (UIApplication.shared.delegate as! AppDelegate).room
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
@@ -29,11 +31,11 @@ class BoardListViewController: UIViewController, UITableViewDelegate {
         
         boardTable.dataSource = self
         boardTable.delegate = self
-        room.timer.delegate = self
+        appDelegate.room.timer.delegate = self
         
-        roomName.title = room.name
+        roomName.title = appDelegate.room.name
         
-        room.timer.startTimer()
+        appDelegate.room.timer.startTimer()
         
         progressBar.progress = 1
         
@@ -42,20 +44,32 @@ class BoardListViewController: UIViewController, UITableViewDelegate {
         dragGesture.addTarget(self, action: #selector(timerBeingDragged(_:)))
         timerContainer.addGestureRecognizer(dragGesture)
         
+        if appDelegate.user.type == .member
+        {
+            plusButton.isHidden = true
+            addBoardButton.isHidden = true
+        }
+        
         NotificationCenter.default.addObserver(self, selector: #selector(enteredBackground), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(enteredForeground), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
     }
     
     @objc func enteredBackground()
     {
-        room.timer.snapTimer()
+        appDelegate.room.timer.snapTimer()
     }
     
     @objc func enteredForeground()
     {
         appDelegate.connection?.serviceBrowser.startBrowsingForPeers()
-        room.timer.restoreTimer()
+        appDelegate.room.timer.restoreTimer()
     }
+    
+    @IBAction func peopleListButtonDidTap(_ sender: Any)
+    {
+        performSegue(withIdentifier: "showMembersSegue", sender: sender)
+    }
+    
     
     @objc func timerBeingDragged(_ sender : UIPanGestureRecognizer) {
     
@@ -86,28 +100,7 @@ class BoardListViewController: UIViewController, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 70
-    }
-}
-
-extension BoardListViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return room.boards.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = boardTable.dequeueReusableCell(withIdentifier: "boardCell", for: indexPath) as! BoardListViewCell
-        
-        cell.boardName.text = room.boards[indexPath.row].boardName
-        cell.duration.text = room.boards[indexPath.row].timer.getTimeString()
-        cell.people.text = String(room.boards[indexPath.row].people)
-        
-        return cell
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 90
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
@@ -150,7 +143,7 @@ extension BoardListViewController : ConnectionModelDelegate
         }
         else
         {
-            let popup = UIAlertController.createAcceptDeclinePopup(title: "Join Request", message: "\(fromPeer.displayName) has requested to join \(room.name)", handlerAccept:
+            let popup = UIAlertController.createAcceptDeclinePopup(title: "Join Request", message: "\(fromPeer.displayName) has requested to join \(appDelegate.room.name)", handlerAccept:
             { (UIAlertAction) in
                 self.appDelegate.connection?.invitationHandler(true, self.appDelegate.connection?.session)
                 self.appDelegate.room.connectedMembers.append(User(peerId: fromPeer))
@@ -171,10 +164,10 @@ extension BoardListViewController : GrouffeeTimerDelegate
 {
     func timeIsTicking() {
         DispatchQueue.main.async {
-            self.timerLabel.text! = self.room.timer.getTimeString()
-            self.progressBar.progress = Float(self.room.timer.timeRemaining) / Float(self.room.timer.initTime)
+            self.timerLabel.text! = self.appDelegate.room.timer.getTimeString()
+            self.progressBar.progress = Float(self.appDelegate.room.timer.timeRemaining) / Float(self.appDelegate.room.timer.initTime)
             self.boardTable.reloadData() //need optimization
-            self.peopleListButton.title = "\(self.room.connectedMembers.count)"
+            self.peopleListButton.title = "\(self.appDelegate.room.connectedMembers.count)"
         }
     }
     func timeIsUp() {
@@ -218,7 +211,6 @@ extension BoardListViewController : MCSessionDelegate
             do
             {
                 self.appDelegate.room = try decoder.decode(Room.self, from: data)
-                self.room = self.appDelegate.room
             }
             catch let error
             {
@@ -244,5 +236,27 @@ extension BoardListViewController : MCSessionDelegate
     func session(_ session: MCSession, didFinishReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, at localURL: URL?, withError error: Error?)
     {
         
+    }
+}
+
+extension BoardListViewController : UITableViewDataSource
+{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return appDelegate.room.boards.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "boardCell", for: indexPath) as! BoardListViewCell
+        
+        cell.boardName.text = appDelegate.room.boards[indexPath.row].boardName
+        cell.duration.text = appDelegate.room.boards[indexPath.row].timer.getTimeString()
+        cell.people.text = String(appDelegate.room.boards[indexPath.row].people)
+        
+        return cell
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
     }
 }

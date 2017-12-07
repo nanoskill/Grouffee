@@ -18,6 +18,7 @@
 		B713E5021FD65787005759E5 /* Lato in Resources */ = {isa = PBXBuildFile; fileRef = B713E5011FD65787005759E5 /* Lato */; };
 		B713E50D1FD67B78005759E5 /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B713E50C1FD67B78005759E5 /* LaunchScreenViewController.swift */; };
 		B713E50F1FD67F4D005759E5 /* CustomLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B713E50E1FD67F4D005759E5 /* CustomLaunchScreen.storyboard */; };
+		B7898E7F1FD8DFF400DCDEE1 /* MemberListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7898E7E1FD8DFF400DCDEE1 /* MemberListViewController.swift */; };
 		B79101DF1FCD3C88003772B3 /* ConnectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79101DE1FCD3C88003772B3 /* ConnectionModel.swift */; };
 		B79101E81FCD485D003772B3 /* RoomListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79101E71FCD485D003772B3 /* RoomListController.swift */; };
 		B791020A1FCE87C7003772B3 /* MiscFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79102091FCE87C7003772B3 /* MiscFunctions.swift */; };
@@ -47,6 +48,7 @@
 		B713E5011FD65787005759E5 /* Lato */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Lato; sourceTree = "<group>"; };
 		B713E50C1FD67B78005759E5 /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
 		B713E50E1FD67F4D005759E5 /* CustomLaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CustomLaunchScreen.storyboard; sourceTree = "<group>"; };
+		B7898E7E1FD8DFF400DCDEE1 /* MemberListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberListViewController.swift; sourceTree = "<group>"; };
 		B79101DE1FCD3C88003772B3 /* ConnectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionModel.swift; sourceTree = "<group>"; };
 		B79101E71FCD485D003772B3 /* RoomListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListController.swift; sourceTree = "<group>"; };
 		B79102091FCE87C7003772B3 /* MiscFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiscFunctions.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 				8EE487E41FCDB5A90091B825 /* BoardListViewController.swift */,
 				8E447ABC1FD1A87D00DFCF8C /* AddNewBoardViewController.swift */,
 				B713E50C1FD67B78005759E5 /* LaunchScreenViewController.swift */,
+				B7898E7E1FD8DFF400DCDEE1 /* MemberListViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -244,6 +247,7 @@
 				B79101DF1FCD3C88003772B3 /* ConnectionModel.swift in Sources */,
 				8EE487DF1FCD14A60091B825 /* CreateRoomViewController.swift in Sources */,
 				8E447ABB1FD1926900DFCF8C /* Board.swift in Sources */,
+				B7898E7F1FD8DFF400DCDEE1 /* MemberListViewController.swift in Sources */,
 				B791020E1FCEACD4003772B3 /* GrouffeeTimer.swift in Sources */,
 				B7B57DD01FC815DF008B4C9D /* AppDelegate.swift in Sources */,
 				8EE487E11FCDB4C10091B825 /* MyTimer.swift in Sources */,

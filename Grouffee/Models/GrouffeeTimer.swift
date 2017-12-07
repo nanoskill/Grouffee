@@ -82,7 +82,7 @@ class GrouffeeTimer : Codable {
     
     func startTimer()
     {
-        timer = Timer.scheduledTimer(timeInterval: 0.001, target: self, selector: #selector(timerDidTick), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(timerDidTick), userInfo: nil, repeats: true)
         isRunning = true
     }
     
@@ -100,10 +100,10 @@ class GrouffeeTimer : Codable {
     
     @objc func timerDidTick()
     {
-        timeRemaining += (initTime == 0 ? 0.001 : -0.001)
+        timeRemaining += (initTime == 0 ? 0.01 : -0.01)
         milisecTicks += 1
         delegate?.timeIsTicking!()
-        if milisecTicks == 1000
+        if milisecTicks == 100
         {
             milisecTicks = 0
         }

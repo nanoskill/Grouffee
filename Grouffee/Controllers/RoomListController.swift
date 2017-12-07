@@ -44,7 +44,6 @@ extension RoomListController : ConnectionModelDelegate
 {
     func foundPeer(peer: MCPeerID)
     {
-        
         theTable.reloadData()
     }
     func lostPeer(peer: MCPeerID)

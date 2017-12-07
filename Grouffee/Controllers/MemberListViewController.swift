@@ -8,28 +8,42 @@
 
 import UIKit
 
-class MemberListViewController: UIViewController {
+class MemberListTableCell : UITableViewCell
+{
+    @IBOutlet weak var logo : UIImageView!
+    @IBOutlet weak var nameLabel : UILabel!
+    @IBOutlet weak var timeLabel : UILabel!
+}
 
+class MemberListViewController: UIViewController {
+    @IBOutlet weak var viewTitle: UINavigationItem!
+    @IBOutlet weak var backButton: UIBarButtonItem!
+    @IBOutlet weak var memberTable: UITableView!
+    
+    let appDelegate = (UIApplication.shared.delegate as! AppDelegate)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        memberTable.dataSource = self
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func backButtonDidTap(_ sender: Any)
+    {
+        dismiss(animated: true, completion: nil)
     }
-    */
+}
 
+extension MemberListViewController : UITableViewDataSource
+{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return appDelegate.room.connectedMembers.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "memberCell") as! MemberListTableCell
+        cell.logo.image =  (appDelegate.room.connectedMembers[indexPath.row].status == .idle ? #imageLiteral(resourceName: "Logo - Blue Fix") : #imageLiteral(resourceName: "Logo - White"))
+        cell.nameLabel.text = appDelegate.room.connectedMembers[indexPath.row].name
+        cell.timeLabel.text = appDelegate.room.connectedMembers[indexPath.row].timer.getTimeString()
+        return cell
+    }
 }
