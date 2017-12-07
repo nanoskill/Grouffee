@@ -43,6 +43,8 @@ class AddNewBoardViewController: UIViewController, UIPickerViewDelegate, UIPicke
         
         durPickerView.alpha = 0.0
         //createBoardBtn.isEnabled = false
+        
+        //addKeyboardViewAdjustment()
     }
     
     @objc

@@ -9,7 +9,7 @@
 import UIKit
 import MultipeerConnectivity
 
-class BoardListViewController: UIViewController, UITableViewDelegate {
+class BoardListViewController: UIViewController {
 
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet var progressBar: UIProgressView!
@@ -98,7 +98,10 @@ class BoardListViewController: UIViewController, UITableViewDelegate {
         //boardTable.reloadData()
         performSegue(withIdentifier: "addBoardSegue", sender: sender)
     }
-    
+}
+
+extension BoardListViewController : UITableViewDelegate
+{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 90
     }
@@ -107,19 +110,51 @@ class BoardListViewController: UIViewController, UITableViewDelegate {
     {
         var actions = [UIContextualAction]()
         let theHandler : UIContextualActionHandler =
-        {
+        {   [weak self]
             (theAction, theView, boolHandler) in
-            self.appDelegate.room.boards[indexPath.row].joinBoard(user: self.appDelegate.user)
+            //self?.appDelegate.room.boards[indexPath.row].joinBoard(user: self?.appDelegate.user)
+            print("joined")
         }
+        
         let theButton = UIContextualAction(style: .normal, title: "JOIN", handler: theHandler)
         theButton.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
         actions.append(theButton)
         return UISwipeActionsConfiguration(actions: actions)
     }
     
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    
+    
+    
+    
     //debug
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.appDelegate.room.boards[indexPath.row].joinBoard(user: self.appDelegate.user)
+    }
+}
+
+extension BoardListViewController : UITableViewDataSource
+{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return appDelegate.room.boards.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "boardCell", for: indexPath) as! BoardListViewCell
+        
+        cell.boardName.text = appDelegate.room.boards[indexPath.row].boardName
+        cell.duration.text = appDelegate.room.boards[indexPath.row].timer.getTimeString()
+        cell.people.text = String(appDelegate.room.boards[indexPath.row].members.count)
+        
+        return cell
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
     }
 }
 
@@ -241,27 +276,5 @@ extension BoardListViewController : MCSessionDelegate
     func session(_ session: MCSession, didFinishReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, at localURL: URL?, withError error: Error?)
     {
         
-    }
-}
-
-extension BoardListViewController : UITableViewDataSource
-{
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return appDelegate.room.boards.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "boardCell", for: indexPath) as! BoardListViewCell
-        
-        cell.boardName.text = appDelegate.room.boards[indexPath.row].boardName
-        cell.duration.text = appDelegate.room.boards[indexPath.row].timer.getTimeString()
-        cell.people.text = String(appDelegate.room.boards[indexPath.row].members.count)
-        
-        return cell
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
     }
 }

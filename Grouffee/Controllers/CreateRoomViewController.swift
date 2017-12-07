@@ -47,8 +47,6 @@ class CreateRoomViewController: UIViewController, UIPickerViewDelegate, UIPicker
         startBtn.isEnabled = false
         
         addKeyboardViewAdjustment()
-        
-        
     }
     
     // to set status bar text to white
