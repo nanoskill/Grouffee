@@ -15,6 +15,7 @@ class InitialSelectionViewController: UIViewController {
     @IBOutlet weak var newPlanBtn: UIButton!
     @IBOutlet weak var joinPlanBtn: UIButton!
     @IBOutlet weak var errorMessage: UILabel!
+    @IBOutlet weak var errorView: UIView!
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
@@ -27,6 +28,8 @@ class InitialSelectionViewController: UIViewController {
         errorMessage.text = ""
         nameField.delegate = self
         addKeyboardViewAdjustment()
+        errorView.isHidden = true
+        errorView.layer.cornerRadius = 10
     }
     
     @IBAction func newPlanDidTap(_ sender: Any) {
@@ -53,6 +56,7 @@ class InitialSelectionViewController: UIViewController {
                 let regex = try NSRegularExpression(pattern: ".*[^A-Za-z ].*", options: [])
                 if regex.firstMatch(in: nameField.text!, options: [], range: NSMakeRange(0, (nameField.text?.count)!)) != nil
                 {
+                    errorView.isHidden = false
                     errorMessage.text = "Name must be alphabet only"
                     newPlanBtn.isEnabled = false
                     joinPlanBtn.isEnabled = false
@@ -82,14 +86,47 @@ class InitialSelectionViewController: UIViewController {
     
     @IBAction func textFieldChanged()
     {
-        if nameField.text == ""
+        validateName()
+        if nameField.text == "" || !validateName()
         {
             newPlanBtn.isEnabled = false
             joinPlanBtn.isEnabled = false
+            errorView.isHidden = false
             return
         }
+        errorView.isHidden = true
         newPlanBtn.isEnabled = true
         joinPlanBtn.isEnabled = true
+    }
+    
+    // to set status bar text to white
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
+    //textField code
+    override func viewDidLayoutSubviews() {
+        customizeTextField(textField: nameField, placeHolder: "Your name")
+    }
+    
+    func customizeTextField(textField: UITextField, placeHolder: String){
+        let border = CALayer()
+        let width = CGFloat(3.0)
+        border.borderColor = #colorLiteral(red: 0.3330789208, green: 0.7621915936, blue: 0.7701457143, alpha: 1)
+        border.frame = CGRect(x: 0, y: textField.frame.size.height - width, width:  textField.frame.size.width, height: textField.frame.size.height)
+        
+        border.borderWidth = width
+        textField.layer.addSublayer(border)
+        textField.layer.masksToBounds = true
+        
+        textField.attributedPlaceholder = NSAttributedString(string: placeHolder, attributes: [NSAttributedStringKey.foregroundColor: #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)])
+        
+        let leftView: UILabel = UILabel(frame: CGRect(x: 10, y: 0, width: 35, height: 26))
+        leftView.backgroundColor = UIColor.clear
+        
+        textField.leftView = leftView
+        textField.leftViewMode = .always
+        textField.contentVerticalAlignment = .center
     }
 }
 
