@@ -109,12 +109,17 @@ class BoardListViewController: UIViewController, UITableViewDelegate {
         let theHandler : UIContextualActionHandler =
         {
             (theAction, theView, boolHandler) in
-            print("JOINED")
+            self.appDelegate.room.boards[indexPath.row].joinBoard(user: self.appDelegate.user)
         }
         let theButton = UIContextualAction(style: .normal, title: "JOIN", handler: theHandler)
         theButton.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
         actions.append(theButton)
         return UISwipeActionsConfiguration(actions: actions)
+    }
+    
+    //debug
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.appDelegate.room.boards[indexPath.row].joinBoard(user: self.appDelegate.user)
     }
 }
 
@@ -251,7 +256,7 @@ extension BoardListViewController : UITableViewDataSource
         
         cell.boardName.text = appDelegate.room.boards[indexPath.row].boardName
         cell.duration.text = appDelegate.room.boards[indexPath.row].timer.getTimeString()
-        cell.people.text = String(appDelegate.room.boards[indexPath.row].people)
+        cell.people.text = String(appDelegate.room.boards[indexPath.row].members.count)
         
         return cell
     }

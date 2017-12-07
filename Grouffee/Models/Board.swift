@@ -11,13 +11,32 @@ import Foundation
 class Board : Codable{
     var boardName: String
     var duration: Int
-    var people: Int
+    var members: [User]
     var timer : GrouffeeTimer!
 
     init(boardName: String, duration: Int) {
         self.boardName = boardName
         self.duration = duration
-        people = 0
+        members = [User]()
         timer = GrouffeeTimer(seconds: duration)
+    }
+    
+    func joinBoard(user: User)
+    {
+        if members.count == 0 {timer.startTimer()}
+        user.startWorking()
+        members.append(user)
+    }
+    
+    func exitBoard(user: User)
+    {
+        if members.count == 1 {timer.stopTimer()}
+        for (idx, usr) in members.enumerated() {
+            if usr.name == user.name
+            {
+                usr.stopWorking()
+                members.remove(at: idx)
+            }
+        }
     }
 }

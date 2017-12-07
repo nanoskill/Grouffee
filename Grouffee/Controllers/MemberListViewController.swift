@@ -21,14 +21,20 @@ class MemberListViewController: UIViewController {
     @IBOutlet weak var memberTable: UITableView!
     
     let appDelegate = (UIApplication.shared.delegate as! AppDelegate)
-    
+    var refreshPerOneSec : Timer!
     override func viewDidLoad() {
         super.viewDidLoad()
         memberTable.dataSource = self
+        refreshPerOneSec = Timer(timeInterval: 1, repeats: true, block: { (_) in
+            DispatchQueue.main.async {
+                self.memberTable.reloadData()
+            }
+        })
     }
     
     @IBAction func backButtonDidTap(_ sender: Any)
     {
+        refreshPerOneSec.invalidate()
         dismiss(animated: true, completion: nil)
     }
 }

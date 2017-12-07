@@ -73,4 +73,16 @@ class User : Codable{
     {
         self.timer = timer
     }
+    
+    func startWorking()
+    {
+        status = .working
+        timer.startTimer()
+    }
+    
+    func stopWorking()
+    {
+        status = .idle
+        timer.stopTimer()
+    }
 }
