@@ -54,7 +54,7 @@
                         <viewLayoutGuide key="safeArea" id="if8-uo-dCg"/>
                     </view>
                     <connections>
-                        <outlet property="theTable" destination="8Ua-uI-Tr2" id="dA9-Uh-Gdb"/>
+                        <outlet property="theTable" destination="8Ua-uI-Tr2" id="Oe9-IH-fHL"/>
                         <segue destination="iqG-Uf-vh2" kind="show" identifier="enterBoardSegue" id="e1w-mj-PqE"/>
                     </connections>
                 </viewController>

@@ -20,7 +20,7 @@ class RoomListController: UIViewController {
         theTable.dataSource = self
         theTable.delegate = self
         appDelegate.connection?.delegate = self
-        appDelegate.connection?.session.delegate = self
+        //appDelegate.connection?.session.delegate = self
     }
 }
 
@@ -61,11 +61,14 @@ extension RoomListController : ConnectionModelDelegate
     {
         if state == .connected
         {
-            let popup = UIAlertController.createOkayPopup(title: "Connected", message: "You are now connected with \(peerID.displayName)", handler: nil/*{
+            let popup = UIAlertController.createOkayPopup(title: "Connected", message: "You are now connected with \(peerID.displayName)", handler:
+            {
                 (_) in
-                self.appDelegate.room = Room(name: "Not Sync Yet", leader: self.appDelegate.user, duration: 3600)
-                self.performSegue(withIdentifier: "enterBoardSegue", sender: nil)
-            }*/)
+                //UIApplication.topViewController()?.dismiss(animated: true, completion: nil)
+                let storyboard = UIStoryboard.init(name: "BoardList", bundle: nil)
+                let controller = storyboard.instantiateInitialViewController() as! BoardListViewController
+                UIApplication.topViewController()?.present(controller, animated: true, completion: nil)
+            })
             DispatchQueue.main.async {
                 popup.presentExclusively(view: self)
             }
@@ -120,7 +123,7 @@ extension RoomListController : UITableViewDelegate
         
     }
 }
-
+/*
 extension RoomListController : MCSessionDelegate
 {
     func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState)
@@ -164,3 +167,4 @@ extension RoomListController : MCSessionDelegate
     }
     
 }
+*/

@@ -35,7 +35,10 @@ class InitialSelectionViewController: UIViewController {
     @IBAction func newPlanDidTap(_ sender: Any) {
         if validateName()
         {
-            performSegue(withIdentifier: "CreateRoomSegue", sender: sender)
+            let sb = UIStoryboard(name: "CreateRoom", bundle: nil)
+            let con : UIViewController! = sb.instantiateInitialViewController()
+            present(con, animated: true, completion: nil)
+            //performSegue(withIdentifier: "CreateRoomSegue", sender: sender)
         }
     }
     @IBAction func joinPlanDidTap(_ sender: Any) {
@@ -43,8 +46,12 @@ class InitialSelectionViewController: UIViewController {
         {
             appDelegate.user.peerId = MCPeerID(displayName: appDelegate.user.name)
             appDelegate.connection = ConnectionModel(peerId: appDelegate.user.peerId!)
+            print((appDelegate.connection?.session)!)
             appDelegate.connection?.serviceBrowser.startBrowsingForPeers()
-            performSegue(withIdentifier: "RoomListSegue", sender: sender)
+            let sb = UIStoryboard(name: "RoomList", bundle: nil)
+            let con : UIViewController! = sb.instantiateInitialViewController()
+            present(con, animated: true, completion: nil)
+            //performSegue(withIdentifier: "RoomListSegue", sender: sender)
         }
     }
 
@@ -86,7 +93,6 @@ class InitialSelectionViewController: UIViewController {
     
     @IBAction func textFieldChanged()
     {
-        validateName()
         if nameField.text == "" || !validateName()
         {
             newPlanBtn.isEnabled = false

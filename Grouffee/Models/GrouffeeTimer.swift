@@ -16,12 +16,7 @@ import NotificationCenter
 }
 
 class GrouffeeTimer : Codable {
-    var timeRemaining : TimeInterval{
-        
-        didSet{
-            
-        }
-    }
+    var timeRemaining : TimeInterval
     var initTime : TimeInterval
     var isRunning = false
     var delegate : GrouffeeTimerDelegate?

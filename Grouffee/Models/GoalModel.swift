@@ -7,3 +7,14 @@
 //
 
 import Foundation
+
+class Goal : Codable{
+    var name : String
+    var user : User?
+    var time : Date?
+    
+    init(name : String) {
+        self.name = name
+    }
+    
+}

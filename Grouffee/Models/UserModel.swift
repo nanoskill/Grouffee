@@ -25,7 +25,7 @@ class User : Codable{
     var name : String
     var timer : GrouffeeTimer
     var status = UserStatus.idle
-    //var sessions = [GrouffeeSession]()
+    var sessions = [GrouffeeSession]()
     var peerId : MCPeerID!
     var type = UserType.member
     
@@ -34,6 +34,7 @@ class User : Codable{
         case timer
         case status
         case type
+        case sessions
     }
     
     required init(from decoder: Decoder) throws {
@@ -74,15 +75,17 @@ class User : Codable{
         self.timer = timer
     }
     
-    func startWorking()
+    func startWorking(inBoard : Board)
     {
         status = .working
+        sessions.append(GrouffeeSession(board: inBoard, startTime: Date(), endTime: nil))
         timer.startTimer()
     }
     
     func stopWorking()
     {
         status = .idle
+        sessions[sessions.endIndex].endTime = Date()
         timer.stopTimer()
     }
 }

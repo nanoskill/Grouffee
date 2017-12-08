@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jX3-Ml-lKn">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jX3-Ml-lKn">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -187,7 +187,7 @@
                         <outlet property="hoursLabel" destination="aJX-oa-Hb4" id="fhl-w7-gUG"/>
                         <outlet property="minuteLabel" destination="hV6-1P-van" id="SbD-70-0CD"/>
                         <outlet property="pickerContainer" destination="YYN-jm-GEf" id="KTD-GA-hcC"/>
-                        <outlet property="roomNameTxt" destination="ds0-AO-FMy" id="S1R-cV-6JY"/>
+                        <outlet property="roomNameTxt" destination="ds0-AO-FMy" id="2vc-iw-ZOg"/>
                         <outlet property="startBtn" destination="mD0-7D-xUJ" id="3TF-RU-VLL"/>
                     </connections>
                 </viewController>

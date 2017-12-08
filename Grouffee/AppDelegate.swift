@@ -82,7 +82,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let enc = JSONEncoder()
         do
         {
-            theData = try enc.encode(room)
+            theData = try enc.encode(InitialData(room: room))
             try connection?.session.send(theData, toPeers: (connection?.session.connectedPeers)!, with: MCSessionSendDataMode.reliable)
         }
         catch let error
@@ -90,16 +90,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print(error)
         }
     }
-    /*
-    lazy var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "LocalData")
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-            if let error = error as NSError? {
-                fatalError("Unresolved error \(error), \(error.userInfo)")
-            }
-        })
-        return container
-    }()*/
 
 }
 

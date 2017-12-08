@@ -26,7 +26,6 @@ class MemberListViewController: UIViewController {
         super.viewDidLoad()
         memberTable.dataSource = self
         refreshPerOneSec = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) {[weak self] (_) in
-            print("jalan")
             DispatchQueue.main.async { [weak self] in
                 self?.memberTable.reloadData()
             }

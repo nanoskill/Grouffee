@@ -8,9 +8,9 @@
 
 import UIKit
 
-struct GrouffeeSession
+struct GrouffeeSession : Codable
 {
-    var user : User
+    var board : Board
     var startTime : Date
     var endTime : Date?
 }

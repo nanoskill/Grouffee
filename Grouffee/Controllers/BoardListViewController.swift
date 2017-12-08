@@ -40,7 +40,7 @@ class BoardListViewController: UIViewController {
         progressBar.progress = 1
         
         appDelegate.connection?.delegate = self
-        appDelegate.connection?.session.delegate = self
+        //appDelegate.connection?.session.delegate = self
         dragGesture.addTarget(self, action: #selector(timerBeingDragged(_:)))
         timerContainer.addGestureRecognizer(dragGesture)
         
@@ -103,7 +103,7 @@ class BoardListViewController: UIViewController {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        UIView.animate(withDuration: 0.5) {
+        UIView.animate(withDuration: 0.1) {
             self.timerContainer.center.x = self.view.center.x
         }
     }
@@ -128,6 +128,10 @@ extension BoardListViewController : UITableViewDelegate
         theButton.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
         actions.append(theButton)
         return UISwipeActionsConfiguration(actions: actions)
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        appDelegate.room.boards[indexPath.row].joinBoard(user: (appDelegate.user)!)
     }
 }
 
@@ -199,7 +203,7 @@ extension BoardListViewController : GrouffeeTimerDelegate
         DispatchQueue.main.async {
             self.timerLabel.text! = self.appDelegate.room.timer.getTimeString()
             self.progressBar.progress = Float(self.appDelegate.room.timer.timeRemaining) / Float(self.appDelegate.room.timer.initTime)
-            //self.boardTable.reloadData() //need optimization
+            self.boardTable.reloadData() //need optimization
             self.peopleListButton.title = "\(self.appDelegate.room.connectedMembers.count)"
         }
     }
@@ -216,22 +220,25 @@ extension BoardListViewController : MCSessionDelegate
     {
         if state == .connected
         {
-            appDelegate.broadcastRoom()
+            if appDelegate.user.type == .leader
+            {
+                appDelegate.broadcastRoom()
+            }
             /*
-            var theData = Data()
-            let enc = JSONEncoder()
-            do
-            {
-                theData = try enc.encode(self.appDelegate.room)
-                
-                var tempArray = [MCPeerID]()
-                tempArray.append(peerID)
-                try self.appDelegate.connection?.session.send(theData, toPeers: tempArray, with: MCSessionSendDataMode.reliable)
-            }
-            catch let error
-            {
-                print(error)
-            }
+             var theData = Data()
+             let enc = JSONEncoder()
+             do
+             {
+             theData = try enc.encode(self.appDelegate.room)
+             
+             var tempArray = [MCPeerID]()
+             tempArray.append(peerID)
+             try self.appDelegate.connection?.session.send(theData, toPeers: tempArray, with: MCSessionSendDataMode.reliable)
+             }
+             catch let error
+             {
+             print(error)
+             }
              */
         }
     }
@@ -249,7 +256,7 @@ extension BoardListViewController : MCSessionDelegate
             {
                 print(error)
             }
-            self.boardTable.reloadData()
+            //self.boardTable.reloadData()
         }
     }
     

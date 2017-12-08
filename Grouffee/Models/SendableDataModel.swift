@@ -7,3 +7,34 @@
 //
 
 import Foundation
+import MultipeerConnectivity
+
+public struct JoinData : Codable
+{
+    let data_type = "join_data"
+    let targetBoard : Board
+    let user : User
+}
+
+public struct ExitData : Codable
+{
+    let data_type = "exit_data"
+    let fromBoard : Board
+    let user : User
+}
+
+public struct QuitData : Codable
+{
+    let data_type = "quit_data"
+    var user : User
+}
+
+public struct InitialData : Codable
+{
+    let data_type = "init_data"
+    var room : Room
+}
+
+public struct RequestUpdateData : Codable{
+    let data_type = "request_data"
+}
