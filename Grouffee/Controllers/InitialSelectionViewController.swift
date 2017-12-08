@@ -98,6 +98,9 @@ class InitialSelectionViewController: UIViewController {
             newPlanBtn.isEnabled = false
             joinPlanBtn.isEnabled = false
             errorView.isHidden = false
+            if nameField.text == ""{
+                errorView.isHidden = true
+            }
             return
         }
         errorView.isHidden = true
@@ -127,7 +130,7 @@ class InitialSelectionViewController: UIViewController {
         
         textField.attributedPlaceholder = NSAttributedString(string: placeHolder, attributes: [NSAttributedStringKey.foregroundColor: #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)])
         
-        let leftView: UILabel = UILabel(frame: CGRect(x: 10, y: 0, width: 35, height: 26))
+        let leftView: UILabel = UILabel(frame: CGRect(x: 10, y: 0, width: 40, height: 26))
         leftView.backgroundColor = UIColor.clear
         
         textField.leftView = leftView

@@ -71,7 +71,7 @@ class CreateRoomViewController: UIViewController, UIPickerViewDelegate, UIPicker
         
         textField.attributedPlaceholder = NSAttributedString(string: placeHolder, attributes: [NSAttributedStringKey.foregroundColor: #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)])
         
-        let leftView: UILabel = UILabel(frame: CGRect(x: 10, y: 0, width: 35, height: 26))
+        let leftView: UILabel = UILabel(frame: CGRect(x: 10, y: 0, width: 40, height: 26))
         leftView.backgroundColor = UIColor.clear
         
         textField.leftView = leftView
@@ -92,7 +92,7 @@ class CreateRoomViewController: UIViewController, UIPickerViewDelegate, UIPicker
         hideDurPicker()
     }
     
-    @IBAction func removeBtnDidTap(_ sender: Any) {
+    @IBAction func resetBtnDidTap(_ sender: Any) {
         durPicker.selectRow(pickerDataSize / 2 - 8, inComponent: 0, animated: true)
         durPicker.selectRow(pickerDataSize / 2 - 20, inComponent: 1, animated: true)
         showSelectedDataToTextField()
