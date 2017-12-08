@@ -50,6 +50,8 @@ class BoardListViewController: UIViewController {
             addBoardButton.isHidden = true
         }
         
+        
+        
         NotificationCenter.default.addObserver(self, selector: #selector(enteredBackground), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(enteredForeground), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
     }
@@ -70,11 +72,12 @@ class BoardListViewController: UIViewController {
         performSegue(withIdentifier: "showMembersSegue", sender: sender)
     }
     
+    @IBAction func doneButtonDidTap(_ sender: Any) {
+    }
     
     @objc func timerBeingDragged(_ sender : UIPanGestureRecognizer) {
-    
         print("Being Dragged : \(dragGesture.translation(in: self.view)) \(dragGesture.velocity(in: self.view))")
-        if self.timerContainer.center.x + sender.translation(in: self.view).x >= self.view.center.x - 50
+        if self.timerContainer.center.x + sender.translation(in: self.view).x >= self.view.center.x - 80
         {
             if self.timerContainer.center.x + sender.translation(in: self.view).x < self.view.center.x
             {
@@ -87,7 +90,7 @@ class BoardListViewController: UIViewController {
         }
         else
         {
-            self.timerContainer.center.x = self.view.center.x - 50
+            self.timerContainer.center.x = self.view.center.x - 80
         }
         //masih ngebug
     }
@@ -97,6 +100,12 @@ class BoardListViewController: UIViewController {
         //room.boards.append(Board(boardName: "Testing", duration: 50))
         //boardTable.reloadData()
         performSegue(withIdentifier: "addBoardSegue", sender: sender)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        UIView.animate(withDuration: 0.5) {
+            self.timerContainer.center.x = self.view.center.x
+        }
     }
 }
 
@@ -119,14 +128,6 @@ extension BoardListViewController : UITableViewDelegate
         theButton.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
         actions.append(theButton)
         return UISwipeActionsConfiguration(actions: actions)
-    }
-    
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
-    //debug
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     }
 }
 
@@ -190,8 +191,6 @@ extension BoardListViewController : ConnectionModelDelegate
             self.present(popup, animated: true, completion: nil)
         }
     }
-    
-    
 }
 
 extension BoardListViewController : GrouffeeTimerDelegate
@@ -200,7 +199,7 @@ extension BoardListViewController : GrouffeeTimerDelegate
         DispatchQueue.main.async {
             self.timerLabel.text! = self.appDelegate.room.timer.getTimeString()
             self.progressBar.progress = Float(self.appDelegate.room.timer.timeRemaining) / Float(self.appDelegate.room.timer.initTime)
-            self.boardTable.reloadData() //need optimization
+            //self.boardTable.reloadData() //need optimization
             self.peopleListButton.title = "\(self.appDelegate.room.connectedMembers.count)"
         }
     }

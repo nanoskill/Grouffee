@@ -49,6 +49,12 @@ class Room : Codable
         try container.encode(connectedMembers, forKey: CodingKeys.connectedMembers)
         try container.encode(timer, forKey: CodingKeys.timer)
     }
+    
+    func addBoard(_ newBoard: Board)
+    {
+        boards.append(newBoard)
+    }
+    
     /*
     required init(from decoder: Decoder) throws {
         

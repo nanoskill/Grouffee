@@ -18,6 +18,14 @@
 		B713E5021FD65787005759E5 /* Lato in Resources */ = {isa = PBXBuildFile; fileRef = B713E5011FD65787005759E5 /* Lato */; };
 		B713E50D1FD67B78005759E5 /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B713E50C1FD67B78005759E5 /* LaunchScreenViewController.swift */; };
 		B713E50F1FD67F4D005759E5 /* CustomLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B713E50E1FD67F4D005759E5 /* CustomLaunchScreen.storyboard */; };
+		B782FF3F1FDA498000A26410 /* MiscFunctions.swift in Resources */ = {isa = PBXBuildFile; fileRef = B79102091FCE87C7003772B3 /* MiscFunctions.swift */; };
+		B782FF401FDA498500A26410 /* ConnectionModel.swift in Resources */ = {isa = PBXBuildFile; fileRef = B79101DE1FCD3C88003772B3 /* ConnectionModel.swift */; };
+		B782FF411FDA498500A26410 /* GrouffeeTimer.swift in Resources */ = {isa = PBXBuildFile; fileRef = B791020D1FCEACD4003772B3 /* GrouffeeTimer.swift */; };
+		B782FF421FDA498500A26410 /* UserModel.swift in Resources */ = {isa = PBXBuildFile; fileRef = B791020F1FCF9525003772B3 /* UserModel.swift */; };
+		B782FF431FDA498500A26410 /* RoomModel.swift in Resources */ = {isa = PBXBuildFile; fileRef = B79102131FCF956F003772B3 /* RoomModel.swift */; };
+		B782FF441FDA498500A26410 /* SessionModel.swift in Resources */ = {isa = PBXBuildFile; fileRef = B79102331FD453C3003772B3 /* SessionModel.swift */; };
+		B782FF451FDA498500A26410 /* Board.swift in Resources */ = {isa = PBXBuildFile; fileRef = 8E447ABA1FD1926900DFCF8C /* Board.swift */; };
+		B782FF461FDA499E00A26410 /* AppDelegate.swift in Resources */ = {isa = PBXBuildFile; fileRef = B7B57DCF1FC815DF008B4C9D /* AppDelegate.swift */; };
 		B7898E7F1FD8DFF400DCDEE1 /* MemberListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7898E7E1FD8DFF400DCDEE1 /* MemberListViewController.swift */; };
 		B79101DF1FCD3C88003772B3 /* ConnectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79101DE1FCD3C88003772B3 /* ConnectionModel.swift */; };
 		B79101E81FCD485D003772B3 /* RoomListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79101E71FCD485D003772B3 /* RoomListController.swift */; };
@@ -220,6 +228,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B782FF461FDA499E00A26410 /* AppDelegate.swift in Resources */,
+				B782FF401FDA498500A26410 /* ConnectionModel.swift in Resources */,
+				B782FF411FDA498500A26410 /* GrouffeeTimer.swift in Resources */,
+				B782FF421FDA498500A26410 /* UserModel.swift in Resources */,
+				B782FF431FDA498500A26410 /* RoomModel.swift in Resources */,
+				B782FF441FDA498500A26410 /* SessionModel.swift in Resources */,
+				B782FF451FDA498500A26410 /* Board.swift in Resources */,
+				B782FF3F1FDA498000A26410 /* MiscFunctions.swift in Resources */,
 				B713E5021FD65787005759E5 /* Lato in Resources */,
 				B7C988891FD62D3E00091158 /* BoardList.storyboard in Resources */,
 				B713E50F1FD67F4D005759E5 /* CustomLaunchScreen.storyboard in Resources */,

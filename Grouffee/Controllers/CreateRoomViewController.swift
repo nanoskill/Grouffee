@@ -212,7 +212,11 @@ class CreateRoomViewController: UIViewController, UIPickerViewDelegate, UIPicker
 extension CreateRoomViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.becomeFirstResponder()
+        if textField == roomNameTxt
+        {
+            self.becomeFirstResponder()
+            openDurPicker()
+        }
         return false
     }
 }
