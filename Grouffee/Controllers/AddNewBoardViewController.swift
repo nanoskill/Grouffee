@@ -12,6 +12,7 @@ class AddNewBoardViewController: UIViewController, UIPickerViewDelegate, UIPicke
     @IBOutlet weak var boardName: UITextField!
     @IBOutlet weak var durTxt: UITextField!
     @IBOutlet weak var desc: UITextField!
+    
     @IBOutlet weak var goals: UITextField!
     @IBOutlet weak var createBoardBtn: UIButton!
     
@@ -153,6 +154,34 @@ class AddNewBoardViewController: UIViewController, UIPickerViewDelegate, UIPicke
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.becomeFirstResponder()
+    }
+    
+    //textField code
+    override func viewDidLayoutSubviews() {
+        customizeTextField(textField: boardName, placeHolder: "Board name")
+        customizeTextField(textField: durTxt, placeHolder: "Duration")
+        customizeTextField(textField: desc, placeHolder: "Description")
+        customizeTextField(textField: goals, placeHolder: "Goals")
+    }
+    
+    func customizeTextField(textField: UITextField, placeHolder: String){
+        let border = CALayer()
+        let width = CGFloat(1.0)
+        border.borderColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+        border.frame = CGRect(x: 0, y: textField.frame.size.height - width, width:  textField.frame.size.width, height: textField.frame.size.height)
+        
+        border.borderWidth = width
+        textField.layer.addSublayer(border)
+        textField.layer.masksToBounds = true
+        
+        textField.attributedPlaceholder = NSAttributedString(string: placeHolder, attributes: [NSAttributedStringKey.foregroundColor: #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)])
+        
+        let leftView: UILabel = UILabel(frame: CGRect(x: 10, y: 0, width: 40, height: 26))
+        leftView.backgroundColor = UIColor.clear
+        
+        textField.leftView = leftView
+        textField.leftViewMode = .always
+        textField.contentVerticalAlignment = .center
     }
     
 }
