@@ -31,7 +31,7 @@
                                 <rect key="frame" x="0.0" y="70" width="375" height="100"/>
                                 <subviews>
                                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="fXM-mi-Lbs">
-                                        <rect key="frame" x="50" y="73" width="272" height="2"/>
+                                        <rect key="frame" x="50" y="72.5" width="272" height="2"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="fXM-mi-Lbs" secondAttribute="height" multiplier="270:1" id="z1x-Ol-x5A"/>
                                         </constraints>
