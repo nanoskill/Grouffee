@@ -82,6 +82,9 @@ class BoardListViewController: UIViewController {
         //performSegue(withIdentifier: "showMembersSegue", sender: sender)
         let storyboard = UIStoryboard.init(name: "MemberList", bundle: nil)
         let controller = storyboard.instantiateInitialViewController()
+        //controller?.modalTransitionStyle = .partialCurl
+        //controller?.modalPresentationStyle = .currentContext
+        //show(controller!, sender: nil)
         present(controller!, animated: true, completion: nil)
     }
     
@@ -130,11 +133,8 @@ class BoardListViewController: UIViewController {
             destination.durInput = selectedBoard.duration
             destination.descInput = selectedBoard.desc
             destination.goals = selectedBoard.goals
-
         }
     }
-    
-    
 }
 
 extension BoardListViewController : UITableViewDelegate
@@ -165,6 +165,7 @@ extension BoardListViewController : UITableViewDelegate
                     print("Sending join data error :\(error)")
                 }
             }
+            self!.performSegue(withIdentifier: "showBoardDetail", sender: self!.appDelegate.room.boards [indexPath.row])
         }
         
         let theButton = UIContextualAction(style: .normal, title: "JOIN", handler: theHandler)

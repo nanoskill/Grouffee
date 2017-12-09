@@ -29,7 +29,8 @@ class MemberListViewController: UIViewController {
             DispatchQueue.main.async { [weak self] in
                 self?.memberTable.reloadData()
             }
-        }    }
+        }
+    }
     
     @IBAction func backButtonDidTap(_ sender: Any)
     {
@@ -46,7 +47,7 @@ extension MemberListViewController : UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "memberCell") as! MemberListTableCell
-        cell.logo.image =  (appDelegate.room.connectedMembers[indexPath.row].status == .idle ? #imageLiteral(resourceName: "Logo - Blue Fix") : #imageLiteral(resourceName: "Logo - White"))
+        cell.logo.image =  (appDelegate.room.connectedMembers[indexPath.row].status == .idle ? #imageLiteral(resourceName: "blank-check-box") : #imageLiteral(resourceName: "check-box"))
         cell.nameLabel.text = appDelegate.room.connectedMembers[indexPath.row].name
         cell.timeLabel.text = appDelegate.room.connectedMembers[indexPath.row].timer.getTimeString()
         return cell

@@ -128,7 +128,6 @@ class CreateRoomViewController: UIViewController, UIPickerViewDelegate, UIPicker
             self.durPickerView.alpha = 0
             self.pickerContainer.frame = CGRect(x: 0, y: self.durPickerView.bounds.height, width: self.pickerContainer.bounds.width, height: self.pickerContainer.bounds.height)
         }
-        
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
