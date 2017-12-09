@@ -13,12 +13,18 @@ class Board : Codable{
     var duration: Int
     var members: [User]
     var timer : GrouffeeTimer!
+    
+    var desc: String
+    var goals: [String]
 
-    init(boardName: String, duration: Int) {
+    init(boardName: String, duration: Int, desc: String, goals: [String]) {
         self.boardName = boardName
         self.duration = duration
         members = [User]()
         timer = GrouffeeTimer(seconds: duration)
+        
+        self.desc = desc
+        self.goals = goals
     }
     
     func joinBoard(user: User)
