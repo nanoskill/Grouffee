@@ -16,6 +16,7 @@ class Room : Codable
     var leader : User
     var connectedMembers = [User]()
     var timer : GrouffeeTimer!
+    var lastBoardId = 0
     
     init(name : String, leader : User, duration: Int) {
         self.name = name
@@ -25,12 +26,12 @@ class Room : Codable
     }
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    
+    /*
     func assignTimer(timer: GrouffeeTimer)
     {
         self.timer = timer
     }
-
+     */
     enum CodingKeys : String, CodingKey
     {
         case name
@@ -38,6 +39,7 @@ class Room : Codable
         case leader
         case connectedMembers
         case timer
+        case lastBoardId
     }
     
     func encode(to encoder: Encoder) throws {
@@ -48,11 +50,13 @@ class Room : Codable
         try container.encode(leader, forKey: CodingKeys.leader)
         try container.encode(connectedMembers, forKey: CodingKeys.connectedMembers)
         try container.encode(timer, forKey: CodingKeys.timer)
+        try container.encode(lastBoardId, forKey: CodingKeys.lastBoardId)
     }
     
-    func addBoard(_ newBoard: Board)
+    func addBoard(boardName: String, duration : Int)
     {
-        boards.append(newBoard)
+        boards.append(Board(boardId: lastBoardId, boardName: boardName, duration: duration))
+        lastBoardId += 1
     }
     
     /*

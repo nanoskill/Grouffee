@@ -123,7 +123,6 @@ extension ConnectionModel : MCSessionDelegate
     func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState)
     {
         print("connectedWithPeer")
-        appDelegate.connection?.delegate?.connectedWithPeer!(peerID: peerID, state: state)
         if state == .connected
         {
             if appDelegate.user.type == .leader
@@ -147,6 +146,7 @@ extension ConnectionModel : MCSessionDelegate
              }
              */
         }
+        appDelegate.connection?.delegate?.connectedWithPeer!(peerID: peerID, state: state)
     }
     
     
@@ -162,8 +162,18 @@ extension ConnectionModel : MCSessionDelegate
             if appDelegate.user.type == .member
             {
                 if dataType == "init_data"{
-                    let decodedData = try decoder.decode(InitialData.self, from: data)
-                    appDelegate.room = decodedData.room
+                    DispatchQueue.main.async {
+                        [weak self] in
+                        do
+                        {
+                            let decodedData = try decoder.decode(InitialData.self, from: data)
+                            self?.appDelegate.room = decodedData.room
+                        }
+                        catch let error
+                        {
+                            print("decode init data error : \(error)")
+                        }
+                    }
                 }
             }
             else
@@ -171,22 +181,64 @@ extension ConnectionModel : MCSessionDelegate
                 if dataType == "join_data"
                 {
                     let decodedData = try decoder.decode(JoinData.self, from: data)
-                    decodedData.targetBoard.joinBoard(user: decodedData.user) //need verification
+                    var joiningUser : User?
+                    for user in appDelegate.room.connectedMembers
+                    {
+                        if user.name == decodedData.user
+                        {
+                            joiningUser = user
+                            print("Detected user : \(joiningUser!)")
+                            break;
+                        }
+                    }
+                    for board in appDelegate.room.boards
+                    {
+                        if board.boardId == decodedData.targetBoard
+                        {
+                            board.joinBoard(user: joiningUser!)
+                            break;
+                        }
+                    }
                 }
                 if dataType == "exit_data"
                 {
                     let decodedData = try decoder.decode(ExitData.self, from: data)
-                    decodedData.fromBoard.exitBoard(user: decodedData.user)
+                    var exitingUser : User?
+                    for user in appDelegate.room.connectedMembers
+                    {
+                        if user.name == decodedData.user
+                        {
+                            exitingUser = user
+                            break;
+                        }
+                    }
+                    for board in appDelegate.room.boards
+                    {
+                        if board.boardId == decodedData.fromBoard
+                        {
+                            board.exitBoard(user: exitingUser!)
+                            break;
+                        }
+                    }
                 }
-                if dataType == "request_data"
+                if dataType == "quit_data"
                 {
-                    appDelegate.broadcastRoom()
+                    let decodedData = try decoder.decode(QuitData.self, from: data)
+                    for (idx,user) in appDelegate.room.connectedMembers.enumerated()
+                    {
+                        if user.name == decodedData.user
+                        {
+                            appDelegate.room.connectedMembers.remove(at: idx)
+                            break;
+                        }
+                    }
                 }
+                appDelegate.broadcastRoom()
             }
         }
         catch let error
         {
-            print(error)
+            print("Session Error: \(error)")
         }
     }
     

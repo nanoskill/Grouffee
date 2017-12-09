@@ -12,21 +12,21 @@ import MultipeerConnectivity
 public struct JoinData : Codable
 {
     let data_type = "join_data"
-    let targetBoard : Board
-    let user : User
+    let targetBoard : Int
+    let user : String
 }
 
 public struct ExitData : Codable
 {
     let data_type = "exit_data"
-    let fromBoard : Board
-    let user : User
+    let fromBoard : Int
+    let user : String
 }
 
 public struct QuitData : Codable
 {
     let data_type = "quit_data"
-    var user : User
+    var user : String
 }
 
 public struct InitialData : Codable

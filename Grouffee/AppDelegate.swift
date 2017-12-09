@@ -74,20 +74,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         UNUserNotificationCenter.current().removeAllDeliveredNotifications()
         UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+        do
+        {
+            let theData = try JSONEncoder().encode(QuitData(user: self.user.name))
+            try connection?.session.send(theData, toPeers: (connection?.session.connectedPeers)!, with: .reliable)
+        }
+        catch let error
+        {
+            print("quit data send error: \(error)")
+        }
+        
     }
     
     func broadcastRoom()
     {
-        var theData = Data()
-        let enc = JSONEncoder()
-        do
-        {
-            theData = try enc.encode(InitialData(room: room))
-            try connection?.session.send(theData, toPeers: (connection?.session.connectedPeers)!, with: MCSessionSendDataMode.reliable)
-        }
-        catch let error
-        {
-            print(error)
+        DispatchQueue.main.async {
+            [weak self] in
+            do
+            {
+                let theData = try JSONEncoder().encode(InitialData(room: (self?.room)!))
+                try self?.connection?.session.send(theData, toPeers: (self?.connection?.session.connectedPeers)!, with: .reliable)
+            }
+            catch let error
+            {
+                print("broadcast room error: \(error)")
+            }
         }
     }
 

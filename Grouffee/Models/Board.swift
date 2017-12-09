@@ -11,37 +11,41 @@ import MultipeerConnectivity
 
 
 class Board : Codable{
+    var boardId : Int
     var boardName: String
     var duration: Int
     var members: [User]
     var timer : GrouffeeTimer!
     var goals : [Goal]
 
-    init(boardName: String, duration: Int) {
+    init(boardId : Int, boardName: String, duration: Int) {
         self.boardName = boardName
         self.duration = duration
         members = [User]()
         goals = [Goal]()
         timer = GrouffeeTimer(seconds: duration)
+        self.boardId = boardId
     }
     
     func joinBoard(user: User)
     {
-        if members.count == 0 {timer.startTimer()}
         user.startWorking(inBoard: self)
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let encoder = JSONEncoder()
-        do
-        {
-            let theData = try encoder.encode(JoinData.init(targetBoard: self, user: appDelegate.user))
-            try appDelegate.connection?.session.send(theData, toPeers: (appDelegate.connection?.session.connectedPeers)!, with: MCSessionSendDataMode.reliable)
-
-        }
-        catch let error
-        {
-            print("joinBoard error : \(error)")
-        }
         members.append(user)
+        if members.count > 0 && !timer.isRunning {timer.startTimer()}
+        DispatchQueue.main.async {
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.broadcastRoom()
+        }
+//        let encoder = JSONEncoder()
+//        do
+//        {
+//            let theData = try encoder.encode(JoinData.init(targetBoard: self.boardId, user: appDelegate.user.name))
+//            try appDelegate.connection?.session.send(theData, toPeers: (appDelegate.connection?.session.connectedPeers)!, with: MCSessionSendDataMode.reliable)
+//        }
+//        catch let error
+//        {
+//            print("joinBoard error : \(error)")
+//        }
     }
     
     func exitBoard(user: User)

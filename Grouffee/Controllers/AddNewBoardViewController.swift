@@ -92,7 +92,7 @@ class AddNewBoardViewController: UIViewController, UIPickerViewDelegate, UIPicke
     
     @IBAction func createBoardDidTap(_ sender: Any)
     {
-        appDelegate.room.addBoard(Board(boardName: boardName.text!, duration: selectedHours*3600 + selectedMinutes*60))
+        appDelegate.room.addBoard(boardName: boardName.text!, duration: selectedHours*3600 + selectedMinutes*60)
         appDelegate.broadcastRoom()
         dismiss(animated: true, completion: nil)
     }
