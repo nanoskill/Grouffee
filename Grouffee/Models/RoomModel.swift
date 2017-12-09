@@ -55,7 +55,7 @@ class Room : Codable
     
     func addBoard(boardName: String, duration : Int)
     {
-        boards.append(Board(boardId: lastBoardId, boardName: boardName, duration: duration))
+    //    boards.append(Board(boardId: lastBoardId, boardName: boardName, duration: duration))
         lastBoardId += 1
     }
     
