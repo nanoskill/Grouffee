@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Nk3-WV-GfW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Nk3-WV-GfW">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -50,7 +50,7 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sketch" translatesAutoresizingMaskIntoConstraints="NO" id="9aV-Fj-xJd">
-                                <rect key="frame" x="0.0" y="493" width="375" height="174"/>
+                                <rect key="frame" x="0.0" y="493" width="375" height="192"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xKy-4R-itv">
@@ -80,6 +80,7 @@
                                 <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="wUb-2D-J6n">
                                     <rect key="frame" x="0.0" y="128" width="375" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     <state key="normal" title="Add New Board">
                                         <color key="titleColor" red="0.83457285169999995" green="0.52269953489999998" blue="0.44308012720000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     </state>
@@ -133,6 +134,10 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Nk3-WV-GfW" id="409-ql-dQA"/>
+                                    <outlet property="delegate" destination="Nk3-WV-GfW" id="L6Y-Vr-GZp"/>
+                                </connections>
                             </tableView>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hqe-CH-Vod">
                                 <rect key="frame" x="0.0" y="20" width="375" height="50"/>
@@ -183,6 +188,7 @@
                         <outlet property="timerLabel" destination="wdv-6l-TWa" id="mkr-zM-KXE"/>
                         <segue destination="bDI-qG-69t" kind="show" identifier="addBoardSegue" id="8JA-Hh-LSh"/>
                         <segue destination="VLS-Xr-YUS" kind="show" identifier="showMembersSegue" id="ZRs-TW-uka"/>
+                        <segue destination="qbx-cp-65y" kind="show" identifier="showBoardDetail" id="ZqH-GE-KqB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZoF-8F-j5J" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -203,7 +209,15 @@
                 <viewControllerPlaceholder storyboardName="AddNewBoard" id="bDI-qG-69t" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MAQ-0H-crW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="770" y="64"/>
+            <point key="canvasLocation" x="754" y="71"/>
+        </scene>
+        <!--BoardDetail-->
+        <scene sceneID="tTj-g2-7cd">
+            <objects>
+                <viewControllerPlaceholder storyboardName="BoardDetail" id="qbx-cp-65y" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bWs-4S-lpk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="761" y="206"/>
         </scene>
     </scenes>
     <resources>

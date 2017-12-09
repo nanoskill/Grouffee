@@ -22,7 +22,9 @@ class BoardListViewController: UIViewController {
     @IBOutlet weak var addBoardButton: UIButton!
     
     @IBOutlet weak var boardTable: UITableView!
+
     
+   // @IBOutlet weak var boardCell: BoardListViewCell!
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     let dragGesture = UIPanGestureRecognizer()
@@ -55,6 +57,8 @@ class BoardListViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(enteredBackground), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(enteredForeground), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
+        
+        //boardCell.addGestureRecognizer(tapBoardGesture)
     }
     
     @objc func enteredBackground()
@@ -108,6 +112,21 @@ class BoardListViewController: UIViewController {
             self.timerContainer.center.x = self.view.center.x
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showBoardDetail" {
+            let destination = segue.destination as! BoardDetailViewController
+            let selectedBoard = appDelegate.room.boards [(boardTable.indexPathForSelectedRow?.row)!]
+            
+           destination.boardNameInput = selectedBoard.boardName
+            destination.durInput = selectedBoard.duration
+            destination.descInput = selectedBoard.desc
+            destination.goals = selectedBoard.goals
+
+        }
+    }
+    
+    
 }
 
 extension BoardListViewController : UITableViewDelegate
@@ -196,11 +215,13 @@ extension BoardListViewController : UITableViewDelegate
             }
         }
     }
+    
+    
+    
 }
 
 extension BoardListViewController : UITableViewDataSource
 {
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return appDelegate.room.boards.count
     }

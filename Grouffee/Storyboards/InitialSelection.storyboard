@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="W3Q-g1-HXp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="W3Q-g1-HXp">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -51,7 +51,7 @@
                                     <action selector="joinPlanDidTap:" destination="W3Q-g1-HXp" eventType="touchUpInside" id="31l-gH-zHS"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo - Blue Fix" translatesAutoresizingMaskIntoConstraints="NO" id="Py9-BA-quO">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Grouffee - Blue" translatesAutoresizingMaskIntoConstraints="NO" id="Py9-BA-quO">
                                 <rect key="frame" x="88" y="104" width="200" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Py9-BA-quO" secondAttribute="height" multiplier="1:1" id="8pF-Uc-IWz"/>
@@ -69,7 +69,7 @@
                                 <rect key="frame" x="39" y="403" width="297" height="26"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error message" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dDW-Ne-b3R">
-                                        <rect key="frame" x="19" y="0.0" width="91" height="26"/>
+                                        <rect key="frame" x="19" y="0.0" width="87" height="26"/>
                                         <color key="backgroundColor" red="0.84478455779999995" green="0.52694404130000005" blue="0.45091509819999998" alpha="0.0" colorSpace="custom" customColorSpace="displayP3"/>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
                                         <color key="textColor" red="1" green="0.99661635032777773" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -157,7 +157,7 @@
     </scenes>
     <resources>
         <image name="Background" width="750" height="1334"/>
-        <image name="Logo - Blue Fix" width="407" height="401"/>
+        <image name="Grouffee - Blue" width="427" height="427"/>
         <image name="join room button" width="646" height="114"/>
         <image name="new room button" width="646" height="112"/>
         <image name="people" width="565" height="568"/>

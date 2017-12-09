@@ -42,7 +42,7 @@
                                     <segue destination="4Cj-uH-icO" kind="show" identifier="createNewPlan" id="mY5-bd-Tda"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo - Blue Fix" translatesAutoresizingMaskIntoConstraints="NO" id="tS6-Qq-kyY">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Grouffee - Blue" translatesAutoresizingMaskIntoConstraints="NO" id="tS6-Qq-kyY">
                                 <rect key="frame" x="88" y="104" width="200" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="tS6-Qq-kyY" secondAttribute="height" multiplier="1:1" id="5Oc-sh-k00"/>
@@ -227,7 +227,7 @@
     <resources>
         <image name="Background" width="750" height="1334"/>
         <image name="Create New Room Button" width="650" height="122"/>
-        <image name="Logo - Blue Fix" width="407" height="401"/>
+        <image name="Grouffee - Blue" width="427" height="427"/>
         <image name="backBtn" width="512" height="512"/>
         <image name="group" width="2583" height="2582"/>
         <image name="timer" width="1969" height="1968"/>

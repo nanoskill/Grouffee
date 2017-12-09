@@ -8,11 +8,15 @@
 
 import UIKit
 
-class AddNewBoardViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class AddNewBoardViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     @IBOutlet weak var boardName: UITextField!
     @IBOutlet weak var durTxt: UITextField!
-    @IBOutlet weak var desc: UITextField!
+   
+    @IBOutlet weak var desc: UITextView!
+    @IBOutlet weak var descPlaceholder: UILabel!
     
+    @IBOutlet weak var descLine: UITextField!
+    @IBOutlet weak var goalTable: UITableView!
     @IBOutlet weak var goals: UITextField!
     @IBOutlet weak var createBoardBtn: UIButton!
     
@@ -28,6 +32,8 @@ class AddNewBoardViewController: UIViewController, UIPickerViewDelegate, UIPicke
     var selectedHours = 0
     var selectedMinutes = 0
     
+    var goalList: [String] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -36,16 +42,53 @@ class AddNewBoardViewController: UIViewController, UIPickerViewDelegate, UIPicke
         durPicker.dataSource = self
         durPicker.delegate = self
         
+        self.goals.delegate = self
+        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(openDurPicker))
         durTxt.addGestureRecognizer(tapGesture)
         
         let hideGesture = UITapGestureRecognizer(target: self, action: #selector(hideDurPicker))
         durPickerView.addGestureRecognizer(hideGesture)
         
+        let descDidTap = UITapGestureRecognizer(target: self, action: #selector(hidePlaceholder))
+        desc.addGestureRecognizer(descDidTap)
+        
         durPickerView.alpha = 0.0
+        descLine.isEnabled = false
+        
+        createBoardBtn.isEnabled = false
+        
+        //goalTable.dataSource = self
         //createBoardBtn.isEnabled = false
         
         //addKeyboardViewAdjustment()
+    }
+    
+    @IBAction func validateBoardName(_ sender: Any) {
+        if durTxt.text != "" {
+            if boardName.text != "" {
+                createBoardBtn.isEnabled = true
+            } else {
+                createBoardBtn.isEnabled = false
+            }
+        }
+    }
+    
+    
+    @objc
+    func hidePlaceholder(){
+        desc.becomeFirstResponder()
+        descPlaceholder.isHidden = true
+    }
+    
+    @IBAction func doneBtnDidTap(_ sender: Any) {
+        hideDurPicker()
+    }
+    
+    @IBAction func resetBtnDidTap(_ sender: Any) {
+        durPicker.selectRow(pickerDataSize / 2 - 8, inComponent: 0, animated: true)
+        durPicker.selectRow(pickerDataSize / 2 - 20, inComponent: 1, animated: true)
+        showSelectedDataToTextField()
     }
     
     @objc
@@ -93,6 +136,8 @@ class AddNewBoardViewController: UIViewController, UIPickerViewDelegate, UIPicke
     @IBAction func createBoardDidTap(_ sender: Any)
     {
         appDelegate.room.addBoard(boardName: boardName.text!, duration: selectedHours*3600 + selectedMinutes*60)
+   appDelegate.room.boards.append(Board(boardName: boardName.text!, duration: selectedHours*3600 + selectedMinutes*60, desc: desc.text, goals: goalList))
+        
         appDelegate.broadcastRoom()
         dismiss(animated: true, completion: nil)
     }
@@ -156,11 +201,21 @@ class AddNewBoardViewController: UIViewController, UIPickerViewDelegate, UIPicke
         self.becomeFirstResponder()
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        goalList.append(goals.text!)
+        goals.text = ""
+        goalTable.reloadData()
+        let indexPath = IndexPath(row: goalList.count-1, section: 0)
+       
+        goalTable.scrollToRow(at: indexPath, at: .bottom, animated: true)
+        return false
+    }
+    
     //textField code
     override func viewDidLayoutSubviews() {
         customizeTextField(textField: boardName, placeHolder: "Board name")
         customizeTextField(textField: durTxt, placeHolder: "Duration")
-        customizeTextField(textField: desc, placeHolder: "Description")
+        customizeTextField(textField: descLine, placeHolder: "")
         customizeTextField(textField: goals, placeHolder: "Goals")
     }
     
@@ -184,4 +239,24 @@ class AddNewBoardViewController: UIViewController, UIPickerViewDelegate, UIPicke
         textField.contentVerticalAlignment = .center
     }
     
+}
+
+extension AddNewBoardViewController: UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return goalList.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = goalTable.dequeueReusableCell(withIdentifier: "goalCell", for: indexPath) as! GoalTableViewCell
+        
+        //print(goalList[0])
+        cell.goalLabel.text = goalList[indexPath.row]
+        
+        return cell
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
 }
