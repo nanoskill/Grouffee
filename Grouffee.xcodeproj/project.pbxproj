@@ -19,7 +19,6 @@
 		8EE487DF1FCD14A60091B825 /* CreateRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE487DE1FCD14A60091B825 /* CreateRoomViewController.swift */; };
 		8EE487E51FCDB5A90091B825 /* BoardListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE487E41FCDB5A90091B825 /* BoardListViewController.swift */; };
 		B713E5021FD65787005759E5 /* Lato in Resources */ = {isa = PBXBuildFile; fileRef = B713E5011FD65787005759E5 /* Lato */; };
-		B713E50D1FD67B78005759E5 /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B713E50C1FD67B78005759E5 /* LaunchScreenViewController.swift */; };
 		B713E50F1FD67F4D005759E5 /* CustomLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B713E50E1FD67F4D005759E5 /* CustomLaunchScreen.storyboard */; };
 		B782FF481FDA4A4400A26410 /* GoalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B782FF471FDA4A4400A26410 /* GoalModel.swift */; };
 		B782FF541FDA72D700A26410 /* SendableDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B782FF531FDA72D700A26410 /* SendableDataModel.swift */; };
@@ -54,7 +53,6 @@
 		8EE487DE1FCD14A60091B825 /* CreateRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRoomViewController.swift; sourceTree = "<group>"; };
 		8EE487E41FCDB5A90091B825 /* BoardListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardListViewController.swift; sourceTree = "<group>"; };
 		B713E5011FD65787005759E5 /* Lato */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Lato; sourceTree = "<group>"; };
-		B713E50C1FD67B78005759E5 /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
 		B713E50E1FD67F4D005759E5 /* CustomLaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CustomLaunchScreen.storyboard; sourceTree = "<group>"; };
 		B782FF471FDA4A4400A26410 /* GoalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalModel.swift; sourceTree = "<group>"; };
 		B782FF531FDA72D700A26410 /* SendableDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendableDataModel.swift; sourceTree = "<group>"; };
@@ -147,7 +145,6 @@
 				8EE487DE1FCD14A60091B825 /* CreateRoomViewController.swift */,
 				8EE487E41FCDB5A90091B825 /* BoardListViewController.swift */,
 				8E447ABC1FD1A87D00DFCF8C /* AddNewBoardViewController.swift */,
-				B713E50C1FD67B78005759E5 /* LaunchScreenViewController.swift */,
 				B7898E7E1FD8DFF400DCDEE1 /* MemberListViewController.swift */,
 				8E12C4FF1FDA39DF008D16A7 /* BoardDetailViewController.swift */,
 				8E12C5051FDA83FF008D16A7 /* GoalTableViewCell.swift */,
@@ -262,7 +259,6 @@
 				B79101E81FCD485D003772B3 /* RoomListController.swift in Sources */,
 				B791020A1FCE87C7003772B3 /* MiscFunctions.swift in Sources */,
 				B7B57DD21FC815DF008B4C9D /* ViewController.swift in Sources */,
-				B713E50D1FD67B78005759E5 /* LaunchScreenViewController.swift in Sources */,
 				B79101DF1FCD3C88003772B3 /* ConnectionModel.swift in Sources */,
 				8EE487DF1FCD14A60091B825 /* CreateRoomViewController.swift in Sources */,
 				8E447ABB1FD1926900DFCF8C /* Board.swift in Sources */,
@@ -407,9 +403,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = SU9SZALD7M;
 				INFOPLIST_FILE = Grouffee/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.binus.Grouffee;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -425,9 +421,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = SU9SZALD7M;
 				INFOPLIST_FILE = Grouffee/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.binus.Grouffee;
 				PRODUCT_NAME = "$(TARGET_NAME)";

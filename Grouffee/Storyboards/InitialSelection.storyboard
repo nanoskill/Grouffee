@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13770" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="W3Q-g1-HXp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="W3Q-g1-HXp">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13770"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -26,9 +26,6 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="cmk-UF-Kua">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="cmk-UF-Kua" secondAttribute="height" multiplier="375:667" id="aoX-xN-l8g"/>
-                                </constraints>
                             </imageView>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mfa-un-Xg9">
                                 <rect key="frame" x="55" y="465" width="265" height="50"/>
@@ -58,7 +55,7 @@
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="people" translatesAutoresizingMaskIntoConstraints="NO" id="gnb-YE-y1u">
-                                <rect key="frame" x="40" y="358" width="28" height="28"/>
+                                <rect key="frame" x="40" y="357" width="28" height="28"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="28" id="2eU-rT-lhn"/>
                                     <constraint firstAttribute="width" secondItem="gnb-YE-y1u" secondAttribute="height" multiplier="1:1" id="5Mf-DT-cH1"/>
@@ -66,7 +63,7 @@
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YRO-7R-ZFE">
-                                <rect key="frame" x="39" y="403" width="297" height="26"/>
+                                <rect key="frame" x="39" y="402" width="297" height="26"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error message" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dDW-Ne-b3R">
                                         <rect key="frame" x="19" y="0.0" width="87" height="26"/>
@@ -85,7 +82,7 @@
                                 </constraints>
                             </view>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Your name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fVF-Fu-rvk">
-                                <rect key="frame" x="38" y="365" width="299" height="30"/>
+                                <rect key="frame" x="38" y="364" width="299" height="30"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="fVF-Fu-rvk" secondAttribute="height" multiplier="299:30" id="Jcf-U7-Nf6"/>
@@ -103,7 +100,6 @@
                             <constraint firstItem="DAr-MF-Z9R" firstAttribute="trailing" secondItem="mfa-un-Xg9" secondAttribute="trailing" constant="55" id="9rF-aM-D2Y"/>
                             <constraint firstItem="DAr-MF-Z9R" firstAttribute="trailing" secondItem="Py9-BA-quO" secondAttribute="trailing" constant="87" id="Bju-qx-xmd"/>
                             <constraint firstItem="cmk-UF-Kua" firstAttribute="bottom" secondItem="DAr-MF-Z9R" secondAttribute="bottom" id="CZJ-RG-sa9"/>
-                            <constraint firstItem="fVF-Fu-rvk" firstAttribute="top" secondItem="Py9-BA-quO" secondAttribute="bottom" constant="61" id="Lua-kS-27e"/>
                             <constraint firstItem="DAr-MF-Z9R" firstAttribute="trailing" secondItem="fVF-Fu-rvk" secondAttribute="trailing" constant="38" id="PSK-u7-zwv"/>
                             <constraint firstItem="cmk-UF-Kua" firstAttribute="top" secondItem="pCP-9c-pc3" secondAttribute="top" id="PST-NE-pyP"/>
                             <constraint firstItem="cmk-UF-Kua" firstAttribute="trailing" secondItem="DAr-MF-Z9R" secondAttribute="trailing" id="QRY-tc-9vK"/>
@@ -121,6 +117,7 @@
                             <constraint firstItem="DAr-MF-Z9R" firstAttribute="bottom" secondItem="Of9-el-84g" secondAttribute="bottom" constant="85.5" id="sZK-VG-8SB"/>
                             <constraint firstItem="YRO-7R-ZFE" firstAttribute="top" secondItem="fVF-Fu-rvk" secondAttribute="bottom" constant="8" id="uAQ-fQ-7Yq"/>
                             <constraint firstItem="cmk-UF-Kua" firstAttribute="leading" secondItem="DAr-MF-Z9R" secondAttribute="leading" id="vKQ-j6-CIi"/>
+                            <constraint firstItem="fVF-Fu-rvk" firstAttribute="top" secondItem="Py9-BA-quO" secondAttribute="bottom" constant="60" id="xVX-QI-wYX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="DAr-MF-Z9R"/>
                     </view>

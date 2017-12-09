@@ -79,7 +79,10 @@ class BoardListViewController: UIViewController {
     
     @IBAction func peopleListButtonDidTap(_ sender: Any)
     {
-        performSegue(withIdentifier: "showMembersSegue", sender: sender)
+        //performSegue(withIdentifier: "showMembersSegue", sender: sender)
+        let storyboard = UIStoryboard.init(name: "MemberList", bundle: nil)
+        let controller = storyboard.instantiateInitialViewController()
+        present(controller!, animated: true, completion: nil)
     }
     
     @IBAction func doneButtonDidTap(_ sender: Any) {
@@ -121,9 +124,9 @@ class BoardListViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showBoardDetail" {
             let destination = segue.destination as! BoardDetailViewController
-            let selectedBoard = appDelegate.room.boards [(boardTable.indexPathForSelectedRow?.row)!]
+            let selectedBoard = sender as! Board
             
-           destination.boardNameInput = selectedBoard.boardName
+            destination.boardNameInput = selectedBoard.boardName
             destination.durInput = selectedBoard.duration
             destination.descInput = selectedBoard.desc
             destination.goals = selectedBoard.goals
@@ -171,6 +174,8 @@ extension BoardListViewController : UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "showBoardDetail", sender: appDelegate.room.boards [indexPath.row])
+        /*
         if appDelegate.user.type == .leader
         {
             if appDelegate.room.boards[indexPath.row].members.contains(where: { [weak self] (theUser) -> Bool in
@@ -182,13 +187,15 @@ extension BoardListViewController : UITableViewDelegate
             })
             {
                 appDelegate.room.boards[indexPath.row].exitBoard(user: (appDelegate.user)!)
-                return
             }
-            appDelegate.room.boards[indexPath.row].joinBoard(user: (appDelegate.user)!)
+            else
+            {
+                appDelegate.room.boards[indexPath.row].joinBoard(user: (appDelegate.user)!)
+            }
         }
         else
         {
-             if appDelegate.room.boards[indexPath.row].members.contains(where: { [weak self] (theUser) -> Bool in
+            if appDelegate.room.boards[indexPath.row].members.contains(where: { [weak self] (theUser) -> Bool in
                 if theUser.name == self?.appDelegate.user.name
                 {
                     return true
@@ -218,7 +225,17 @@ extension BoardListViewController : UITableViewDelegate
                     print("Sending join data error :\(error)")
                 }
             }
-        }
+        }*/
+        /*
+        let sb = UIStoryboard.init(name: "BoardDetail", bundle: nil)
+        let destination! = sb.instantiateInitialViewController() as! BoardListViewController
+        //let selectedBoard = appDelegate.room.boards [(boardTable.indexPathForSelectedRow?.row)!]
+        
+        destination.boardNameInput = selectedBoard.boardName
+        destination.durInput = selectedBoard.duration
+        destination.descInput = selectedBoard.desc
+        destination.goals = selectedBoard.goals
+ */
     }
     
     

@@ -22,6 +22,7 @@ class BoardDetailViewController: UIViewController {
     var boardNameInput: String?
     var durInput: Int?
     var descInput: String?
+    let checkedGesture = UITapGestureRecognizer(target: self, action: #selector(checkListDidTap(_:)))
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,12 +33,9 @@ class BoardDetailViewController: UIViewController {
         duration.text = "\(durInput!/3600) \("hours") \(durInput!%3600 / 60) \("minutes")"
         desc.text = descInput
         
-        let checkedGesture = UITapGestureRecognizer(target: self, action: #selector(checkListDidTap))
-        
-        
     }
     
-    @objc func checkListDidTap() {
+    @objc func checkListDidTap(_ sender: UITableViewCell) {
         
     }
     
@@ -74,6 +72,7 @@ extension BoardDetailViewController: UITableViewDataSource{
 
         cell.goalLabel.text = goals[indexPath.row]
         cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.addGestureRecognizer(checkedGesture)
         return cell
     }
     

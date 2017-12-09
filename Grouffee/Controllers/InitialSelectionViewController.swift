@@ -27,9 +27,10 @@ class InitialSelectionViewController: UIViewController {
         joinPlanBtn.isEnabled = false
         errorMessage.text = ""
         nameField.delegate = self
-        addKeyboardViewAdjustment()
+        //addKeyboardViewAdjustment()
         errorView.isHidden = true
         errorView.layer.cornerRadius = 10
+        nameField.becomeFirstResponder()
     }
     
     @IBAction func newPlanDidTap(_ sender: Any) {

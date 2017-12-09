@@ -51,7 +51,9 @@ class CreateRoomViewController: UIViewController, UIPickerViewDelegate, UIPicker
         
         topDurPickerMargin.constant = view.frame.height
         
-        addKeyboardViewAdjustment()
+        roomNameTxt.becomeFirstResponder()
+        
+        //addKeyboardViewAdjustment()
     }
     
     // to set status bar text to white
@@ -92,6 +94,11 @@ class CreateRoomViewController: UIViewController, UIPickerViewDelegate, UIPicker
         appDelegate.room = Room(name: roomNameTxt.text!, /*leader: appDelegate.user,*/ duration: (selectedHours*3600 + selectedMinutes*60))
         appDelegate.user.type = .leader
     }
+    
+    @IBAction func backBtnDidTap(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     
     @IBAction func doneBtnDidTap(_ sender: Any) {
         hideDurPicker()
@@ -212,6 +219,8 @@ class CreateRoomViewController: UIViewController, UIPickerViewDelegate, UIPicker
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.becomeFirstResponder()
     }
+    
+    
 }
 
 extension CreateRoomViewController: UITextFieldDelegate {
