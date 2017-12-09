@@ -13,16 +13,16 @@ class Room : Codable
 {
     var name : String
     var boards = [Board]()
-    var leader : User
+    //var leader : User
     var connectedMembers = [User]()
     var timer : GrouffeeTimer!
     var lastBoardId = 0
     
-    init(name : String, leader : User, duration: Int) {
+    init(name : String, duration: Int) {
         self.name = name
-        self.leader = leader
+        //self.leader = leader
         self.timer = GrouffeeTimer(seconds: duration)
-        self.connectedMembers.append(leader)
+        self.connectedMembers.append(appDelegate.user!)
     }
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -36,7 +36,7 @@ class Room : Codable
     {
         case name
         case boards
-        case leader
+        //case leader
         case connectedMembers
         case timer
         case lastBoardId
@@ -47,7 +47,7 @@ class Room : Codable
         
         try container.encode(name, forKey: CodingKeys.name)
         try container.encode(boards, forKey: CodingKeys.boards)
-        try container.encode(leader, forKey: CodingKeys.leader)
+        //try container.encode(leader, forKey: CodingKeys.leader)
         try container.encode(connectedMembers, forKey: CodingKeys.connectedMembers)
         try container.encode(timer, forKey: CodingKeys.timer)
         try container.encode(lastBoardId, forKey: CodingKeys.lastBoardId)

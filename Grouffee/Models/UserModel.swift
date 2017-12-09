@@ -70,12 +70,12 @@ class User : Codable{
         self.timer = GrouffeeTimer()
         self.peerId = peerId
     }
-    
+    /*
     func assignTimer(timer: GrouffeeTimer)
     {
         self.timer = timer
     }
-    
+    */
     func startWorking(inBoard : Board)
     {
         status = .working

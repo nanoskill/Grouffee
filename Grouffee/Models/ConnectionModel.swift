@@ -180,23 +180,33 @@ extension ConnectionModel : MCSessionDelegate
             {
                 if dataType == "join_data"
                 {
-                    let decodedData = try decoder.decode(JoinData.self, from: data)
-                    var joiningUser : User?
-                    for user in appDelegate.room.connectedMembers
-                    {
-                        if user.name == decodedData.user
+                    DispatchQueue.main.async {
+                        [weak self] in
+                        do
                         {
-                            joiningUser = user
-                            print("Detected user : \(joiningUser!)")
-                            break;
+                            let decodedData = try decoder.decode(JoinData.self, from: data)
+                            var joiningUser : User?
+                            for user in (self?.appDelegate.room.connectedMembers)!
+                            {
+                                if user.name == decodedData.user
+                                {
+                                    joiningUser = user
+                                    print("Detected user : \(joiningUser!.name)")
+                                    break;
+                                }
+                            }
+                            for board in (self?.appDelegate.room.boards)!
+                            {
+                                if board.boardId == decodedData.targetBoard
+                                {
+                                    board.joinBoard(user: joiningUser!)
+                                    break;
+                                }
+                            }
                         }
-                    }
-                    for board in appDelegate.room.boards
-                    {
-                        if board.boardId == decodedData.targetBoard
+                        catch let error
                         {
-                            board.joinBoard(user: joiningUser!)
-                            break;
+                            print("join board decoder error: \(error)")
                         }
                     }
                 }

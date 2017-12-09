@@ -149,18 +149,50 @@ extension BoardListViewController : UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if appDelegate.user.type == .leader
         {
+            if appDelegate.room.boards[indexPath.row].members.contains(where: { [weak self] (theUser) -> Bool in
+                if theUser.name == self?.appDelegate.user.name
+                {
+                    return true
+                }
+                return false
+            })
+            {
+                appDelegate.room.boards[indexPath.row].exitBoard(user: (appDelegate.user)!)
+                return
+            }
             appDelegate.room.boards[indexPath.row].joinBoard(user: (appDelegate.user)!)
         }
         else
         {
-            do
+             if appDelegate.room.boards[indexPath.row].members.contains(where: { [weak self] (theUser) -> Bool in
+                if theUser.name == self?.appDelegate.user.name
+                {
+                    return true
+                }
+                return false
+            })
             {
-                let theData = try JSONEncoder().encode(JoinData(targetBoard: indexPath.row, user: appDelegate.user.name))
-                try appDelegate.connection?.session.send(theData, toPeers: (appDelegate.connection?.session.connectedPeers)!, with: .reliable)
+                do
+                {
+                    let theData = try JSONEncoder().encode(ExitData(fromBoard: indexPath.row, user: appDelegate.user.name))
+                    try appDelegate.connection?.session.send(theData, toPeers: (appDelegate.connection?.session.connectedPeers)!, with: .reliable)
+                }
+                catch let error
+                {
+                    print("Sending exit data error :\(error)")
+                }
             }
-            catch let error
+            else
             {
-                print("Sending join data error :\(error)")
+                do
+                {
+                    let theData = try JSONEncoder().encode(JoinData(targetBoard: indexPath.row, user: appDelegate.user.name))
+                    try appDelegate.connection?.session.send(theData, toPeers: (appDelegate.connection?.session.connectedPeers)!, with: .reliable)
+                }
+                catch let error
+                {
+                    print("Sending join data error :\(error)")
+                }
             }
         }
     }
@@ -245,7 +277,7 @@ extension BoardListViewController : GrouffeeTimerDelegate
         }
     }
 }
-
+/*
 extension BoardListViewController : MCSessionDelegate
 {
     func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState)
@@ -310,3 +342,4 @@ extension BoardListViewController : MCSessionDelegate
         
     }
 }
+*/

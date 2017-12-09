@@ -58,5 +58,9 @@ class Board : Codable{
                 members.remove(at: idx)
             }
         }
+        DispatchQueue.main.async {
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.broadcastRoom()
+        }
     }
 }
