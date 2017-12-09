@@ -21,6 +21,9 @@ class CreateRoomViewController: UIViewController, UIPickerViewDelegate, UIPicker
     @IBOutlet weak var hoursLabel: UILabel!
     @IBOutlet weak var minuteLabel: UILabel!
     
+    
+    @IBOutlet weak var topDurPickerMargin: NSLayoutConstraint!
+    
     let pickerDataSize = 100000
     
     var selectedHours = 0
@@ -45,6 +48,8 @@ class CreateRoomViewController: UIViewController, UIPickerViewDelegate, UIPicker
         
         durPickerView.alpha = 0.0
         startBtn.isEnabled = false
+        
+        topDurPickerMargin.constant = view.frame.height
         
         addKeyboardViewAdjustment()
     }

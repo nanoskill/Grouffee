@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="W3Q-g1-HXp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13770" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="W3Q-g1-HXp">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13770"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -130,8 +130,8 @@
                         <outlet property="joinPlanBtn" destination="Of9-el-84g" id="uIl-9m-ZKa"/>
                         <outlet property="nameField" destination="fVF-Fu-rvk" id="qAm-AH-XlR"/>
                         <outlet property="newPlanBtn" destination="mfa-un-Xg9" id="SyZ-CI-dsw"/>
-                        <segue destination="Fk4-aR-hMP" kind="show" identifier="CreateRoomSegue" id="5B3-vI-Atm"/>
-                        <segue destination="XiF-bc-Ubh" kind="show" identifier="RoomListSegue" id="fC5-VI-NSm"/>
+                        <segue destination="2rT-wk-bsr" kind="show" identifier="RoomListSegue" id="2Ym-E1-Dtu"/>
+                        <segue destination="ksp-Pz-vzh" kind="show" identifier="CreateRoomSegue" id="thD-a5-tbP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tbj-ZB-ctC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -139,20 +139,20 @@
             <point key="canvasLocation" x="880.79999999999995" y="133.5832083958021"/>
         </scene>
         <!--RoomList-->
-        <scene sceneID="fPa-0P-xrX">
+        <scene sceneID="Pyg-ae-kyi">
             <objects>
-                <viewControllerPlaceholder storyboardIdentifier="RoomList" storyboardName="RoomList" id="XiF-bc-Ubh" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="tAw-FQ-OtB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="RoomList" id="2rT-wk-bsr" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jIu-Lm-SVc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1522" y="57"/>
+            <point key="canvasLocation" x="1522" y="56"/>
         </scene>
         <!--CreateRoom-->
-        <scene sceneID="2dr-2y-Wai">
+        <scene sceneID="5hI-0t-c6M">
             <objects>
-                <viewControllerPlaceholder storyboardName="CreateRoom" id="Fk4-aR-hMP" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iBU-kv-fWY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="CreateRoom" id="ksp-Pz-vzh" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MkI-26-M8w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1537" y="133"/>
+            <point key="canvasLocation" x="1487" y="197"/>
         </scene>
     </scenes>
     <resources>
