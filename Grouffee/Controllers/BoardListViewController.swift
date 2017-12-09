@@ -32,7 +32,12 @@ class BoardListViewController: UIViewController {
         boardTable.dataSource = self
         boardTable.delegate = self
         
-        print(appDelegate.room!)
+        //print(appDelegate.room!)
+        //ingetin nanti diganti
+        /*appDelegate.user = User(name: "Wennie")
+        appDelegate.user.type = .leader
+        appDelegate.room = Room(name: "RoomByWennie", duration: 15000)
+        */
         appDelegate.room.timer.delegate = self
         roomName.title = appDelegate.room.name
         

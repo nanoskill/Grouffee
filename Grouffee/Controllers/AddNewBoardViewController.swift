@@ -12,6 +12,7 @@ class AddNewBoardViewController: UIViewController, UIPickerViewDelegate, UIPicke
     @IBOutlet weak var boardName: UITextField!
     @IBOutlet weak var durTxt: UITextField!
     @IBOutlet weak var desc: UITextField!
+    @IBOutlet weak var topDurPickerMargin: NSLayoutConstraint!
     
     @IBOutlet weak var goals: UITextField!
     @IBOutlet weak var createBoardBtn: UIButton!
@@ -41,6 +42,7 @@ class AddNewBoardViewController: UIViewController, UIPickerViewDelegate, UIPicke
         
         let hideGesture = UITapGestureRecognizer(target: self, action: #selector(hideDurPicker))
         durPickerView.addGestureRecognizer(hideGesture)
+        topDurPickerMargin.constant = view.frame.height
         
         durPickerView.alpha = 0.0
         //createBoardBtn.isEnabled = false

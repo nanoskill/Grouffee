@@ -98,8 +98,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6K9-Go-kPJ">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YYN-jm-GEf">
-                                        <rect key="frame" x="0.0" y="619" width="375" height="217"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YYN-jm-GEf">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="217"/>
                                         <subviews>
                                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZfD-I6-oY1">
                                                 <rect key="frame" x="0.0" y="42" width="375" height="175"/>
@@ -147,13 +147,17 @@
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.91487208549222798" green="0.91487208549222798" blue="0.91487208549222798" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="217" id="WB3-Ff-dJV"/>
+                                        </constraints>
                                         <viewLayoutGuide key="safeArea" id="AVt-un-CXP"/>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.35030500856164382" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="YYN-jm-GEf" secondAttribute="trailing" id="rvA-iO-VHT"/>
-                                    <constraint firstItem="YYN-jm-GEf" firstAttribute="leading" secondItem="6K9-Go-kPJ" secondAttribute="leading" id="z0a-Cb-vUF"/>
+                                    <constraint firstItem="YYN-jm-GEf" firstAttribute="leading" secondItem="6K9-Go-kPJ" secondAttribute="leading" id="ASr-b3-X0U"/>
+                                    <constraint firstItem="YYN-jm-GEf" firstAttribute="top" secondItem="6K9-Go-kPJ" secondAttribute="top" id="Qyo-35-N1K"/>
+                                    <constraint firstAttribute="trailing" secondItem="YYN-jm-GEf" secondAttribute="trailing" id="nUc-Wh-FT1"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -201,6 +205,7 @@
                         <outlet property="pickerContainer" destination="YYN-jm-GEf" id="KTD-GA-hcC"/>
                         <outlet property="roomNameTxt" destination="ds0-AO-FMy" id="2vc-iw-ZOg"/>
                         <outlet property="startBtn" destination="mD0-7D-xUJ" id="3TF-RU-VLL"/>
+                        <outlet property="topDurPickerMargin" destination="Qyo-35-N1K" id="zMA-dO-qW3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hQM-il-t7r" userLabel="First Responder" sceneMemberID="firstResponder"/>

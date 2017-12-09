@@ -31,6 +31,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sketch" translatesAutoresizingMaskIntoConstraints="NO" id="9aV-Fj-xJd">
+                                <rect key="frame" x="0.0" y="493" width="375" height="174"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tnQ-88-5w1">
                                 <rect key="frame" x="147" y="285" width="80" height="96"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -51,10 +55,6 @@
                                     <action selector="doneButtonDidTap:" destination="Nk3-WV-GfW" eventType="touchUpInside" id="fHQ-27-Ard"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sketch" translatesAutoresizingMaskIntoConstraints="NO" id="9aV-Fj-xJd">
-                                <rect key="frame" x="0.0" y="493" width="375" height="174"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xKy-4R-itv">
                                 <rect key="frame" x="0.0" y="70" width="375" height="100"/>
                                 <subviews>
@@ -201,7 +201,7 @@
                                     <constraint firstAttribute="height" constant="25" id="tKg-sR-iwg"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k3T-SY-xdF">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k3T-SY-xdF">
                                 <rect key="frame" x="326" y="167" width="24" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="k3T-SY-xdF" secondAttribute="height" multiplier="1:1" id="Ucb-Qr-Y5t"/>
@@ -230,6 +230,7 @@
                             <constraint firstItem="Hqe-CH-Vod" firstAttribute="trailing" secondItem="iq4-6K-nOp" secondAttribute="trailing" id="VAl-WD-d5V"/>
                             <constraint firstItem="E56-o7-THn" firstAttribute="trailing" secondItem="iq4-6K-nOp" secondAttribute="trailing" id="ZBl-Kw-19N"/>
                             <constraint firstItem="xKy-4R-itv" firstAttribute="top" secondItem="iq4-6K-nOp" secondAttribute="top" constant="50" id="iWM-dG-el4"/>
+                            <constraint firstItem="k3T-SY-xdF" firstAttribute="top" secondItem="iq4-6K-nOp" secondAttribute="top" constant="147" id="jUp-XG-dxB"/>
                             <constraint firstItem="E56-o7-THn" firstAttribute="top" secondItem="4mg-SN-8mS" secondAttribute="bottom" constant="5" id="lbo-pw-hpm"/>
                             <constraint firstItem="k3T-SY-xdF" firstAttribute="leading" secondItem="4mg-SN-8mS" secondAttribute="trailing" id="noh-EJ-Dm9"/>
                             <constraint firstItem="4mg-SN-8mS" firstAttribute="top" secondItem="iq4-6K-nOp" secondAttribute="top" constant="131" id="rQR-Up-arU"/>
