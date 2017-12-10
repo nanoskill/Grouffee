@@ -138,6 +138,7 @@ class AddNewBoardViewController: UIViewController, UIPickerViewDelegate, UIPicke
     {
         var goals = [Goal]()
         for it in goalList {
+            print(it)
             goals.append(Goal(name: it))
         }
        appDelegate.room.addBoard(boardName: boardName.text!, duration: selectedHours*3600 + selectedMinutes*60, desc: desc.text, goals: goals)

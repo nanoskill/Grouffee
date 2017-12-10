@@ -8,19 +8,18 @@
 
 import UIKit
 import UserNotifications
+import MultipeerConnectivity
 
 class Room : Codable
 {
     var name : String
     var boards = [Board]()
-    //var leader : User
     var connectedMembers = [User]()
     var timer : GrouffeeTimer!
     var lastBoardId = 0
     
     init(name : String, duration: Int) {
         self.name = name
-        //self.leader = leader
         self.timer = GrouffeeTimer(seconds: duration)
         self.connectedMembers.append(appDelegate.user!)
     }
@@ -32,11 +31,11 @@ class Room : Codable
         self.timer = timer
     }
      */
+    
     enum CodingKeys : String, CodingKey
     {
         case name
         case boards
-        //case leader
         case connectedMembers
         case timer
         case lastBoardId
@@ -47,7 +46,6 @@ class Room : Codable
         
         try container.encode(name, forKey: CodingKeys.name)
         try container.encode(boards, forKey: CodingKeys.boards)
-        //try container.encode(leader, forKey: CodingKeys.leader)
         try container.encode(connectedMembers, forKey: CodingKeys.connectedMembers)
         try container.encode(timer, forKey: CodingKeys.timer)
         try container.encode(lastBoardId, forKey: CodingKeys.lastBoardId)
@@ -64,4 +62,44 @@ class Room : Codable
         
     }
     */
+}
+
+extension Room : ConnectionModelDelegate
+{
+    func foundPeer(peer: MCPeerID) {
+        if appDelegate.user.type == .leader { return }
+        appDelegate.connection?.serviceBrowser.invitePeer(peer, to: (appDelegate.connection?.session)!, withContext: nil, timeout: 10)
+        print("Auto connected by member")
+    }
+    func connectedWithPeer(peerID: MCPeerID, state: MCSessionState) {
+        if appDelegate.user.type == .leader { return }
+        appDelegate.connection?.serviceBrowser.stopBrowsingForPeers()
+    }
+    func invitationWasReceived(fromPeer: MCPeerID)
+    {
+        if appDelegate.user.type == .member { return }
+        
+        print("Current connPeer : \((appDelegate.connection?.session.connectedPeers)!)")
+        if appDelegate.room.connectedMembers.contains(where: { (user) -> Bool in
+            return user.peerId == fromPeer
+        })
+        {
+            print("Auto connected by leader")
+            self.appDelegate.connection?.invitationHandler(true, self.appDelegate.connection?.session)
+        }
+        else
+        {
+            let popup = UIAlertController.createAcceptDeclinePopup(title: "Join Request", message: "\(fromPeer.displayName) has requested to join \(appDelegate.room.name)", handlerAccept:
+            { (UIAlertAction) in
+                self.appDelegate.connection?.invitationHandler(true, self.appDelegate.connection?.session)
+                self.appDelegate.room.connectedMembers.append(User(peerId: fromPeer))
+                
+            }, handlerDecline:
+                { (UIAlertAction) in
+                    self.appDelegate.connection?.invitationHandler(false, self.appDelegate.connection?.session)
+            })
+            
+            UIApplication.topViewController()?.present(popup, animated: true, completion: nil)
+        }
+    }
 }

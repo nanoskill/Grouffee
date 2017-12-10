@@ -25,19 +25,49 @@ class BoardDetailViewController: UIViewController {
     
     @IBOutlet weak var joinBoardBtn: UIButton!
     
+    var boardId : Int!
     var board : Board!
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        for board in appDelegate.room.boards {
+            if board.boardId == self.boardId
+            {
+                self.board = board
+                break;
+            }
+        }
+        goalTable.dataSource = self
+        updateGoalTable()
         updateBoard()
         Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateBoard), userInfo: nil, repeats: true)
     }
     
+    func updateGoalTable()
+    {
+        if appDelegate.user.workingOnBoard?.boardId == board.boardId
+        {
+            joinBoardBtn.setImage(#imageLiteral(resourceName: "Create New Room Button"), for: .normal)
+            backButton.isEnabled = false
+        }
+        else
+        {
+            joinBoardBtn.setImage(#imageLiteral(resourceName: "join room button"), for: .normal)
+            backButton.isEnabled = true
+        }
+    }
+    
     @objc func updateBoard()
     {
+        for board in appDelegate.room.boards {
+            if board.boardId == self.boardId
+            {
+                self.board = board
+                break;
+            }
+        }
         boardName.text = board.boardName
         desc.text = board.desc
         var temp = ""
@@ -64,9 +94,6 @@ class BoardDetailViewController: UIViewController {
     {
         if isJoined
         {
-            //mau keluar
-            joinBoardBtn.imageView?.image = #imageLiteral(resourceName: "Create New Room Button")
-            backButton.isEnabled = true
             if appDelegate.user.type == .member
             {
                 do
@@ -80,11 +107,10 @@ class BoardDetailViewController: UIViewController {
                 }
             }
             appDelegate.user.exitBoard()
+            updateGoalTable()
         }
         else
         {
-            joinBoardBtn.imageView?.image = #imageLiteral(resourceName: "join room button")
-            backButton.isEnabled = false
             if appDelegate.user.type == .member
             {
                 do
@@ -98,6 +124,7 @@ class BoardDetailViewController: UIViewController {
                 }
             }
             appDelegate.user.joinBoard(board: board)
+            updateGoalTable()
         }
     }
     
@@ -105,45 +132,53 @@ class BoardDetailViewController: UIViewController {
 
 extension BoardDetailViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //print("hello")
+        
         let selectedCell = goalTable.cellForRow(at: indexPath) as! GoalTableViewCell
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        if (selectedCell.checkBox.image?.isEqual(UIImage(named: "blank-check-box")))! {
+        if appDelegate.user.workingOnBoard?.boardId != board.boardId { return }
+        if board.goals[indexPath.row].isChecked() == false
+        {
             selectedCell.checkBox.image = UIImage(named: "check-box")
-            if appDelegate.user.type == .leader
-            {
-                board.goals[indexPath.row].checked(user: appDelegate.user)
-                appDelegate.broadcastRoom()
-            }
-            else
-            {
-                do
+            DispatchQueue.main.async {
+                [weak self] in
+                self!.board.goals[indexPath.row].checked(user: self!.appDelegate.user)
+                if appDelegate.user.type == .leader
                 {
-                    let theData = try JSONEncoder().encode(GoalCheckData(board: board))
-                    try appDelegate.connection?.session.send(theData, toPeers: (appDelegate.connection?.session.connectedPeers)!, with: .reliable)
+                    self!.appDelegate.broadcastRoom()
                 }
-                catch let error
+                else
                 {
-                    print("send checked error : \(error)")
+                    do
+                    {
+                        let theData = try JSONEncoder().encode(GoalCheckData(board: self!.board))
+                        try self!.appDelegate.connection?.session.send(theData, toPeers: (self!.appDelegate.connection?.session.connectedPeers)!, with: .reliable)
+                    }
+                    catch let error
+                    {
+                        print("send checked error : \(error)")
+                    }
                 }
             }
         } else {
             selectedCell.checkBox.image = UIImage(named: "blank-check-box")
-            if appDelegate.user.type == .leader
-            {
-                board.goals[indexPath.row].unchecked()
-                appDelegate.broadcastRoom()
-            }
-            else
-            {
-                do
+            DispatchQueue.main.async {
+                [weak self] in
+                self!.board.goals[indexPath.row].unchecked()
+                if appDelegate.user.type == .leader
                 {
-                    let theData = try JSONEncoder().encode(GoalCheckData(board: board))
-                    try appDelegate.connection?.session.send(theData, toPeers: (appDelegate.connection?.session.connectedPeers)!, with: .reliable)
+                    self!.appDelegate.broadcastRoom()
                 }
-                catch let error
+                else
                 {
-                    print("send checked error : \(error)")
+                    do
+                    {
+                        let theData = try JSONEncoder().encode(GoalCheckData(board: self!.board))
+                        try self!.appDelegate.connection?.session.send(theData, toPeers: (self!.appDelegate.connection?.session.connectedPeers)!, with: .reliable)
+                    }
+                    catch let error
+                    {
+                        print("send checked error : \(error)")
+                    }
                 }
             }
         }
@@ -158,7 +193,7 @@ extension BoardDetailViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = goalTable.dequeueReusableCell(withIdentifier: "goalCell", for: indexPath) as! GoalTableViewCell
-
+        cell.checkBox.image = (board.goals[indexPath.row].isChecked() ? #imageLiteral(resourceName: "check-box") : #imageLiteral(resourceName: "blank-check-box"))
         cell.goalLabel.text = board.goals[indexPath.row].name
         cell.selectionStyle = UITableViewCellSelectionStyle.none
         return cell

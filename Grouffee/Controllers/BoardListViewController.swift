@@ -33,13 +33,7 @@ class BoardListViewController: UIViewController {
         
         boardTable.dataSource = self
         boardTable.delegate = self
-        
-        //print(appDelegate.room!)
-        //ingetin nanti diganti
-        /*appDelegate.user = User(name: "Wennie")
-        appDelegate.user.type = .leader
-        appDelegate.room = Room(name: "RoomByWennie", duration: 15000)
-        */
+    
         appDelegate.room.timer.delegate = self
         roomName.title = appDelegate.room.name
         
@@ -47,8 +41,8 @@ class BoardListViewController: UIViewController {
         
         progressBar.progress = 1
         
-        appDelegate.connection?.delegate = self
-        //appDelegate.connection?.session.delegate = self
+        appDelegate.connection?.delegate = appDelegate.room
+        
         dragGesture.addTarget(self, action: #selector(timerBeingDragged(_:)))
         timerContainer.addGestureRecognizer(dragGesture)
         
@@ -131,7 +125,7 @@ class BoardListViewController: UIViewController {
 //            destination.durInput = selectedBoard.duration
 //            destination.descInput = selectedBoard.desc
 //            destination.goals = selectedBoard.goals
-            destination.board = selectedBoard
+            destination.boardId = selectedBoard.boardId
         }
     }
 }
@@ -260,47 +254,12 @@ extension BoardListViewController : UITableViewDataSource
         return 1
     }
 }
-
+/*
 extension BoardListViewController : ConnectionModelDelegate
 {
-    func foundPeer(peer: MCPeerID) {
-        if appDelegate.user.type == .leader { return }
-        appDelegate.connection?.serviceBrowser.invitePeer(peer, to: (appDelegate.connection?.session)!, withContext: nil, timeout: 10)
-        print("Auto connected by member")
-    }
-    func connectedWithPeer(peerID: MCPeerID, state: MCSessionState) {
-        if appDelegate.user.type == .leader { return }
-        appDelegate.connection?.serviceBrowser.stopBrowsingForPeers()
-    }
-    func invitationWasReceived(fromPeer: MCPeerID)
-    {
-        if appDelegate.user.type == .member { return }
-        
-        print("Current connPeer : \((appDelegate.connection?.session.connectedPeers)!)")
-        if appDelegate.room.connectedMembers.contains(where: { (user) -> Bool in
-            return user.peerId == fromPeer
-        })
-        {
-            print("Auto connected by leader")
-            self.appDelegate.connection?.invitationHandler(true, self.appDelegate.connection?.session)
-        }
-        else
-        {
-            let popup = UIAlertController.createAcceptDeclinePopup(title: "Join Request", message: "\(fromPeer.displayName) has requested to join \(appDelegate.room.name)", handlerAccept:
-            { (UIAlertAction) in
-                self.appDelegate.connection?.invitationHandler(true, self.appDelegate.connection?.session)
-                self.appDelegate.room.connectedMembers.append(User(peerId: fromPeer))
-                
-            }, handlerDecline:
-            { (UIAlertAction) in
-                self.appDelegate.connection?.invitationHandler(false, self.appDelegate.connection?.session)
-            })
-            
-            self.present(popup, animated: true, completion: nil)
-        }
-    }
+    
 }
-
+*/
 extension BoardListViewController : GrouffeeTimerDelegate
 {
     func timeIsTicking() {

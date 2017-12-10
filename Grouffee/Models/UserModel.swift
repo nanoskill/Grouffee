@@ -36,7 +36,17 @@ class User : Codable{
         case status
         case type
         //case sessions
-        case workingOnBoard
+        case workingOnBoard = "workingBoardId"
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        
+        try container.encode(name, forKey: .name)
+        try container.encode(timer, forKey: .timer)
+        try container.encode(status, forKey: .status)
+        try container.encode(type, forKey: .type)
+        try container.encode((workingOnBoard == nil ? -1 : workingOnBoard?.boardId) , forKey: .workingOnBoard)
     }
     
     required init(from decoder: Decoder) throws {
@@ -54,7 +64,18 @@ class User : Codable{
             }
         }
         type = try values.decode(UserType.self, forKey: .type)
-        workingOnBoard = try values.decode(Board.self, forKey: .workingOnBoard)
+        let id = try values.decode(Int.self, forKey: .workingOnBoard)
+        if appDelegate.room != nil
+        {
+            for board in appDelegate.room.boards
+            {
+                if board.boardId == id
+                {
+                    workingOnBoard = board
+                    break;
+                }
+            }
+        }
         //sessions = try values.decode([GrouffeeSession].self, forKey: .sessions)
     }
     

@@ -35,8 +35,6 @@
 	<array>
 		<string>Lato</string>
 	</array>
-	<key>UIBackgroundModes</key>
-	<array/>
 	<key>UILaunchStoryboardName</key>
 	<string>CustomLaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

@@ -83,11 +83,6 @@
                                     <action selector="joinBoardDidTap:" destination="GTY-Jg-T0W" eventType="touchUpInside" id="XcS-ir-nGV"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v3k-bd-bch">
-                                <rect key="frame" x="-376" y="116" width="375" height="588"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GNf-Fo-ndb">
                                 <rect key="frame" x="0.0" y="163" width="375" height="401"/>
                                 <subviews>
@@ -288,7 +283,6 @@
                             <constraint firstItem="xHz-mh-dvd" firstAttribute="width" secondItem="EtY-2T-FBf" secondAttribute="width" id="0OT-HW-iQT"/>
                             <constraint firstItem="zWD-yl-RFD" firstAttribute="leading" secondItem="uUc-ag-egw" secondAttribute="leading" constant="66" id="31N-Wu-OpR"/>
                             <constraint firstItem="uUc-ag-egw" firstAttribute="bottom" secondItem="2pA-Pt-AUF" secondAttribute="bottom" constant="85" id="8m1-bH-rYu"/>
-                            <constraint firstItem="GNf-Fo-ndb" firstAttribute="top" secondItem="AW7-cJ-iYX" secondAttribute="bottom" constant="99" id="8oj-gE-472"/>
                             <constraint firstItem="AW7-cJ-iYX" firstAttribute="trailing" secondItem="GNf-Fo-ndb" secondAttribute="trailing" id="DUz-Tr-evZ"/>
                             <constraint firstItem="GNf-Fo-ndb" firstAttribute="leading" secondItem="uUc-ag-egw" secondAttribute="leading" id="KVK-Uz-Arc"/>
                             <constraint firstItem="Lx7-l0-ElG" firstAttribute="leading" secondItem="uUc-ag-egw" secondAttribute="leading" id="LX8-lD-LqB"/>

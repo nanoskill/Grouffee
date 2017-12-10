@@ -27,6 +27,27 @@ class Board : Codable{
         self.goals = goals
     }
     
+    enum CodingKeys : String, CodingKey
+    {
+        case boardId
+        case boardName
+        case desc
+        case duration
+        case timer
+        case goals
+    }
+    
+    required init(from decoder:Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        
+        boardId = try values.decode(Int.self, forKey: .boardId)
+        boardName = try values.decode(String.self, forKey: .boardName)
+        desc = try values.decode(String.self, forKey: .desc)
+        duration = try values.decode(Int.self, forKey: .duration)
+        timer = try values.decode(GrouffeeTimer.self, forKey: .timer)
+        goals = try values.decode([Goal].self, forKey: .goals)
+    }
+    
     func getPeopleWorkingOnBoard() -> [User]
     {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate

@@ -211,37 +211,66 @@ extension ConnectionModel : MCSessionDelegate
                 }
                 if dataType == "exit_data"
                 {
-                    let decodedData = try decoder.decode(ExitData.self, from: data)
-                    for user in appDelegate.room.connectedMembers
-                    {
-                        if user.name == decodedData.user
+                    DispatchQueue.main.async { [weak self] in
+                        do
                         {
-                            user.exitBoard()
-                            break;
+                            let decodedData = try decoder.decode(ExitData.self, from: data)
+                            for user in self!.appDelegate.room.connectedMembers
+                            {
+                                if user.name == decodedData.user
+                                {
+                                    user.exitBoard()
+                                    break;
+                                }
+                            }
+                        }
+                        catch let error
+                        {
+                            print("exit data decode error : \(error)")
                         }
                     }
                 }
                 if dataType == "quit_data"
                 {
-                    let decodedData = try decoder.decode(QuitData.self, from: data)
-                    for (idx,user) in appDelegate.room.connectedMembers.enumerated()
-                    {
-                        if user.name == decodedData.user
+                    DispatchQueue.main.async {
+                        [weak self] in
+                        do
                         {
-                            appDelegate.room.connectedMembers.remove(at: idx)
-                            break;
+                            let decodedData = try decoder.decode(QuitData.self, from: data)
+                            for (idx,user) in self!.appDelegate.room.connectedMembers.enumerated()
+                            {
+                                if user.name == decodedData.user
+                                {
+                                    self!.appDelegate.room.connectedMembers.remove(at: idx)
+                                    break;
+                                }
+                            }
+                        }
+                        catch let error
+                        {
+                            print("Quit data decode error : \(error)")
                         }
                     }
                 }
                 if dataType == "goalcheck_data"
                 {
-                    let decodedData = try decoder.decode(GoalCheckData.self, from: data)
-                    for (idx,board) in appDelegate.room.boards.enumerated()
-                    {
-                        if board.boardId == decodedData.board.boardId
+                    DispatchQueue.main.async { [weak self] in
+                        do
                         {
-                            appDelegate.room.boards[idx] = decodedData.board
-                            break;
+                            let decodedData = try decoder.decode(GoalCheckData.self, from: data)
+                            for (idx,board) in self!.appDelegate.room.boards.enumerated()
+                            {
+                                if board.boardId == decodedData.board.boardId
+                                {
+                                    self!.appDelegate.room.boards[idx] = decodedData.board
+                                    print(self!.appDelegate.room.boards[idx].goals[0].isChecked())
+                                    break;
+                                }
+                            }
+                        }
+                        catch let error
+                        {
+                            print("goal check decode error: \(error)")
                         }
                     }
                 }
