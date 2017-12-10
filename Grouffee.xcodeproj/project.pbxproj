@@ -11,6 +11,7 @@
 		8E12C5041FDA3FAB008D16A7 /* BoardDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E12C5031FDA3FAB008D16A7 /* BoardDetail.storyboard */; };
 		8E12C5061FDA83FF008D16A7 /* GoalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E12C5051FDA83FF008D16A7 /* GoalTableViewCell.swift */; };
 		8E2C06651FCFAA18006143FB /* InitialSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2C06641FCFAA18006143FB /* InitialSelectionViewController.swift */; };
+		8E3E23211FDD356700549299 /* BoardList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E3E23201FDD356700549299 /* BoardList.storyboard */; };
 		8E447AB91FD17E6600DFCF8C /* BoardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E447AB81FD17E6600DFCF8C /* BoardTableViewCell.swift */; };
 		8E447ABB1FD1926900DFCF8C /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E447ABA1FD1926900DFCF8C /* Board.swift */; };
 		8E447ABD1FD1A87D00DFCF8C /* AddNewBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E447ABC1FD1A87D00DFCF8C /* AddNewBoardViewController.swift */; };
@@ -34,7 +35,6 @@
 		B7B57DD01FC815DF008B4C9D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B57DCF1FC815DF008B4C9D /* AppDelegate.swift */; };
 		B7B57DD21FC815DF008B4C9D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B57DD11FC815DF008B4C9D /* ViewController.swift */; };
 		B7B57DD71FC815DF008B4C9D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7B57DD61FC815DF008B4C9D /* Assets.xcassets */; };
-		B7C988891FD62D3E00091158 /* BoardList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7C988831FD62D3D00091158 /* BoardList.storyboard */; };
 		B7C9888A1FD62D3E00091158 /* CreateRoom.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7C988841FD62D3E00091158 /* CreateRoom.storyboard */; };
 		B7C9888B1FD62D3E00091158 /* AddNewBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7C988851FD62D3E00091158 /* AddNewBoard.storyboard */; };
 		B7C9888D1FD62D3E00091158 /* InitialSelection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7C988871FD62D3E00091158 /* InitialSelection.storyboard */; };
@@ -46,6 +46,7 @@
 		8E12C5031FDA3FAB008D16A7 /* BoardDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BoardDetail.storyboard; sourceTree = "<group>"; };
 		8E12C5051FDA83FF008D16A7 /* GoalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalTableViewCell.swift; sourceTree = "<group>"; };
 		8E2C06641FCFAA18006143FB /* InitialSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialSelectionViewController.swift; sourceTree = "<group>"; };
+		8E3E23201FDD356700549299 /* BoardList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = BoardList.storyboard; path = ../../../../Downloads/BoardList.storyboard; sourceTree = "<group>"; };
 		8E447AB81FD17E6600DFCF8C /* BoardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardTableViewCell.swift; sourceTree = "<group>"; };
 		8E447ABA1FD1926900DFCF8C /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		8E447ABC1FD1A87D00DFCF8C /* AddNewBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewBoardViewController.swift; sourceTree = "<group>"; };
@@ -72,7 +73,6 @@
 		B7B57DD41FC815DF008B4C9D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B7B57DD61FC815DF008B4C9D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B7B57DDB1FC815DF008B4C9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B7C988831FD62D3D00091158 /* BoardList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BoardList.storyboard; sourceTree = "<group>"; };
 		B7C988841FD62D3E00091158 /* CreateRoom.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateRoom.storyboard; sourceTree = "<group>"; };
 		B7C988851FD62D3E00091158 /* AddNewBoard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddNewBoard.storyboard; sourceTree = "<group>"; };
 		B7C988871FD62D3E00091158 /* InitialSelection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InitialSelection.storyboard; sourceTree = "<group>"; };
@@ -160,7 +160,7 @@
 			children = (
 				B7C988851FD62D3E00091158 /* AddNewBoard.storyboard */,
 				8E12C5031FDA3FAB008D16A7 /* BoardDetail.storyboard */,
-				B7C988831FD62D3D00091158 /* BoardList.storyboard */,
+				8E3E23201FDD356700549299 /* BoardList.storyboard */,
 				B7C988841FD62D3E00091158 /* CreateRoom.storyboard */,
 				B7C988871FD62D3E00091158 /* InitialSelection.storyboard */,
 				B7F9FB9B1FCD0C920002C3C0 /* RoomList.storyboard */,
@@ -237,13 +237,13 @@
 			files = (
 				8E5367781FDC35C800EC75EB /* ReviewPage.storyboard in Resources */,
 				B713E5021FD65787005759E5 /* Lato in Resources */,
-				B7C988891FD62D3E00091158 /* BoardList.storyboard in Resources */,
 				B713E50F1FD67F4D005759E5 /* CustomLaunchScreen.storyboard in Resources */,
 				B7C9888A1FD62D3E00091158 /* CreateRoom.storyboard in Resources */,
 				B7C9888B1FD62D3E00091158 /* AddNewBoard.storyboard in Resources */,
 				B7C9888D1FD62D3E00091158 /* InitialSelection.storyboard in Resources */,
 				8E12C5041FDA3FAB008D16A7 /* BoardDetail.storyboard in Resources */,
 				B7F9FB9C1FCD0C920002C3C0 /* RoomList.storyboard in Resources */,
+				8E3E23211FDD356700549299 /* BoardList.storyboard in Resources */,
 				8E7163C91FD7C08D003088DC /* MemberList.storyboard in Resources */,
 				B7B57DD71FC815DF008B4C9D /* Assets.xcassets in Resources */,
 			);
