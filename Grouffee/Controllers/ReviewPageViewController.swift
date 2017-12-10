@@ -48,10 +48,9 @@ class ReviewPageViewController: UIViewController {
 
 extension ReviewPageViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tableView == self.memberTable {
-            return 2//appDelegate.room.connectedMembers.count
+        if tableView == self.memberTable { return appDelegate.room.connectedMembers.count
         } else if tableView == self.boardListView {
-            return 2//appDelegate.room.boards.count
+            return appDelegate.room.boards.count
         }
         return 0
     }

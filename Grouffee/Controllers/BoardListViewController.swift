@@ -31,13 +31,11 @@ class BoardListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        boardTable.dataSource = self
-        boardTable.delegate = self
-    
+        //boardTable.dataSource = self
+        //boardTable.delegate = self
         appDelegate.room.timer.delegate = self
         roomName.title = appDelegate.room.name
-        
-        appDelegate.room.timer.startTimer()
+
         
         progressBar.progress = 1
         
@@ -51,10 +49,13 @@ class BoardListViewController: UIViewController {
             plusButton.isHidden = true
             addBoardButton.isHidden = true
         }
+        else
+        {
+            appDelegate.room.timer.startTimer()
+        }
         
         NotificationCenter.default.addObserver(self, selector: #selector(enteredBackground), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(enteredForeground), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
-        
         //boardCell.addGestureRecognizer(tapBoardGesture)
     }
     
@@ -81,6 +82,10 @@ class BoardListViewController: UIViewController {
     }
     
     @IBAction func doneButtonDidTap(_ sender: Any) {
+        let sb = UIStoryboard.init(name: "ReviewPage", bundle: nil)
+        let con = sb.instantiateInitialViewController() as! ReviewPageViewController
+        //this
+        present(con, animated: true, completion: nil)
     }
     
     @objc func timerBeingDragged(_ sender : UIPanGestureRecognizer) {
@@ -166,70 +171,7 @@ extension BoardListViewController : UITableViewDelegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "showBoardDetail", sender: appDelegate.room.boards [indexPath.row])
-        /*
-        if appDelegate.user.type == .leader
-        {
-            if appDelegate.room.boards[indexPath.row].members.contains(where: { [weak self] (theUser) -> Bool in
-                if theUser.name == self?.appDelegate.user.name
-                {
-                    return true
-                }
-                return false
-            })
-            {
-                appDelegate.room.boards[indexPath.row].exitBoard(user: (appDelegate.user)!)
-            }
-            else
-            {
-                appDelegate.room.boards[indexPath.row].joinBoard(user: (appDelegate.user)!)
-            }
-        }
-        else
-        {
-            if appDelegate.room.boards[indexPath.row].members.contains(where: { [weak self] (theUser) -> Bool in
-                if theUser.name == self?.appDelegate.user.name
-                {
-                    return true
-                }
-                return false
-            })
-            {
-                do
-                {
-                    let theData = try JSONEncoder().encode(ExitData(fromBoard: indexPath.row, user: appDelegate.user.name))
-                    try appDelegate.connection?.session.send(theData, toPeers: (appDelegate.connection?.session.connectedPeers)!, with: .reliable)
-                }
-                catch let error
-                {
-                    print("Sending exit data error :\(error)")
-                }
-            }
-            else
-            {
-                do
-                {
-                    let theData = try JSONEncoder().encode(JoinData(targetBoard: indexPath.row, user: appDelegate.user.name))
-                    try appDelegate.connection?.session.send(theData, toPeers: (appDelegate.connection?.session.connectedPeers)!, with: .reliable)
-                }
-                catch let error
-                {
-                    print("Sending join data error :\(error)")
-                }
-            }
-        }*/
-        /*
-        let sb = UIStoryboard.init(name: "BoardDetail", bundle: nil)
-        let destination! = sb.instantiateInitialViewController() as! BoardListViewController
-        //let selectedBoard = appDelegate.room.boards [(boardTable.indexPathForSelectedRow?.row)!]
-        
-        destination.boardNameInput = selectedBoard.boardName
-        destination.durInput = selectedBoard.duration
-        destination.descInput = selectedBoard.desc
-        destination.goals = selectedBoard.goals
- */
     }
-    
-    
     
 }
 
@@ -254,12 +196,7 @@ extension BoardListViewController : UITableViewDataSource
         return 1
     }
 }
-/*
-extension BoardListViewController : ConnectionModelDelegate
-{
-    
-}
-*/
+
 extension BoardListViewController : GrouffeeTimerDelegate
 {
     func timeIsTicking() {
@@ -276,69 +213,3 @@ extension BoardListViewController : GrouffeeTimerDelegate
         }
     }
 }
-/*
-extension BoardListViewController : MCSessionDelegate
-{
-    func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState)
-    {
-        if state == .connected
-        {
-            if appDelegate.user.type == .leader
-            {
-                appDelegate.broadcastRoom()
-            }
-            /*
-             var theData = Data()
-             let enc = JSONEncoder()
-             do
-             {
-             theData = try enc.encode(self.appDelegate.room)
-             
-             var tempArray = [MCPeerID]()
-             tempArray.append(peerID)
-             try self.appDelegate.connection?.session.send(theData, toPeers: tempArray, with: MCSessionSendDataMode.reliable)
-             }
-             catch let error
-             {
-             print(error)
-             }
-             */
-        }
-    }
-    
-    
-    func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID)
-    {
-        let decoder = JSONDecoder()
-        DispatchQueue.main.async {
-            do
-            {
-                self.appDelegate.room = try decoder.decode(Room.self, from: data)
-            }
-            catch let error
-            {
-                print(error)
-            }
-            //self.boardTable.reloadData()
-        }
-    }
-    
-    
-    func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID)
-    {
-        
-    }
-    
-    
-    func session(_ session: MCSession, didStartReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, with progress: Progress)
-    {
-        
-    }
-    
-    
-    func session(_ session: MCSession, didFinishReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, at localURL: URL?, withError error: Error?)
-    {
-        
-    }
-}
-*/

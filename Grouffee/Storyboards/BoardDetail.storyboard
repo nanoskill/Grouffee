@@ -84,6 +84,11 @@
                                     <action selector="joinBoardDidTap:" destination="GTY-Jg-T0W" eventType="touchUpInside" id="XcS-ir-nGV"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v3k-bd-bch">
+                                <rect key="frame" x="-376" y="116" width="375" height="588"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GNf-Fo-ndb">
                                 <rect key="frame" x="0.0" y="163" width="375" height="401"/>
                                 <subviews>
@@ -105,14 +110,14 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Goals" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5lN-ao-4QF">
-                                                <rect key="frame" x="82" y="179" width="257" height="30"/>
+                                                <rect key="frame" x="81" y="215" width="257" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="17"/>
                                                 <color key="textColor" red="0.84478455779999995" green="0.52694404130000005" blue="0.45091509819999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="y5h-ti-661">
-                                                <rect key="frame" x="82" y="217" width="271" height="140"/>
+                                                <rect key="frame" x="81" y="253" width="271" height="140"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <prototypes>
@@ -163,25 +168,13 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="checklist" translatesAutoresizingMaskIntoConstraints="NO" id="TBe-0A-b0e">
-                                                <rect key="frame" x="40" y="182" width="24" height="24"/>
+                                                <rect key="frame" x="40" y="218" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="tag" translatesAutoresizingMaskIntoConstraints="NO" id="aqF-mt-1hI">
                                                 <rect key="frame" x="40" y="12" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="group" translatesAutoresizingMaskIntoConstraints="NO" id="6XI-YF-SVU">
-                                                <rect key="frame" x="40" y="373" width="24" height="24"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Member1, Member2, Member3" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2pA-Pt-AUF">
-                                                <rect key="frame" x="82" y="373" width="257" height="27"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
-                                                <color key="textColor" red="0.84478455779999995" green="0.52694404130000005" blue="0.45091509819999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="This is the description of this board, including what to do, what's the idea, etc" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CHd-S6-UkL">
                                                 <rect key="frame" x="82" y="107" width="257" height="69"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -200,6 +193,17 @@
                                                 <rect key="frame" x="40" y="84" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="group" translatesAutoresizingMaskIntoConstraints="NO" id="6XI-YF-SVU">
+                                                <rect key="frame" x="38" y="180" width="24" height="24"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Member1, Member2, Member3" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2pA-Pt-AUF">
+                                                <rect key="frame" x="80" y="180" width="257" height="27"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
+                                                <color key="textColor" red="0.84478455779999995" green="0.52694404130000005" blue="0.45091509819999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -218,9 +222,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="zWD-yl-RFD" firstAttribute="leading" secondItem="uUc-ag-egw" secondAttribute="leading" constant="66" id="31N-Wu-OpR"/>
-                            <constraint firstItem="uUc-ag-egw" firstAttribute="bottom" secondItem="2pA-Pt-AUF" secondAttribute="bottom" constant="85" id="8m1-bH-rYu"/>
-                            <constraint firstItem="AW7-cJ-iYX" firstAttribute="trailing" secondItem="GNf-Fo-ndb" secondAttribute="trailing" id="DUz-Tr-evZ"/>
-                            <constraint firstItem="GNf-Fo-ndb" firstAttribute="leading" secondItem="uUc-ag-egw" secondAttribute="leading" id="KVK-Uz-Arc"/>
                             <constraint firstItem="Lx7-l0-ElG" firstAttribute="leading" secondItem="uUc-ag-egw" secondAttribute="leading" id="LX8-lD-LqB"/>
                             <constraint firstItem="uUc-ag-egw" firstAttribute="trailing" secondItem="zWD-yl-RFD" secondAttribute="trailing" constant="66" id="NDz-td-KYg"/>
                             <constraint firstItem="AW7-cJ-iYX" firstAttribute="trailing" secondItem="Lx7-l0-ElG" secondAttribute="trailing" id="PMh-c3-4h5"/>
@@ -240,17 +241,17 @@
                     </view>
                     <size key="freeformSize" width="375" height="667"/>
                     <connections>
-                        <outlet property="backButton" destination="8HK-7O-fHY" id="wZZ-Fn-p9X"/>
+                        <outlet property="backButton" destination="8HK-7O-fHY" id="kTO-jJ-v4Q"/>
                         <outlet property="boardName" destination="Jij-b5-ymo" id="UmL-mM-hlC"/>
                         <outlet property="desc" destination="CHd-S6-UkL" id="Xkr-ux-ZaK"/>
-                        <outlet property="detailNavBar" destination="ziA-7U-dIl" id="quc-Z8-mFH"/>
+                        <outlet property="detailNavBar" destination="ziA-7U-dIl" id="utT-sR-mbU"/>
                         <outlet property="duration" destination="hRQ-T0-LFx" id="pjh-V9-Y4l"/>
                         <outlet property="goalTable" destination="y5h-ti-661" id="jvQ-2p-5zL"/>
                         <outlet property="joinBoardBtn" destination="zWD-yl-RFD" id="qft-sn-O72"/>
                         <outlet property="member" destination="2pA-Pt-AUF" id="SLB-fg-QgL"/>
-                        <outlet property="progressBar" destination="pUe-Ec-KyA" id="FIP-gL-Dd7"/>
+                        <outlet property="progressBar" destination="pUe-Ec-KyA" id="U6p-c6-DFH"/>
                         <outlet property="timerContainer" destination="Lx7-l0-ElG" id="Zif-dE-32H"/>
-                        <outlet property="timerLabel" destination="7Qb-M6-vni" id="BK1-Gz-B5A"/>
+                        <outlet property="timerLabel" destination="7Qb-M6-vni" id="uw7-Gt-IG0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Qw-Aw-DbE" userLabel="First Responder" sceneMemberID="firstResponder"/>

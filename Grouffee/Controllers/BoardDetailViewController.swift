@@ -39,6 +39,7 @@ class BoardDetailViewController: UIViewController {
                 break;
             }
         }
+        member.text = "members"
         goalTable.dataSource = self
         updateGoalTable()
         updateBoard()
@@ -49,7 +50,7 @@ class BoardDetailViewController: UIViewController {
     {
         if appDelegate.user.workingOnBoard?.boardId == board.boardId
         {
-            joinBoardBtn.setImage(#imageLiteral(resourceName: "Create New Room Button"), for: .normal)
+            joinBoardBtn.setImage(#imageLiteral(resourceName: "exit board 003"), for: .normal)
             backButton.isEnabled = false
         }
         else
