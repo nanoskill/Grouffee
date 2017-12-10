@@ -8,6 +8,7 @@
 
 import UIKit
 import MultipeerConnectivity
+import UserNotifications
 
 class InitialSelectionViewController: UIViewController {
     
@@ -31,6 +32,44 @@ class InitialSelectionViewController: UIViewController {
         errorView.isHidden = true
         errorView.layer.cornerRadius = 10
         nameField.becomeFirstResponder()
+        
+        UNUserNotificationCenter.current().getNotificationSettings { [weak self] (set) in
+            if set.authorizationStatus == .denied
+            {
+                let popup = UIAlertController.createOkayPopup(title: "Notification display", message: "We strongly recommend you to give us permission to display notifications in your notification center", handler: {(_) in self!.checkNow()})
+                DispatchQueue.main.async {
+                    popup.presentExclusively(view: self!)
+                }
+            }
+            else
+            {
+                self!.checkNow()
+            }
+        }
+    }
+    
+    @objc func checkNow()
+    {
+        if UIAccessibilityIsGuidedAccessEnabled() == false
+        {
+            let popup = UIAlertController.createOkayPopup(title: "Guided Access Disabled", message: "Enabled it!", handler :
+            { (_) in
+                if UIAccessibilityIsGuidedAccessEnabled() == false
+                {
+                    let urlStr = "App-prefs:root=General&path=ACCESSIBILITY"
+                    //print(UIApplication.shared.canOpenURL(URL(string: urlStr)!))
+                    UIApplication.shared.open(URL(string:urlStr)!, options: [:], completionHandler: nil)
+                    self.checkNow()
+                }
+                else
+                {
+                    self.dismiss(animated: true, completion: nil)
+                }
+            })
+            DispatchQueue.main.async {
+                popup.presentExclusively(view: self)
+            }
+        }
     }
     
     @IBAction func newPlanDidTap(_ sender: Any) {

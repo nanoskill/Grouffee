@@ -35,6 +35,12 @@ public struct InitialData : Codable
     var room : Room
 }
 
+public struct GoalCheckData : Codable
+{
+    let data_type = "goalcheck_data"
+    var board : Board
+}
+
 public struct RequestUpdateData : Codable{
     let data_type = "request_data"
 }

@@ -13,20 +13,16 @@ import MultipeerConnectivity
 class Board : Codable{
     var boardId : Int
     var boardName: String
+    var desc: String
     var duration: Int
     var members: [User]
     var timer : GrouffeeTimer!
+    var goals : [Goal]
     
-    var desc: String
-    var goals: [String]
-//    var goals : [Goal]
-
-//    init(boardId : Int, boardName: String, duration: Int) {
-    init(boardName: String, duration: Int, desc: String, goals: [String], boardId: Int) {
+    init(boardName: String, duration: Int, desc: String, goals: [Goal], boardId: Int) {
         self.boardName = boardName
         self.duration = duration
         members = [User]()
-//        goals = [Goal]()
         timer = GrouffeeTimer(seconds: duration)
         self.boardId = boardId
         

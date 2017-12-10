@@ -17,26 +17,23 @@ class BoardDetailViewController: UIViewController {
     @IBOutlet weak var desc: UILabel!
     @IBOutlet var goalTable: UITableView!
     @IBOutlet weak var member: UILabel!
-    var goals: [String] = []
-    
+    //var goals: [String] = []
+    /*
     var boardNameInput: String?
     var durInput: Int?
     var descInput: String?
-    let checkedGesture = UITapGestureRecognizer(target: self, action: #selector(checkListDidTap(_:)))
+    */
+    var board : Board!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         
-        boardName.text = boardNameInput
-        duration.text = "\(durInput!/3600) \("hours") \(durInput!%3600 / 60) \("minutes")"
-        desc.text = descInput
-        
-    }
-    
-    @objc func checkListDidTap(_ sender: UITableViewCell) {
-        
+        boardName.text = board.boardName
+        duration.text = "\(Int(board.timer.initTime)/3600) \("hours") \(Int(board.timer.initTime)%3600 / 60) \("minutes")"
+        desc.text = board.desc
     }
     
     @IBAction func backItemDidTap(_ sender: Any) {
@@ -47,32 +44,62 @@ class BoardDetailViewController: UIViewController {
 
 extension BoardDetailViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("hello")
+        //print("hello")
         let selectedCell = goalTable.cellForRow(at: indexPath) as! GoalTableViewCell
-        //print(selectedCell.checkBox.isEqual(UIImage(named: "blank-check-box")))
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         if (selectedCell.checkBox.image?.isEqual(UIImage(named: "blank-check-box")))! {
             selectedCell.checkBox.image = UIImage(named: "check-box")
-            //print("hai")
+            if appDelegate.user.type == .leader
+            {
+                board.goals[indexPath.row].checked(user: appDelegate.user)
+                appDelegate.broadcastRoom()
+            }
+            else
+            {
+                do
+                {
+                    let theData = try JSONEncoder().encode(GoalCheckData(board: board))
+                    try appDelegate.connection?.session.send(theData, toPeers: (appDelegate.connection?.session.connectedPeers)!, with: .reliable)
+                }
+                catch let error
+                {
+                    print("send checked error : \(error)")
+                }
+            }
         } else {
             selectedCell.checkBox.image = UIImage(named: "blank-check-box")
+            if appDelegate.user.type == .leader
+            {
+                board.goals[indexPath.row].unchecked()
+                appDelegate.broadcastRoom()
+            }
+            else
+            {
+                do
+                {
+                    let theData = try JSONEncoder().encode(GoalCheckData(board: board))
+                    try appDelegate.connection?.session.send(theData, toPeers: (appDelegate.connection?.session.connectedPeers)!, with: .reliable)
+                }
+                catch let error
+                {
+                    print("send checked error : \(error)")
+                }
+            }
         }
-        
-        //self.becomeFirstResponder()
     }
 }
 
 extension BoardDetailViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return goals.count
+        return board.goals.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = goalTable.dequeueReusableCell(withIdentifier: "goalCell", for: indexPath) as! GoalTableViewCell
 
-        cell.goalLabel.text = goals[indexPath.row]
+        cell.goalLabel.text = board.goals[indexPath.row].name
         cell.selectionStyle = UITableViewCellSelectionStyle.none
-        cell.addGestureRecognizer(checkedGesture)
         return cell
     }
     

@@ -52,7 +52,6 @@ class CreateRoomViewController: UIViewController, UIPickerViewDelegate, UIPicker
         topDurPickerMargin.constant = view.frame.height
         
         roomNameTxt.becomeFirstResponder()
-        
         //addKeyboardViewAdjustment()
     }
     

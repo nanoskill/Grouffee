@@ -53,9 +53,9 @@ class Room : Codable
         try container.encode(lastBoardId, forKey: CodingKeys.lastBoardId)
     }
     
-    func addBoard(boardName: String, duration : Int)
+    func addBoard(boardName: String, duration : Int, desc : String, goals : [Goal])
     {
-    //    boards.append(Board(boardId: lastBoardId, boardName: boardName, duration: duration))
+        boards.append(Board(boardName: boardName, duration: duration, desc: desc, goals: goals, boardId: lastBoardId))
         lastBoardId += 1
     }
     

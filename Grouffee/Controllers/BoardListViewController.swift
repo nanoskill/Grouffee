@@ -129,10 +129,11 @@ class BoardListViewController: UIViewController {
             let destination = segue.destination as! BoardDetailViewController
             let selectedBoard = sender as! Board
             
-            destination.boardNameInput = selectedBoard.boardName
-            destination.durInput = selectedBoard.duration
-            destination.descInput = selectedBoard.desc
-            destination.goals = selectedBoard.goals
+//            destination.boardNameInput = selectedBoard.boardName
+//            destination.durInput = selectedBoard.duration
+//            destination.descInput = selectedBoard.desc
+//            destination.goals = selectedBoard.goals
+            destination.board = selectedBoard
         }
     }
 }

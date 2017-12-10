@@ -168,6 +168,7 @@ extension ConnectionModel : MCSessionDelegate
                         {
                             let decodedData = try decoder.decode(InitialData.self, from: data)
                             self?.appDelegate.room = decodedData.room
+                            UIApplication.topViewController()?.reloadInputViews()
                         }
                         catch let error
                         {
@@ -239,6 +240,18 @@ extension ConnectionModel : MCSessionDelegate
                         if user.name == decodedData.user
                         {
                             appDelegate.room.connectedMembers.remove(at: idx)
+                            break;
+                        }
+                    }
+                }
+                if dataType == "goalcheck_data"
+                {
+                    let decodedData = try decoder.decode(GoalCheckData.self, from: data)
+                    for (idx,board) in appDelegate.room.boards.enumerated()
+                    {
+                        if board.boardId == decodedData.board.boardId
+                        {
+                            appDelegate.room.boards[idx] = decodedData.board
                             break;
                         }
                     }
