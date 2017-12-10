@@ -17,4 +17,33 @@ class Goal : Codable{
         self.name = name
     }
     
+    func checked(user: User) {
+        self.user = user
+        time = Date()
+    }
+    /*
+    enum CodingKeys : String, CodingKey
+    {
+        case name
+        case user
+        case time
+    }
+    
+    required init(from decoder: Decoder) throws
+    {
+        try let values = decoder.container(keyedBy: CodingKeys)
+        
+        name = try values.decode(String.self, forKey: .name)
+        let user = 
+    }
+    */
+    func unchecked() {
+        self.user = nil
+        time = nil
+    }
+    
+    func isChecked() -> Bool
+    {
+        return user == nil
+    }
 }

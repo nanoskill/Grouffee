@@ -76,7 +76,6 @@ class AddNewBoardViewController: UIViewController, UIPickerViewDelegate, UIPicke
         }
     }
     
-    
     @objc
     func hidePlaceholder(){
         desc.becomeFirstResponder()
@@ -137,8 +136,12 @@ class AddNewBoardViewController: UIViewController, UIPickerViewDelegate, UIPicke
     
     @IBAction func createBoardDidTap(_ sender: Any)
     {
-    //    appDelegate.room.addBoard(boardName: boardName.text!, duration: selectedHours*3600 + selectedMinutes*60)
-        appDelegate.room.boards.append(Board(boardName: boardName.text!, duration: selectedHours*3600 + selectedMinutes*60, desc: desc.text, goals: goalList, boardId: 0))
+        var goals = [Goal]()
+        for it in goalList {
+            goals.append(Goal(name: it))
+        }
+       appDelegate.room.addBoard(boardName: boardName.text!, duration: selectedHours*3600 + selectedMinutes*60, desc: desc.text, goals: goals)
+        
         
         appDelegate.broadcastRoom()
         dismiss(animated: true, completion: nil)

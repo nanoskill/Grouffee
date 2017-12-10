@@ -11,6 +11,4 @@ import UIKit
 class GoalTableViewCell: UITableViewCell {
     @IBOutlet weak var goalLabel: UILabel!
     @IBOutlet weak var checkBox: UIImageView!
-    
-    
 }
