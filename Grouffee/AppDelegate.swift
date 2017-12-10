@@ -25,10 +25,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     {
         UNUserNotificationCenter.current().requestAuthorization(options: UNAuthorizationOptions.alert) { (granted, error) in
             print(granted)
-        }
+        }/*
         checkNow()
         NotificationCenter.default.addObserver(self, selector: #selector(checkNow), name: NSNotification.Name.UIAccessibilityGuidedAccessStatusDidChange, object: nil)
-        
+        */
         return true
     }
     
@@ -41,12 +41,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let urlStr = "App-prefs:root=General&path=ACCESSIBILITY"
                 UIApplication.shared.open(URL(string:urlStr)!, options: [:], completionHandler: nil)
             })
-            let okay = UIAlertAction(title: "Okay", style: .default, handler: {
+            /*let okay = UIAlertAction(title: "Okay", style: .default, handler: {
                 [weak self](_) in
                 self!.checkNow()
-            })
+            })*/
             popup.addAction(openSetting)
-            popup.addAction(okay)
+            //popup.addAction(okay)
             DispatchQueue.main.async {
                 popup.presentExclusively(view: UIApplication.topViewController()!)
             }

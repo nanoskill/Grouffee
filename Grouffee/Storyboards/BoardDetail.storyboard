@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13770" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GTY-Jg-T0W">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GTY-Jg-T0W">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13770"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -79,6 +79,9 @@
                                 <state key="normal" title="Join" image="join board">
                                     <color key="titleColor" red="0.45022886989999999" green="0.75266075129999999" blue="0.76471978429999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
+                                <connections>
+                                    <action selector="joinBoardDidTap:" destination="GTY-Jg-T0W" eventType="touchUpInside" id="XcS-ir-nGV"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v3k-bd-bch">
                                 <rect key="frame" x="-376" y="116" width="375" height="588"/>
@@ -164,7 +167,7 @@
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Goal #1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hkb-nu-jhg">
-                                                                    <rect key="frame" x="37" y="11" width="220" height="21"/>
+                                                                    <rect key="frame" x="37" y="11" width="234" height="21"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <color key="textColor" red="0.84478455779999995" green="0.52694404130000005" blue="0.45091509819999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                     <nil key="highlightedColor"/>
@@ -308,12 +311,17 @@
                     </view>
                     <size key="freeformSize" width="375" height="667"/>
                     <connections>
+                        <outlet property="backButton" destination="8HK-7O-fHY" id="wZZ-Fn-p9X"/>
                         <outlet property="boardName" destination="Jij-b5-ymo" id="UmL-mM-hlC"/>
-                        <outlet property="boardTimer" destination="Lx7-l0-ElG" id="aFq-TV-Vdt"/>
                         <outlet property="desc" destination="CHd-S6-UkL" id="Xkr-ux-ZaK"/>
+                        <outlet property="detailNavBar" destination="ziA-7U-dIl" id="quc-Z8-mFH"/>
                         <outlet property="duration" destination="hRQ-T0-LFx" id="pjh-V9-Y4l"/>
                         <outlet property="goalTable" destination="y5h-ti-661" id="jvQ-2p-5zL"/>
+                        <outlet property="joinBoardBtn" destination="zWD-yl-RFD" id="qft-sn-O72"/>
                         <outlet property="member" destination="2pA-Pt-AUF" id="SLB-fg-QgL"/>
+                        <outlet property="progressBar" destination="pUe-Ec-KyA" id="FIP-gL-Dd7"/>
+                        <outlet property="timerContainer" destination="Lx7-l0-ElG" id="Zif-dE-32H"/>
+                        <outlet property="timerLabel" destination="7Qb-M6-vni" id="BK1-Gz-B5A"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Qw-Aw-DbE" userLabel="First Responder" sceneMemberID="firstResponder"/>

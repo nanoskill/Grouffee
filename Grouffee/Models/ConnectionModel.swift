@@ -186,21 +186,19 @@ extension ConnectionModel : MCSessionDelegate
                         do
                         {
                             let decodedData = try decoder.decode(JoinData.self, from: data)
-                            var joiningUser : User?
-                            for user in (self?.appDelegate.room.connectedMembers)!
-                            {
-                                if user.name == decodedData.user
-                                {
-                                    joiningUser = user
-                                    print("Detected user : \(joiningUser!.name)")
-                                    break;
-                                }
-                            }
+                            
                             for board in (self?.appDelegate.room.boards)!
                             {
                                 if board.boardId == decodedData.targetBoard
                                 {
-                                    board.joinBoard(user: joiningUser!)
+                                    for user in (self?.appDelegate.room.connectedMembers)!
+                                    {
+                                        if user.name == decodedData.user
+                                        {
+                                            user.joinBoard(board: board)
+                                            break;
+                                        }
+                                    }
                                     break;
                                 }
                             }
@@ -214,20 +212,11 @@ extension ConnectionModel : MCSessionDelegate
                 if dataType == "exit_data"
                 {
                     let decodedData = try decoder.decode(ExitData.self, from: data)
-                    var exitingUser : User?
                     for user in appDelegate.room.connectedMembers
                     {
                         if user.name == decodedData.user
                         {
-                            exitingUser = user
-                            break;
-                        }
-                    }
-                    for board in appDelegate.room.boards
-                    {
-                        if board.boardId == decodedData.fromBoard
-                        {
-                            board.exitBoard(user: exitingUser!)
+                            user.exitBoard()
                             break;
                         }
                     }

@@ -58,8 +58,6 @@ class BoardListViewController: UIViewController {
             addBoardButton.isHidden = true
         }
         
-        
-        
         NotificationCenter.default.addObserver(self, selector: #selector(enteredBackground), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(enteredForeground), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
         
@@ -150,11 +148,7 @@ extension BoardListViewController : UITableViewDelegate
         let theHandler : UIContextualActionHandler =
         {   [weak self]
             (theAction, theView, boolHandler) in
-            if self?.appDelegate.user.type == .leader
-            {
-                self?.appDelegate.room.boards[indexPath.row].joinBoard(user: (self?.appDelegate.user)!)
-            }
-            else
+            if self?.appDelegate.user.type == .member
             {
                 do
                 {
@@ -166,6 +160,7 @@ extension BoardListViewController : UITableViewDelegate
                     print("Sending join data error :\(error)")
                 }
             }
+            self?.appDelegate.user.joinBoard(board: (self?.appDelegate.room.boards[indexPath.row])!)
             self!.performSegue(withIdentifier: "showBoardDetail", sender: self!.appDelegate.room.boards [indexPath.row])
         }
         
@@ -256,7 +251,7 @@ extension BoardListViewController : UITableViewDataSource
         
         cell.boardName.text = appDelegate.room.boards[indexPath.row].boardName
         cell.duration.text = appDelegate.room.boards[indexPath.row].timer.getTimeString()
-        cell.people.text = String(appDelegate.room.boards[indexPath.row].members.count)
+        cell.people.text = String(appDelegate.room.boards[indexPath.row].getPeopleWorkingOnBoard().count)
         
         return cell
     }

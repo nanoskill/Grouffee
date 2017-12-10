@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13770" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NOC-mm-486">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NOC-mm-486">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13770"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -232,8 +232,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v0P-CD-vju">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mQh-pj-FFK">
-                                        <rect key="frame" x="0.0" y="619" width="375" height="217"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mQh-pj-FFK">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="217"/>
                                         <subviews>
                                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hX3-2U-dUR">
                                                 <rect key="frame" x="0.0" y="42" width="375" height="175"/>
@@ -281,11 +281,15 @@
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.91487208549999999" green="0.91487208549999999" blue="0.91487208549999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="217" id="g9Q-nz-V23"/>
+                                        </constraints>
                                         <viewLayoutGuide key="safeArea" id="YKV-dm-MFk"/>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.35030500860000002" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
+                                    <constraint firstItem="mQh-pj-FFK" firstAttribute="top" secondItem="v0P-CD-vju" secondAttribute="top" id="3ra-93-msz"/>
                                     <constraint firstItem="mQh-pj-FFK" firstAttribute="leading" secondItem="v0P-CD-vju" secondAttribute="leading" id="gIQ-jr-b7V"/>
                                     <constraint firstAttribute="trailing" secondItem="mQh-pj-FFK" secondAttribute="trailing" id="ibt-JI-1ij"/>
                                 </constraints>
@@ -352,6 +356,7 @@
                         <outlet property="hoursLabel" destination="acf-dZ-FUl" id="Rka-lr-GB5"/>
                         <outlet property="minuteLabel" destination="j3c-PA-f2R" id="awo-Tr-RJc"/>
                         <outlet property="pickerContainer" destination="mQh-pj-FFK" id="JIi-h0-xDc"/>
+                        <outlet property="topDurPickerMargin" destination="3ra-93-msz" id="uS0-ua-UBD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5C-Kz-m76" userLabel="First Responder" sceneMemberID="firstResponder"/>

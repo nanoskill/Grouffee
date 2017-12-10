@@ -28,6 +28,7 @@ class User : Codable{
     //var sessions = [GrouffeeSession]()
     var peerId : MCPeerID!
     var type = UserType.member
+    var workingOnBoard : Board?
     
     enum CodingKeys : String, CodingKey {
         case name
@@ -35,6 +36,7 @@ class User : Codable{
         case status
         case type
         //case sessions
+        case workingOnBoard
     }
     
     required init(from decoder: Decoder) throws {
@@ -52,9 +54,9 @@ class User : Codable{
             }
         }
         type = try values.decode(UserType.self, forKey: .type)
+        workingOnBoard = try values.decode(Board.self, forKey: .workingOnBoard)
         //sessions = try values.decode([GrouffeeSession].self, forKey: .sessions)
     }
-    
     
     init(name: String)
     {
@@ -70,23 +72,23 @@ class User : Codable{
         self.timer = GrouffeeTimer()
         self.peerId = peerId
     }
-    /*
-    func assignTimer(timer: GrouffeeTimer)
-    {
-        self.timer = timer
-    }
-    */
-    func startWorking(inBoard : Board)
+    
+    func joinBoard(board: Board)
     {
         status = .working
-        //sessions.append(GrouffeeSession(board: inBoard, startTime: Date(), endTime: nil))
         timer.startTimer()
+        workingOnBoard = board
+        if !board.timer.isRunning {board.timer.startTimer()}
     }
     
-    func stopWorking()
+    func exitBoard()
     {
         status = .idle
-        //sessions[sessions.endIndex].endTime = Date()
         timer.stopTimer()
+        if workingOnBoard!.getPeopleWorkingOnBoard().count == 1
+        {
+            workingOnBoard!.timer.stopTimer()
+        }
+        workingOnBoard = nil
     }
 }

@@ -19,7 +19,6 @@ public struct JoinData : Codable
 public struct ExitData : Codable
 {
     let data_type = "exit_data"
-    let fromBoard : Int
     let user : String
 }
 

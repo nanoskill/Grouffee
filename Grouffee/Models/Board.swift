@@ -15,21 +15,34 @@ class Board : Codable{
     var boardName: String
     var desc: String
     var duration: Int
-    var members: [User]
     var timer : GrouffeeTimer!
     var goals : [Goal]
     
     init(boardName: String, duration: Int, desc: String, goals: [Goal], boardId: Int) {
         self.boardName = boardName
         self.duration = duration
-        members = [User]()
         timer = GrouffeeTimer(seconds: duration)
         self.boardId = boardId
-        
         self.desc = desc
         self.goals = goals
     }
     
+    func getPeopleWorkingOnBoard() -> [User]
+    {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let members = appDelegate.room.connectedMembers
+        var workingOnBoard = [User]()
+        for member in members
+        {
+            guard let memberBoardId = member.workingOnBoard?.boardId else {continue}
+            if memberBoardId == self.boardId
+            {
+                workingOnBoard.append(member)
+            }
+        }
+        return workingOnBoard
+    }
+    /*
     func joinBoard(user: User)
     {
         user.startWorking(inBoard: self)
@@ -50,7 +63,7 @@ class Board : Codable{
 //            print("joinBoard error : \(error)")
 //        }
     }
-    
+ 
     func exitBoard(user: User)
     {
         if members.count == 1 {timer.stopTimer()}
@@ -66,4 +79,5 @@ class Board : Codable{
             appDelegate.broadcastRoom()
         }
     }
+ */
 }

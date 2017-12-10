@@ -10,34 +10,95 @@ import UIKit
 
 class BoardDetailViewController: UIViewController {
     
-    @IBOutlet weak var boardTimer: UIView!
-    
     @IBOutlet var boardName: UILabel!
     @IBOutlet var duration: UILabel!
     @IBOutlet weak var desc: UILabel!
     @IBOutlet var goalTable: UITableView!
     @IBOutlet weak var member: UILabel!
-    //var goals: [String] = []
-    /*
-    var boardNameInput: String?
-    var durInput: Int?
-    var descInput: String?
-    */
+    
+    @IBOutlet weak var timerContainer: UIView!
+    @IBOutlet weak var progressBar: UIProgressView!
+    
+    @IBOutlet weak var detailNavBar: UINavigationItem!
+    @IBOutlet weak var backButton: UIBarButtonItem!
+    @IBOutlet weak var timerLabel: UILabel!
+    
+    @IBOutlet weak var joinBoardBtn: UIButton!
+    
     var board : Board!
     
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-        
+        updateBoard()
+        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateBoard), userInfo: nil, repeats: true)
+    }
+    
+    @objc func updateBoard()
+    {
         boardName.text = board.boardName
-        duration.text = "\(Int(board.timer.initTime)/3600) \("hours") \(Int(board.timer.initTime)%3600 / 60) \("minutes")"
         desc.text = board.desc
+        var temp = ""
+        for m in board.getPeopleWorkingOnBoard() {
+            temp.append("\(m.name), ")
+        }
+        member.text = temp
+        duration.text = "\(Int(board.timer.initTime)/3600) \("hours") \(Int(board.timer.initTime)%3600 / 60) \("minutes")"
+        goalTable.reloadData()
+        timerLabel.text = board.timer.getTimeString()
+        detailNavBar.title = appDelegate.room.timer.getTimeString()
     }
     
     @IBAction func backItemDidTap(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func joinBoardDidTap(_ sender: Any) {
+        userView(isJoined: appDelegate.user.workingOnBoard?.boardId == board.boardId)
+        //updateBoard()
+    }
+    
+    func userView(isJoined: Bool)
+    {
+        if isJoined
+        {
+            //mau keluar
+            joinBoardBtn.imageView?.image = #imageLiteral(resourceName: "Create New Room Button")
+            backButton.isEnabled = true
+            if appDelegate.user.type == .member
+            {
+                do
+                {
+                    let theData = try JSONEncoder().encode(ExitData(user: appDelegate.user.name))
+                    try appDelegate.connection?.session.send(theData, toPeers: (appDelegate.connection?.session.connectedPeers)!, with: .reliable)
+                }
+                catch let error
+                {
+                    print("Sending exit data error :\(error)")
+                }
+            }
+            appDelegate.user.exitBoard()
+        }
+        else
+        {
+            joinBoardBtn.imageView?.image = #imageLiteral(resourceName: "join room button")
+            backButton.isEnabled = false
+            if appDelegate.user.type == .member
+            {
+                do
+                {
+                    let theData = try JSONEncoder().encode(JoinData(targetBoard: board.boardId, user: appDelegate.user.name))
+                    try appDelegate.connection?.session.send(theData, toPeers: (appDelegate.connection?.session.connectedPeers)!, with: .reliable)
+                }
+                catch let error
+                {
+                    print("Sending join data error :\(error)")
+                }
+            }
+            appDelegate.user.joinBoard(board: board)
+        }
     }
     
 }
