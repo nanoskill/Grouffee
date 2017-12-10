@@ -32,8 +32,8 @@ class InitialSelectionViewController: UIViewController {
         errorView.isHidden = true
         errorView.layer.cornerRadius = 10
         nameField.becomeFirstResponder()
-        /*
-        UNUserNotificationCenter.current().getNotificationSettings { [weak self] (set) in
+        
+       /* UNUserNotificationCenter.current().getNotificationSettings { [weak self] (set) in
             if set.authorizationStatus == .denied
             {
                 let popup = UIAlertController.createOkayPopup(title: "Notification display", message: "We strongly recommend you to give us permission to display notifications in your notification center", handler: {(_) in self!.checkNow()})
@@ -45,8 +45,7 @@ class InitialSelectionViewController: UIViewController {
             {
                 self!.checkNow()
             }
-        }
- */
+        }*/
     }
     /*
     @objc func checkNow()
