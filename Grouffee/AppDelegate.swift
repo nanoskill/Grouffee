@@ -23,10 +23,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool
     {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { (granted, error) in
+        UNUserNotificationCenter.current().requestAuthorization(options: UNAuthorizationOptions.alert) { (granted, error) in
             print(granted)
         }
+        checkNow()
+        NotificationCenter.default.addObserver(self, selector: #selector(checkNow), name: NSNotification.Name.UIAccessibilityGuidedAccessStatusDidChange, object: nil)
+        
         return true
+    }
+    
+    @objc func checkNow()
+    {
+        if UIAccessibilityIsGuidedAccessEnabled() == false
+        {
+            let popup = UIAlertController(title: "Guided Access Disabled", message: "Please enable the Guided Access to by triple-clicking your home button\n If it is doesn't work, please enable the Guided Access in the\nSettings > General > Accessibility > Guided Access", preferredStyle: .alert)
+            let openSetting = UIAlertAction(title: "Open Settings", style: .cancel, handler: { (_) in
+                let urlStr = "App-prefs:root=General&path=ACCESSIBILITY"
+                UIApplication.shared.open(URL(string:urlStr)!, options: [:], completionHandler: nil)
+            })
+            let okay = UIAlertAction(title: "Okay", style: .default, handler: {
+                [weak self](_) in
+                self!.checkNow()
+            })
+            popup.addAction(openSetting)
+            popup.addAction(okay)
+            DispatchQueue.main.async {
+                popup.presentExclusively(view: UIApplication.topViewController()!)
+            }
+        }
+        else
+        {
+            UIApplication.topViewController()?.dismiss(animated: true, completion: nil)
+        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

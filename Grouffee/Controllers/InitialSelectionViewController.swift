@@ -32,7 +32,7 @@ class InitialSelectionViewController: UIViewController {
         errorView.isHidden = true
         errorView.layer.cornerRadius = 10
         nameField.becomeFirstResponder()
-        
+        /*
         UNUserNotificationCenter.current().getNotificationSettings { [weak self] (set) in
             if set.authorizationStatus == .denied
             {
@@ -46,8 +46,9 @@ class InitialSelectionViewController: UIViewController {
                 self!.checkNow()
             }
         }
+ */
     }
-    
+    /*
     @objc func checkNow()
     {
         if UIAccessibilityIsGuidedAccessEnabled() == false
@@ -71,7 +72,7 @@ class InitialSelectionViewController: UIViewController {
             }
         }
     }
-    
+    */ 
     @IBAction func newPlanDidTap(_ sender: Any) {
         if validateName()
         {
