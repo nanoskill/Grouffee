@@ -50,7 +50,7 @@ class AddNewBoardViewController: UIViewController, UIPickerViewDelegate, UIPicke
         
         let hideGesture = UITapGestureRecognizer(target: self, action: #selector(hideDurPicker))
         durPickerView.addGestureRecognizer(hideGesture)
-        //topDurPickerMargin.constant = view.frame.height
+        topDurPickerMargin.constant = view.frame.height
         
         let descDidTap = UITapGestureRecognizer(target: self, action: #selector(hidePlaceholder))
         desc.addGestureRecognizer(descDidTap)
